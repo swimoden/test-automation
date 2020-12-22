@@ -1,0 +1,7 @@
+curl -u "User Name:Access Key" \
+-X POST "https://api-cloud.browserstack.com/app-automate/upload" \
+-F "file=@/home/morhamed/Downloads/Showroomz_refac.ipa"
+
+/home/morhamed/Downloads/Showroomz_refac.ipa
+
+//*[@name='PROFILE']"
