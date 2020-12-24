@@ -1,7 +1,81 @@
-curl -u "User Name:Access Key" \
+curl -u "User Name:phAYz3KfvGtvNR4KoZ97" \
 -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
 -F "file=@/home/morhamed/Downloads/Showroomz_refac.ipa"
+
+
+curl -u "guedhamimohamedm1:phAYz3KfvGtvNR4KoZ97" \
+-X POST "https://api-cloud.browserstack.com/app-automate/upload" \
+-F "file=@/home/morhamed/Downloads/app-debug.apk"
+
 
 /home/morhamed/Downloads/Showroomz_refac.ipa
 
 //*[@name='PROFILE']"
+
+
+# This sample code uses the Appium robot client
+# pip install robotframework-appiumlibrary
+# Then you can paste this into a file and simply run with robot
+#
+#  more keywords on: http://serhatbolsu.github.io/robotframework-appiumlibrary/AppiumLibrary.html
+
+*** Settings ***
+Library           AppiumLibrary
+
+*** Variables ***
+${REMOTE_URL}   https://hub-cloud.browserstack.com:443/wd/hub
+${device}     iPhone 11 Pro Max
+${app}    bs://0369dfb135a3cc74605e24e98d28743e6fbfd7b3
+${autoAcceptAlerts}    True
+${browserstack.source}    appiumdesktop
+
+*** Test Cases ***
+Test case name
+    Open Application    ${REMOTE_URL}   device=${device}  app=${app}  autoAcceptAlerts=${autoAcceptAlerts}  browserstack.source=${browserstack.source}
+    Tap    undefined    43    73
+    # accessibility id=Car
+    Click Element    accessibility id=Car
+    # accessibility id=close icon
+    Click Element    accessibility id=close icon
+    # accessibility id=Together
+    Click Element    accessibility id=Together
+    # name=DFM
+    Tap    name=DFM    168    371
+    # xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]
+    Click Element    xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]
+    # accessibility id=Bluetooth Function in Steering Wheel
+    Click Element    accessibility id=Bluetooth Function in Steering Wheel
+    Tap    accessibility id=Bluetooth Function in Steering Wheel    39    838
+    # accessibility id=click here down
+    Click Element    accessibility id=click here down
+    # xpath=//XCUIElementTypeButton[@name="  Click Here"]
+    Click Element    xpath=//XCUIElementTypeButton[@name="  Click Here"]
+    Tap    xpath=//XCUIElementTypeButton[@name="  Click Here"]    23    63
+    Tap    xpath=//XCUIElementTypeButton[@name="  Click Here"]    26    72
+    Tap    xpath=//XCUIElementTypeButton[@name="  Click Here"]    208    228
+    # accessibility id=Maintenance
+    Click Element    accessibility id=Maintenance
+    Click Element    accessibility id=Maintenance
+    # accessibility id=New
+    Click Element    accessibility id=New
+    # xpath=/XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable
+    # xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
+
+*** Test Teardown ***
+    Quit Application
+
+
+
+x=0 y=0 
+x=0 y= 220
+
+//XCUIElementTypeStaticText[contains(text(),'Audi')]
+//XCUIElementTypeStaticText[@name="Audi "]
+contains
+
+//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
+
+//*[contains(. ,'21 Jun 2017')]
+
+//*[contains()@name="  Click Here")]
+//XCUIElementTypeButton[@name="multiply"]
