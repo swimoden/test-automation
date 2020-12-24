@@ -3,6 +3,7 @@
 Documentation  Register & login & logout 
 Library  FakerLibrary
 Resource  ../resources/setup_teardown.resource
+Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 
@@ -15,6 +16,7 @@ ${password_error}  password, Error: Password should be at least 8 charechters
 
 *** Test Cases ***
 As User I try to register
+  [Tags]  register
   ${user}=  Prepare User Random data
   I can Open Menu
   I select Profile Item
@@ -28,9 +30,11 @@ As User I try to register
   I type register information  ${user}[0]  ${user}[1]  testtest  ${EMPTY}
   I Should Sees error in register screen  ${phone_number_error}
   I type register information  ${user}[0]  ${user}[1]  testtest  ${user}[2]
-  I should sees profile screen  ${user}[0]  ${user}[1]  testtest  ${user}[2]
+  I should sees profile screen  ${user}[0]  ${user}[1]
 
 
+As User I can login
+  I can Open Menu
 
 # As User I login to App
 #  I can Open Menu 
@@ -39,15 +43,6 @@ As User I try to register
 #  I Type a true Information and register
 
 *** Keywords ***
-I can Open Menu
-  Wait Until Element Is Visible  accessibility_id=menu  
-  Click Element  accessibility_id=menu
-
-
-I select Profile Item
-  Wait Until Element Is Visible  accessibility_id=PROFILE
-  Click Element  accessibility_id=PROFILE
-
 I navigate to register page
   Wait Until Page Contains  Login To Your Account 
   Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]
@@ -68,21 +63,6 @@ I type register information
 I Should Sees error in register screen
   [Arguments]  ${error}
   Wait Until Page Contains  ${error}  
-
-I should sees profile screen
-  [Arguments]  ${name}  ${email}  ${password}  ${phone}
-  Wait Until Element Is Visible  accessibility_id=Profile 
-  Wait Until Element Is Visible  accessibility_id=Edit Profile
-  Wait Until Element Is Visible  accessibility_id=Change password
-  Wait Until Element Is Visible  accessibility_id=FAVORITES
-  Wait Until Element Is Visible  accessibility_id=CALL BACKS
-  Wait Until Element Is Visible  accessibility_id=FINANCE CALL BACKS
-  Wait Until Element Is Visible  accessibility_id=FINANCE REQUEST
-  Wait Until Element Is Visible  accessibility_id=TEST DRIVES
-  Wait Until Element Is Visible  accessibility_id=PAYMENTS
-  Wait Until Element Is Visible  accessibility_id=LOG OUT
-  Page Should Contain Element  accessibility_id=${name}
-  Page Should Contain Element  accessibility_id=${email} 
 
 I can Log out From App And Back to MENU
   Click Element  accessibility_id=back

@@ -11,17 +11,17 @@ Library  String
 ${USER_NAME}  guedhamimohamedm1
 ${ACESS_KEY}  phAYz3KfvGtvNR4KoZ97
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-${APP}  bs://b9cc192bf7eda35b199364a985dec4aec66fcbc7
-${DEVICE}  iPhone 11 Pro Max
-${OS_VERSION}  14 
+${APP}  bs://541449543d5f34da8046cd8d8ce6fc4953e434da
+${DEVICE}  iPhone XS
+${OS_VERSION}  14.0
 ${BUILD}  local build
 
 
 *** Keywords ***
 Open the application
   Open Application  ${APPIUM_SERVER}  app=${APP}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  build=${BUILD}  name=${SUITE NAME.rsplit('.')[0]}  language=en  locale=kw_CA  autoAcceptAlerts=true  
-  Set Appium Timeout  60 seconds
-  Allow Applications Location Service
+  Set Appium Timeout  20 seconds
+  Run Keyword And Ignore Error  Allow Applications Location Service
   Choose language  ENGLISH  
   Wait and close Pub
 

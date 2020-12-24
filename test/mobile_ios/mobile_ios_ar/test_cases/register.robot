@@ -15,7 +15,6 @@ ${password_error}  كلمة المرور, Error: كلمة المرور لا يج
 *** Test Cases ***
 As User I try to register
   ${user}=  Prepare User Random data
-  Log To Console  ${user}[0] 
   I can Open Menu
   I select Profile Item
   I navigate to register page
