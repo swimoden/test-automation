@@ -6,6 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
+Test Teardown  Run Keyword If Test Failed  Relod Application and Login
 
 *** Variables ***
 
@@ -16,33 +17,57 @@ I Succeed to make a Request callback from brand
   I can navigate to List of models  شانجان
   I can navigate to the details of the model  شانجان  CS 85
   I can make a Request Callback  Mohamd Amine  6677  66770000
-  [Teardown]  I go back to menu from brand details
+  I go back to menu from model details
 
 
 I Succeed to make a Request callback from Recently Viewed
-  [Setup]  I visit a brand and back to menu  شانجان  سي أس 95 كلاسيك
+  I visit a model and back to menu  شانجان  سي أس 95 كلاسيك
   I select mode From Recently Viewed
   I can make a Request Callback  Mohamd Amine  6677  66770000
-  [Teardown]  I go back to menu from brand details Recently Viewed
+  I go back to menu from model details Recently Viewed
+
+I Succeed to make a Request callback from FAVORITES
+  I visit a model add it to favorites and back to menu  شانجان  سي أس 95 كلاسيك
+  I can Open Menu
+  I select favorites Item
+  I select mode From favorites List  سي أس 95 كلاسيك
+  I can make a Request Callback  Mohamd Amine  6677  66770000
+  I go back to menu from model details favorites
+  [Teardown]  NONE
 
 
-
-# I can make a Request Callback
-#  I can see model Actions buttons
-#  I click Callback Action button
-#  I passed a callback Request  Mohamd Amine  6677  66770000
 
 *** Keywords ***
-I select mode From Recently Viewed
-  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2] 
-  Click Element  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2]
+I select mode From favorites List
+  [Arguments]  ${model_name}
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
 
-I visit a brand and back to menu
+I select favorites Item
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="المفضلة"]
+  Wait Until Element Is Visible  //XCUIElementTypeStaticText[@name="سيارات "]
+
+I visit a model add it to favorites and back to menu
   [Arguments]  ${brand_name}  ${model_name}
   I can navigate to List Brand
   I can navigate to List of models  ${brand_name}
   I can navigate to the details of the model  ${brand_name}  ${model_name}
-  I go back to menu from brand details
+  I add brand to favorites List
+  I go back to menu from model details
+
+I add brand to favorites List
+  Click Element  xpath=//XCUIElementTypeButton[@name="ic favorites"]
+
+I select mode From Recently Viewed
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2] 
+  Click Element  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2]
+
+I visit a model and back to menu
+  [Arguments]  ${brand_name}  ${model_name}
+  I can navigate to List Brand
+  I can navigate to List of models  ${brand_name}
+  I can navigate to the details of the model  ${brand_name}  ${model_name}
+  I go back to menu from model details
 
 I can make a Request Callback
   [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  

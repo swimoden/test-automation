@@ -5,7 +5,7 @@ Library  Collections
 Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Test Teardown  Run Keyword If Test Failed  Relod Application and Login
+Test Teardown  Run Keyword If Test Failed  Relod Application
 Force Tags  Ios  callback
 
 *** Variables ***
@@ -13,7 +13,6 @@ Force Tags  Ios  callback
 *** Test Cases ***
 I Succeed to make a Request callback from brand
   [Tags]  Ios_callback_brand
-  [Setup]  As User I login in app
   I can navigate to List Brand
   I can navigate to List of models  Audi
   I can navigate to the details of the model  Audi  A5 Coupe
@@ -36,6 +35,13 @@ I Succeed to make a Request callback from FAVORITES
   I can make a Request Callback  Mohamd Amine  6677  66770000
   I go back to menu from model details favorites
   [Teardown]  NONE
+
+# I Succeed to make a Request finance callback from brand
+#  I can navigate to List Brand
+#  I can navigate to List of models  Audi
+#  I can navigate to the details of the model  Audi  A5 Coupe
+#  I can make a Request Callback  Mohamd Amine  6677  66770000
+#  I go back to menu from model details  
 
 *** Keywords ***
 I select mode From favorites List

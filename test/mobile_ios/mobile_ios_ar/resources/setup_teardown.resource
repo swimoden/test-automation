@@ -21,7 +21,7 @@ ${BUILD}  local build
 Open the application
   Open Application  ${APPIUM_SERVER}  app=${APP}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  build=${BUILD}  name=${SUITE NAME.rsplit('.')[0]}  language=en  locale=kw_CA  autoAcceptAlerts=true  
   Set Appium Timeout  30 seconds
-  Allow Applications Location Service
+  Run Keyword And Ignore Error  Allow Applications Location Service
   Choose language  عربي  
   Wait and close Pub
 
@@ -40,3 +40,12 @@ Wait and close Pub
 
 Clean up the test suite
   Close All Applications
+
+Relod Application and Login
+  Close All Applications
+  Open the application
+  As User I login in app
+
+Relod Application
+  Close All Applications
+  Open the application

@@ -7,12 +7,12 @@
 # Suite Teardown  Clean up the test suite
 
 # *** Test Cases ***
-# I visit a brand and back to menu
+# I visit a model and back to menu
 #  As User I login in app
 #  I can navigate to List Brand
 #  I can navigate to List of models  Audi
 #  I can navigate to the details of the model  Audi  A5 Coupe
-#  I go back to menu from brand details
+#  I go back to menu from model details
 
 
 

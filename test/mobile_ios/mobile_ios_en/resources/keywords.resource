@@ -51,7 +51,7 @@ I set user Information
   Input Text  accessibility_id=e-mail  ${user_email}
   Input Text  accessibility_id=password  ${user_password}
 
-I go back to menu from brand details
+I go back to menu from model details
   Click Element  accessibility_id=back
   Wait Until Page Contains Element  xpath=//XCUIElementTypeButton[@name="multiply"]
   Click Element  xpath=//XCUIElementTypeButton[@name="multiply"]
@@ -73,17 +73,17 @@ Close advertisement
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
   Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
 
-I go back to menu from brand details Recently Viewed
+I go back to menu from model details Recently Viewed
   Wait Until Element Is Visible  accessibility_id=back
   Click Element  accessibility_id=back
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
   Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
   Wait Until Element Is Visible  accessibility_id=menu  
 
-I go back to menu from brand details favorites
+I go back to menu from model details favorites
   Wait Until Element Is Visible  accessibility_id=back
   Click Element  accessibility_id=back
-  Wait Until Element Is Visible  //XCUIElementTypeStaticText[@name="Favorites"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Favorites"]
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
   Run Keyword And Ignore Error  Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
