@@ -3,9 +3,9 @@ Documentation  Request callback from brand
 Library  FakerLibrary
 Library  Collections
 Resource  ../resources/setup_teardown.resource
-Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
+Test Teardown  Run Keyword If Test Failed  Relod Application and Login
 Force Tags  Ios  callback
 
 *** Variables ***
@@ -18,23 +18,24 @@ I Succeed to make a Request callback from brand
   I can navigate to List of models  Audi
   I can navigate to the details of the model  Audi  A5 Coupe
   I can make a Request Callback  Mohamd Amine  6677  66770000
-  [Teardown]  I go back to menu from brand details
+  I go back to menu from brand details  
+
 
 I Succeed to make a Request callback from Recently Viewed
   [Tags]  Ios_callback_recently_view
   [Setup]  I visit a brand and back to menu  Audi  Q7
   I select mode From Recently Viewed
   I can make a Request Callback  Mohamd Amine  6677  66770000
-  [Teardown]  I go back to menu from brand details Recently Viewed
+  I go back to menu from brand details Recently Viewed 
 
 # I Succeed to make a Request callback from FAVORITES
 #  [Setup]  As User I login in app
 #  I visit a brand add it to favorites and back to menu  Audi  A6
-  # I can Open Menu
-  # I select favorites Item
-  # I select mode From favorites List  A6
-  # I can make a Request Callback  Mohamd Amine  6677  66770000
-  # [Teardown]  I go back to menu from brand details Recently Viewed
+#  I can Open Menu
+#  I select favorites Item
+#  I select mode From favorites List  A6
+#  I can make a Request Callback  Mohamd Amine  6677  66770000
+#  [Teardown]  I go back to menu from brand details Recently Viewed
 
 *** Keywords ***
 I select mode From favorites List
@@ -90,6 +91,7 @@ I can make a Request Callback
   I can see model Actions buttons
   I click Callback Action button
   I passed a callback Request  ${nom_user}  ${false_phone_number}  ${phone_number}
+
 
 I passed a callback Request
   [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  
