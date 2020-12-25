@@ -21,7 +21,7 @@ ${password_error}  password, Error: Password should be at least 8 charechters
 
 
 
-Scenario:Open Menu
+Scenario:Open Menu 2
   Given Menu button on dashboard screen
   When user click on menu button
   Then user will see right menu
