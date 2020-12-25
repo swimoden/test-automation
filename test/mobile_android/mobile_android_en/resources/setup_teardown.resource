@@ -1,0 +1,44 @@
+*** Settings ***
+Documentation  Mobile Test
+Library  AppiumLibrary  
+Library  RequestsLibrary
+Library  JSONLibrary
+Library  Collections
+Library  OperatingSystem
+Library  String
+
+*** Variables ***
+# ${USER_NAME}  marwenouni1
+# ${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
+${APPIUM_SERVER}  http://localhost:4730/wd/hub
+${APP}  d:app.apk
+${DEVICE}  Galaxy A51
+${OS_VERSION}  9.0 
+${platformName}  android
+
+
+*** Keywords ***
+Open the application
+  Open Application  ${APPIUM_SERVER}  app=${APP}  platformName=${platformName}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  name=${SUITE NAME.rsplit('.')[0]}
+  Set Appium Timeout  30 seconds
+  Select English language
+
+
+
+Select English language
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/english_btn  
+  Click Element  id=com.kuwait.showroomz.refac:id/english_btn
+Check English language button
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/english_btn  
+
+
+Allow Applications Location Service
+  Wait Until Element Is Visible  name=Allow While Using App
+  Click Element  name=Allow While Using App
+
+Wait and close Pub
+  Wait Until Element Is Visible  accessibility_id=close icon  timeout=200  
+  Click Element  accessibility_id=close icon
+
+Clean up the test suite
+  Close All Applications
