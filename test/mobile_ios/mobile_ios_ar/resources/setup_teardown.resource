@@ -20,7 +20,7 @@ ${BUILD}  local build
 *** Keywords ***
 Open the application
   Open Application  ${APPIUM_SERVER}  app=${APP}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  build=${BUILD}  name=${SUITE NAME.rsplit('.')[0]}  language=en  locale=kw_CA  autoAcceptAlerts=true  
-  Set Appium Timeout  60 seconds
+  Set Appium Timeout  30 seconds
   Allow Applications Location Service
   Choose language  عربي  
   Wait and close Pub
@@ -35,7 +35,7 @@ Allow Applications Location Service
   Click Element  name=Allow While Using App
 
 Wait and close Pub
-  Wait Until Element Is Visible  accessibility_id=close icon  timeout=200  
+  Wait Until Element Is Visible  accessibility_id=close icon  timeout=20  
   Click Element  accessibility_id=close icon
 
 Clean up the test suite

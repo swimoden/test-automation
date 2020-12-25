@@ -6,6 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
+Test Teardown  Run Keyword If Test Failed  Relod Application
 
 *** Variables ***
 ${phone_number_error}  Phone number, Error: Phone number must be 8 digits
@@ -32,9 +33,6 @@ As User I try to register
   I type register information  ${user}[0]  ${user}[1]  testtest  ${user}[2]
   I should sees profile screen  ${user}[0]  ${user}[1]
 
-
-As User I can login
-  I can Open Menu
 
 # As User I login to App
 #  I can Open Menu 
