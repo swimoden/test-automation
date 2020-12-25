@@ -44,10 +44,8 @@ I go back to menu
   Wait Until Element Is Visible  accessibility_id=menu 
 
 I set user Information
-  [Arguments]  ${user_email}  ${user_password}
-  Input Text  accessibility_id=البريد الالكتروني  ${user_email}
-  Input Text  accessibility_id=كلمة المرور  ${user_password}
-
+  [Arguments]  ${user_email}  ${us	
+//XCUIElementTypeButton[@name="ic inetrior"]
 I go back to menu from model details
   Click Element  accessibility_id=back
   Wait Until Page Contains Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
@@ -87,3 +85,4 @@ I go back to menu from model details favorites
   Run Keyword And Ignore Error  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
   Run Keyword And Ignore Error  Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
   Wait Until Element Is Visible  accessibility_id=menu
+

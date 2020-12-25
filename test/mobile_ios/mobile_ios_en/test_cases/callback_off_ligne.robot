@@ -11,39 +11,74 @@ Force Tags  Ios  callback
 *** Variables ***
 
 *** Test Cases ***
-I Succeed to make a Request callback from brand
-  [Tags]  Ios_callback_brand
-  I can navigate to List Brand
-  I can navigate to List of models  Audi
-  I can navigate to the details of the model  Audi  A5 Coupe
-  I can make a Request Callback  Mohamd Amine  6677  66770000
-  I go back to menu from model details  
-
-
-I Succeed to make a Request callback from Recently Viewed
-  [Tags]  Ios_callback_recently_view
-  I visit a model and back to menu  Audi  Q7
-  I select mode From Recently Viewed
-  I can make a Request Callback  Mohamd Amine  6677  66770000
-  I go back to menu from model details Recently Viewed 
-
-I Succeed to make a Request callback from FAVORITES
-  I visit a model add it to favorites and back to menu  Audi  A6
-  I can Open Menu
-  I select favorites Item
-  I select mode From favorites List  A6
-  I can make a Request Callback  Mohamd Amine  6677  66770000
-  I go back to menu from model details favorites
-  [Teardown]  NONE
-
-# I Succeed to make a Request finance callback from brand
+# I Succeed to make a Request callback from brand
+#  [Tags]  Ios_callback_brand
 #  I can navigate to List Brand
 #  I can navigate to List of models  Audi
 #  I can navigate to the details of the model  Audi  A5 Coupe
 #  I can make a Request Callback  Mohamd Amine  6677  66770000
 #  I go back to menu from model details  
 
+
+# I Succeed to make a Request callback from Recently Viewed
+#  [Tags]  Ios_callback_recently_view
+#  I visit a model and back to menu  Audi  Q7
+#  I select mode From Recently Viewed
+#  I can make a Request Callback  Mohamd Amine  6677  66770000
+#  I go back to menu from model details Recently Viewed 
+
+# I Succeed to make a Request callback from FAVORITES
+#  I visit a model add it to favorites and back to menu  Audi  A6
+#  I can Open Menu
+#  I select favorites Item
+#  I select mode From favorites List  A6
+#  I can make a Request Callback  Mohamd Amine  6677  66770000
+  # I go back to menu from model details favorites
+
+
+I Succeed to make a Request finance callback from brand
+  I can navigate to List Brand
+  I can navigate to List of models  Audi
+  I can navigate to the details of the model  Audi  A5 Coupe
+  I can make a Request finance Callback  100  2 years  Mohamd Amine  6677  66770000  123456789012
+  I go back to menu from model finance callback details  
+  [Teardown]  NONE
+
 *** Keywords ***
+I can make a Request finance Callback
+  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+  I can see model Actions buttons
+  I click Finance Action button
+  I passed a Finance callback Request  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+
+I click Finance Action button
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="Finance"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="Calculate"]
+
+I passed a Finance callback Request
+  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+  Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField  ${down_payment}
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="${instalement_period}"]
+  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage
+  I should sees the calculation result
+  I achieved a finance call back request  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+
+I achieved a finance call back request
+  [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+  Click Element  //XCUIElementTypeButton[@name="Callback"]
+  I have access to callback popup
+  I set Full name  ${nom_user}
+  I set false Phone Number  ${false_phone_number}
+  I validate Callback Request
+  I cannot proceed Callback Request
+  I set Phone Number  ${phone_number}
+  I set civilId  ${civil_id}
+  I validate Callback Request
+  I should see success pop up
+
+I should sees the calculation result
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Estimated Value Result"]
+
 I select mode From favorites List
   [Arguments]  ${model_name}
   Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
@@ -110,8 +145,13 @@ I passed a callback Request
   I validate Callback Request
   I should see success pop up
 
+I set civilId
+  [Arguments]  ${civil_id}
+  AppiumLibrary.Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[3]  ${civil_id}
+
 I cannot proceed Callback Request
   Page Should Contain Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[2]
+
 I validate Callback Request
   Click Element  accessibility_id=tick mark icon
 
@@ -148,6 +188,7 @@ I click Callback Action button
 
 I have access to model details screen
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="${SPACE} Click Here"]
+
 
 I can sees list of actions
   Wait Until Element Is Visible  accessibility_id=CallBack
