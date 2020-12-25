@@ -24,7 +24,36 @@ I Succeed to make a Request callback from Recently Viewed
   I can make a Request Callback  Mohamd Amine  6677  66770000
   [Teardown]  I go back to menu from brand details Recently Viewed
 
+# I Succeed to make a Request callback from FAVORITES
+#  [Setup]  As User I login in app
+#  I visit a brand add it to favorites and back to menu  Audi  A6
+  # I can Open Menu
+  # I select favorites Item
+  # I select mode From favorites List  A6
+  # I can make a Request Callback  Mohamd Amine  6677  66770000
+  # [Teardown]  I go back to menu from brand details Recently Viewed
+
 *** Keywords ***
+I select mode From favorites List
+  [Arguments]  ${model_name}
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
+
+I select favorites Item
+  Click Element  accessibility_id=FAVORITES
+  Wait Until Element Is Visible  //XCUIElementTypeStaticText[@name="Car "]
+
+I visit a brand add it to favorites and back to menu
+  [Arguments]  ${brand_name}  ${model_name}
+  I can navigate to List Brand
+  I can navigate to List of models  ${brand_name}
+  I can navigate to the details of the model  ${brand_name}  ${model_name}
+  I add brand to favorites List
+  I go back to menu from brand details
+
+I add brand to favorites List
+  Click Element  xpath=//XCUIElementTypeButton[@name="ic favorites"]
+
 I select mode From Recently Viewed
   Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="Car | New | "])[2] 
   Click Element  xpath=(//XCUIElementTypeStaticText[@name="Car | New | "])[2] 

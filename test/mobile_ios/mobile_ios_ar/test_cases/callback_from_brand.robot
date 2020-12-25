@@ -3,26 +3,29 @@ Documentation  Request callback from brand
 Library  FakerLibrary
 Library  Collections
 Resource  ../resources/setup_teardown.resource
+Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 
 *** Variables ***
 
 *** Test Cases ***
-I can navigate to List Brand
-  I have access to Dashborad Screen 
-  I navigate to List Brand 
-  I Should be on List Brand 
+I Succeed to make a Request callback from brand
+  [Setup]  As User I login in app
+  I can navigate to List Brand
+  I can navigate to List of models  شانجان
+  I can navigate to the details of the model  شانجان  CS 85
+  I can make a Request Callback  Mohamd Amine  6677  66770000
+  [Teardown]  I go back to menu from brand details
 
-I can navigate to List of models
-  I have access to List Brand
-  I selects a brand with name  شانجان
-  I should Sees the List of model  شانجان
 
-I can navigate to the details of the model
-  I have access to the List of models  شانجان
-  I selects model with name  CS 85
-  I should Sees the details of the model  CS 85
+I Succeed to make a Request callback from Recently Viewed
+  [Setup]  I visit a brand and back to menu  شانجان  سي أس 95 كلاسيك
+  I select mode From Recently Viewed
+  I can make a Request Callback  Mohamd Amine  6677  66770000
+  [Teardown]  I go back to menu from brand details Recently Viewed
+
+
 
 # I can make a Request Callback
 #  I can see model Actions buttons
@@ -30,6 +33,40 @@ I can navigate to the details of the model
 #  I passed a callback Request  Mohamd Amine  6677  66770000
 
 *** Keywords ***
+I select mode From Recently Viewed
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2] 
+  Click Element  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2]
+
+I visit a brand and back to menu
+  [Arguments]  ${brand_name}  ${model_name}
+  I can navigate to List Brand
+  I can navigate to List of models  ${brand_name}
+  I can navigate to the details of the model  ${brand_name}  ${model_name}
+  I go back to menu from brand details
+
+I can make a Request Callback
+  [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  
+  I can see model Actions buttons
+  I click Callback Action button
+  I passed a callback Request  ${nom_user}  ${false_phone_number}  ${phone_number}
+
+I can navigate to the details of the model
+  [Arguments]  ${model_name}  ${brand_name}
+  I have access to the List of models  ${model_name} 
+  I selects model with name  ${brand_name}
+  I should Sees the details of the model  ${brand_name}
+
+I can navigate to List of models
+  [Arguments]  ${model_name}
+  I have access to List Brand
+  I selects a brand with name  ${model_name}
+  I should Sees the List of model  ${model_name}
+
+I can navigate to List Brand
+  I have access to Dashborad Screen 
+  I navigate to List Brand 
+  I Should be on List Brand 
+
 I passed a callback Request
   [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  
   I have access to callback popup
@@ -49,9 +86,10 @@ I validate Callback Request
 
 I should see success pop up
   Wait Until Element Is Visible  accessibility_id=تم بنجاح  
+  Sleep  5s
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]  
-  Click Element  accessibility_id=close icon
-
+  Click Element  xpath=//XCUIElementTypeButton[@name="close icon"]
+  Sleep  5
 
 I set Full name
   [Arguments]  ${full_name}
@@ -100,7 +138,7 @@ I have access to the List of models
 I should Sees the List of model
   [Arguments]  ${brand_name}
   Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الفرع الرئيسي"]
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="شانجان"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]
   Wait Until Element Is Visible  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
   ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
   Should Not Be Empty  ${elements}

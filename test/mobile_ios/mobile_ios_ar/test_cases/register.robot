@@ -3,6 +3,7 @@
 Documentation  Register & login & logout 
 Library  FakerLibrary
 Resource  ../resources/setup_teardown.resource
+Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 
@@ -38,15 +39,6 @@ As User I try to register
 #  I Type a true Information and register
 
 *** Keywords ***
-I can Open Menu
-  Wait Until Element Is Visible  accessibility_id=menu  
-  Click Element  accessibility_id=menu
-
-
-I select Profile Item
-  Wait Until Element Is Visible  accessibility_id=حسابي
-  Click Element  accessibility_id=حسابي
-
 I navigate to register page
   Wait Until Page Contains  ادخل الى حسابك 
   Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeButton
@@ -72,20 +64,7 @@ I Should Sees error in register screen
   [Arguments]  ${error}
   Wait Until Page Contains  ${error}  
 
-I should sees profile screen
-  [Arguments]  ${name}  ${email}  ${password}  ${phone}
-  Wait Until Element Is Visible  accessibility_id=حسابي 
-  Wait Until Element Is Visible  accessibility_id=تعديل
-  Wait Until Element Is Visible  accessibility_id=تغيير كلمة المرور	
-  Wait Until Element Is Visible  accessibility_id=المفضلة
-  Wait Until Element Is Visible  accessibility_id=اتصالات
-  Wait Until Element Is Visible  accessibility_id=اتصالات التمويل
-  Wait Until Element Is Visible  accessibility_id=طلبات التمويل
-  Wait Until Element Is Visible  accessibility_id=تجارب القيادة
-  Wait Until Element Is Visible  accessibility_id=الدفوعات
-  Wait Until Element Is Visible  accessibility_id=خروج
-  Page Should Contain Element  accessibility_id=${name}
-  Page Should Contain Element  accessibility_id=${email}
+
 
 I can Log out From App And Back to MENU
   Wait Until Element Is Visible  accessibility_id=LOG OUT
