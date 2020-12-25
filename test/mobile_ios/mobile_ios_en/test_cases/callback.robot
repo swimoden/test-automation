@@ -6,11 +6,13 @@ Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
+Force Tags  Ios  callback
 
 *** Variables ***
 
 *** Test Cases ***
 I Succeed to make a Request callback from brand
+  [Tags]  Ios_callback_brand
   [Setup]  As User I login in app
   I can navigate to List Brand
   I can navigate to List of models  Audi
@@ -19,6 +21,7 @@ I Succeed to make a Request callback from brand
   [Teardown]  I go back to menu from brand details
 
 I Succeed to make a Request callback from Recently Viewed
+  [Tags]  Ios_callback_recently_view
   [Setup]  I visit a brand and back to menu  Audi  Q7
   I select mode From Recently Viewed
   I can make a Request Callback  Mohamd Amine  6677  66770000
