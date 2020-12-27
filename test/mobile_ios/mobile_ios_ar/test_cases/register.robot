@@ -28,7 +28,7 @@ As User I try to register
   I type register information  ${user}[0]  ${user}[1]  testtest  ${EMPTY}
   I Should Sees error in register screen  ${phone_number_error}
   I type register information  ${user}[0]  ${user}[1]  testtest  ${user}[2]
-  I should sees profile screen  ${user}[0]  ${user}[1]  testtest  ${user}[2]
+  I should sees profile screen  ${user}[0]  ${user}[1]  
 
 
 

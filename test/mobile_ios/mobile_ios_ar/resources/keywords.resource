@@ -87,3 +87,22 @@ I go back to menu from model details favorites
   Run Keyword And Ignore Error  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
   Run Keyword And Ignore Error  Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
   Wait Until Element Is Visible  accessibility_id=menu
+
+I go back to menu from model finance callback details
+  Click Element  accessibility_id=back
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الداخلي"]
+  Click Element  accessibility_id=back
+  Wait Until Page Contains Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
+  ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
+  Should Not Be Empty  ${elements}
+  Click Element  accessibility_id=back black
+  Run Keyword And Ignore Error  Close advertisement
+  Page Should Contain Element  accessibility_id=الجديدة
+  Page Should Contain Element  accessibility_id=Certified
+  Page Should Contain Element  accessibility_id=Leasing
+  Page Should Contain Element  accessibility_id=Rent
+  Page Should Contain Element  accessibility_id=Maintenance
+  Click Element  accessibility_id=back
+  Run Keyword And Ignore Error  Close advertisement
+  Wait Until Element Is Visible  accessibility_id=menu  
+
