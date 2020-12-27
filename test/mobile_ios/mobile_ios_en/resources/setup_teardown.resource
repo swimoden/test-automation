@@ -12,7 +12,7 @@ Library  String
 ${USER_NAME}  guedhamimohamedm1
 ${ACESS_KEY}  phAYz3KfvGtvNR4KoZ97
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-${APP}  bs://541449543d5f34da8046cd8d8ce6fc4953e434da
+${APP}  bs://167020785b0914f222af4be7b8f8181fde5f0f26
 ${DEVICE}  iPhone XS
 ${OS_VERSION}  14.0
 ${BUILD}  local build

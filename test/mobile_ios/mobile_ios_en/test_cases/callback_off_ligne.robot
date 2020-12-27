@@ -214,16 +214,16 @@ I have access to the List of models
 I should Sees the List of model
   [Arguments]  ${brand_name}
   Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Main Showroom"]
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${brand_name} "]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]
   ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
   Should Not Be Empty  ${elements}
 
 I selects a brand with name
   [Arguments]  ${brand_name}
   # xpath=//XCUIElementTypeStaticText[@name="Changan "]
-  Click Element  xpath=//XCUIElementTypeStaticText[@name="${brand_name} "]
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]
     # xpath=//XCUIElementTypeStaticText[@name="Changan "]
-  Run Keyword And Continue On Failure  Click Element  xpath=//XCUIElementTypeStaticText[@name="${brand_name} "]
+  Run Keyword And Continue On Failure  Click Element  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]
 
 I have access to List Brand
   I Should Sees List Brands

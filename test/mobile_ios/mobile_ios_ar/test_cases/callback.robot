@@ -159,10 +159,10 @@ I validate Callback Request
 
 I should see success pop up
   Wait Until Element Is Visible  accessibility_id=تم بنجاح  
-  Sleep  5s
+  Sleep  3s
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]  
   Click Element  xpath=//XCUIElementTypeButton[@name="close icon"]
-  Sleep  5
+  Sleep  3s
 
 I set Full name
   [Arguments]  ${full_name}
