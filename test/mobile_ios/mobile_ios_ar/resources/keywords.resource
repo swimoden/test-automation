@@ -48,7 +48,7 @@ I set user Information
   Input Text  accessibility_id=البريد الالكتروني  ${user_email}
   Input Text  accessibility_id=كلمة المرور  ${user_password}
 
-I go back to menu from brand details
+I go back to menu from model details
   Click Element  accessibility_id=back
   Wait Until Page Contains Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
   ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
@@ -68,7 +68,7 @@ Close advertisement
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
   Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
 
-I go back to menu from brand details Recently Viewed
+I go back to menu from model details Recently Viewed
   Delete Brand from favorites List
   Wait Until Element Is Visible  accessibility_id=back
   Click Element  accessibility_id=back
@@ -78,3 +78,12 @@ I go back to menu from brand details Recently Viewed
 
 Delete Brand from favorites List
   Click Element  xpath=//XCUIElementTypeButton[@name="ic favorites"]
+
+I go back to menu from model details favorites
+  Wait Until Element Is Visible  accessibility_id=back
+  Click Element  accessibility_id=back
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="المفضلة"]
+  Click Element  accessibility_id=back
+  Run Keyword And Ignore Error  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
+  Run Keyword And Ignore Error  Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
+  Wait Until Element Is Visible  accessibility_id=menu

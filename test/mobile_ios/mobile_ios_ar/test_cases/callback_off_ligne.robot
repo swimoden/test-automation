@@ -3,39 +3,38 @@ Documentation  Request callback from brand
 Library  FakerLibrary
 Library  Collections
 Resource  ../resources/setup_teardown.resource
+Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Ios  callback
+Test Teardown  Run Keyword If Test Failed  Relod Application
 
 *** Variables ***
 
 *** Test Cases ***
 I Succeed to make a Request callback from brand
-  [Tags]  Ios_callback_brand
-  [Setup]  As User I login in app
   I can navigate to List Brand
-  I can navigate to List of models  Audi
-  I can navigate to the details of the model  Audi  A5 Coupe
+  I can navigate to List of models  شانجان
+  I can navigate to the details of the model  شانجان  CS 85
   I can make a Request Callback  Mohamd Amine  6677  66770000
-  I go back to menu from model details  
+  I go back to menu from model details
 
 
 I Succeed to make a Request callback from Recently Viewed
-  [Tags]  Ios_callback_recently_view
-  I visit a model and back to menu  Audi  Q7
+  I visit a model and back to menu  شانجان  سي أس 95 كلاسيك
   I select mode From Recently Viewed
   I can make a Request Callback  Mohamd Amine  6677  66770000
-  I go back to menu from model details Recently Viewed 
+  I go back to menu from model details Recently Viewed
 
 I Succeed to make a Request callback from FAVORITES
-  I visit a model add it to favorites and back to menu  Audi  A6
+  I visit a model add it to favorites and back to menu  شانجان  سي أس 95 كلاسيك
   I can Open Menu
   I select favorites Item
-  I select mode From favorites List  A6
+  I select mode From favorites List  سي أس 95 كلاسيك
   I can make a Request Callback  Mohamd Amine  6677  66770000
   I go back to menu from model details favorites
   [Teardown]  NONE
+
+
 
 *** Keywords ***
 I select mode From favorites List
@@ -44,8 +43,8 @@ I select mode From favorites List
   Click Element  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
 
 I select favorites Item
-  Click Element  accessibility_id=FAVORITES
-  Wait Until Element Is Visible  //XCUIElementTypeStaticText[@name="Car "]
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="المفضلة"]
+  Wait Until Element Is Visible  //XCUIElementTypeStaticText[@name="سيارات "]
 
 I visit a model add it to favorites and back to menu
   [Arguments]  ${brand_name}  ${model_name}
@@ -59,8 +58,8 @@ I add brand to favorites List
   Click Element  xpath=//XCUIElementTypeButton[@name="ic favorites"]
 
 I select mode From Recently Viewed
-  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="Car | New | "])[2] 
-  Click Element  xpath=(//XCUIElementTypeStaticText[@name="Car | New | "])[2] 
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2] 
+  Click Element  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2]
 
 I visit a model and back to menu
   [Arguments]  ${brand_name}  ${model_name}
@@ -69,10 +68,17 @@ I visit a model and back to menu
   I can navigate to the details of the model  ${brand_name}  ${model_name}
   I go back to menu from model details
 
-I can navigate to List Brand
-  I have access to Dashborad Screen 
-  I navigate to List Brand 
-  I Should be on List Brand 
+I can make a Request Callback
+  [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  
+  I can see model Actions buttons
+  I click Callback Action button
+  I passed a callback Request  ${nom_user}  ${false_phone_number}  ${phone_number}
+
+I can navigate to the details of the model
+  [Arguments]  ${model_name}  ${brand_name}
+  I have access to the List of models  ${model_name} 
+  I selects model with name  ${brand_name}
+  I should Sees the details of the model  ${brand_name}
 
 I can navigate to List of models
   [Arguments]  ${model_name}
@@ -80,18 +86,10 @@ I can navigate to List of models
   I selects a brand with name  ${model_name}
   I should Sees the List of model  ${model_name}
 
-I can navigate to the details of the model
-  [Arguments]  ${model_name}  ${brand_name}
-  I have access to the List of models  ${model_name}
-  I selects model with name  ${brand_name}
-  I should Sees the details of the model  ${brand_name}
-
-I can make a Request Callback
-  [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  
-  I can see model Actions buttons
-  I click Callback Action button
-  I passed a callback Request  ${nom_user}  ${false_phone_number}  ${phone_number}
-
+I can navigate to List Brand
+  I have access to Dashborad Screen 
+  I navigate to List Brand 
+  I Should be on List Brand 
 
 I passed a callback Request
   [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  
@@ -106,15 +104,16 @@ I passed a callback Request
 
 I cannot proceed Callback Request
   Page Should Contain Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[2]
+
 I validate Callback Request
   Click Element  accessibility_id=tick mark icon
 
 I should see success pop up
-  Wait Until Element Is Visible  accessibility_id=Success  
+  Wait Until Element Is Visible  accessibility_id=تم بنجاح  
   Sleep  5s
-  wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]  
   Click Element  xpath=//XCUIElementTypeButton[@name="close icon"]
-  Sleep  5s
+  Sleep  5
 
 I set Full name
   [Arguments]  ${full_name}
@@ -130,21 +129,22 @@ I set false Phone Number
   AppiumLibrary.Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[2]  ${false_phone_number}
 
 I have access to callback popup
-  Wait Until Element Is Visible  accessibility_id=Please Add your information to be contacted
+  Wait Until Element Is Visible  accessibility_id=الرجاء أدخل معلوماتك لالتواصل معك
 
 I can see model Actions buttons
   I have access to model details screen  
-  Click Element  xpath=//XCUIElementTypeButton[@name="${SPACE} Click Here"] 
+  Click Element  xpath=//XCUIElementTypeButton[@name="اضغط هنا ${SPACE}"]
   I can sees list of actions
 
 I click Callback Action button
-  Click Element  accessibility_id=CallBack
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="طلب اتصال"]
 
 I have access to model details screen
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="${SPACE} Click Here"]
+
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="اضغط هنا ${SPACE}"]
 
 I can sees list of actions
-  Wait Until Element Is Visible  accessibility_id=CallBack
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="طلب اتصال"]
 
 I should Sees the details of the model
   [Arguments]  ${model_name}
@@ -152,39 +152,36 @@ I should Sees the details of the model
 
 I selects model with name
   [Arguments]  ${model_name}
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton
-  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeTextField[@value="You can Search by Brand, Model or budget"]  
-  Input Text  xpath=//XCUIElementTypeTextField[@value="You can Search by Brand, Model or budget"]  ${model_name}
-  Wait Until Page Contains Element  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]  timeout=20s
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
   Click Element  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
     # xpath=//XCUIElementTypeStaticText[@name="Changan "]
 I have access to the List of models
   [Arguments]  ${brand_name}
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Main Showroom"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الفرع الرئيسي"]
 
 I should Sees the List of model
   [Arguments]  ${brand_name}
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Main Showroom"]
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${brand_name} "]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الفرع الرئيسي"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
   ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
   Should Not Be Empty  ${elements}
 
 I selects a brand with name
   [Arguments]  ${brand_name}
   # xpath=//XCUIElementTypeStaticText[@name="Changan "]
-  Click Element  xpath=//XCUIElementTypeStaticText[@name="${brand_name} "]
+  Click Element  //XCUIElementTypeStaticText[@name="${brand_name}"]
     # xpath=//XCUIElementTypeStaticText[@name="Changan "]
-  Run Keyword And Continue On Failure  Click Element  xpath=//XCUIElementTypeStaticText[@name="${brand_name} "]
+  Run Keyword And Continue On Failure  Click Element  //XCUIElementTypeStaticText[@name="${brand_name}"]
 
 I have access to List Brand
   I Should Sees List Brands
 
 I have access to Dashborad Screen
-  Wait Until Element Is Visible  accessibility_id=Car  
+  Wait Until Element Is Visible  accessibility_id=سيارات  
 
 I navigate to List Brand
-  Click Element  accessibility_id=Car
+  Click Element  accessibility_id=سيارات
   Wait and close Pub
 
 I Should be on List Brand
@@ -192,11 +189,12 @@ I Should be on List Brand
   I Should Sees List Brands
 
 I Should Sees Sub Categories
-  Page Should Contain Element  accessibility_id=New
+  Page Should Contain Element  accessibility_id=الجديدة
   Page Should Contain Element  accessibility_id=Certified
   Page Should Contain Element  accessibility_id=Leasing
   Page Should Contain Element  accessibility_id=Rent
   Page Should Contain Element  accessibility_id=Maintenance
+
 
 I Should Sees List Brands
   ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
