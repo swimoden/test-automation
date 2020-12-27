@@ -12,6 +12,7 @@ Test Teardown  Run Keyword If Test Failed  Relod Application and Login
 
 *** Test Cases ***
 I Succeed to make a Request callback from brand
+  [Tags]  Ios_ar_callback_brand
   [Setup]  As User I login in app
   I can navigate to List Brand
   I can navigate to List of models  شانجان
@@ -21,23 +22,70 @@ I Succeed to make a Request callback from brand
 
 
 I Succeed to make a Request callback from Recently Viewed
+  [Tags]  Ios_ar_callback_recently_view
   I visit a model and back to menu  شانجان  سي أس 95 كلاسيك
   I select mode From Recently Viewed
   I can make a Request Callback  Mohamd Amine  6677  66770000
   I go back to menu from model details Recently Viewed
 
 I Succeed to make a Request callback from FAVORITES
+  [Tags]  Ios_ar_callback_FAVORITES
   I visit a model add it to favorites and back to menu  شانجان  سي أس 95 كلاسيك
   I can Open Menu
   I select favorites Item
   I select mode From favorites List  سي أس 95 كلاسيك
   I can make a Request Callback  Mohamd Amine  6677  66770000
   I go back to menu from model details favorites
+
+I Succeed to make a Request finance callback from brand
+  [Tags]  Ios_ar_fiance_callback_brand
+  I can navigate to List Brand
+  I can navigate to List of models  شانجان
+  I can navigate to the details of the model  شانجان  CS 85
+  I can make a Request finance Callback  100  2 سنوات  Mohamd Amine  6677  66770000  123456789012
+  I go back to menu from model finance callback details  
   [Teardown]  NONE
 
 
 
 *** Keywords ***
+I can make a Request finance Callback
+  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+  I can see model Actions buttons
+  I click Finance Action button
+  I passed a Finance callback Request  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+
+I click Finance Action button
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="تمويل"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="احسب"]
+
+I passed a Finance callback Request
+  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+  Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField  ${down_payment}
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="${instalement_period}"]
+  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[6]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage
+  I should sees the calculation result
+  I achieved a finance call back request  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+
+I achieved a finance call back request
+  [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
+  Click Element  //XCUIElementTypeStaticText[@name="طلب اتصال"]
+  I have access to callback popup
+  I set Full name  ${nom_user}
+  I set false Phone Number  ${false_phone_number}
+  I validate Callback Request
+  I cannot proceed Callback Request
+  I set Phone Number  ${phone_number}
+  I set civilId  ${civil_id}
+  I validate Callback Request
+  I should see success pop up
+
+I set civilId
+  [Arguments]  ${civil_id}
+  AppiumLibrary.Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[3]  ${civil_id}
+I should sees the calculation result
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الحسبة التقريبية"]
+
 I select mode From favorites List
   [Arguments]  ${model_name}
   Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
