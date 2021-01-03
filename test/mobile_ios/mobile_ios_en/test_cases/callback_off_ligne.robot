@@ -233,7 +233,7 @@ I have access to Dashborad Screen
 
 I navigate to List Brand
   Click Element  accessibility_id=Car
-  Wait and close Pub
+  Run Keyword And Ignore Error  Wait and close Pub
 
 I Should be on List Brand
   I Should Sees Sub Categories
