@@ -38,8 +38,8 @@ I Succeed to make a Request callback from FAVORITES
   I go back to menu from model details favorites
 
 
-I Succeed to make a Request finance callback from brand
-  [Tags]  Ios_en_fiance_callback_brand_off_ligne
+I Succeed to make finance callback from brand
+  [Tags]  Ios_en_fiance_callback_brand
   I can navigate to List Brand
   I can navigate to List of models  Audi
   I can navigate to the details of the model  Audi  A5 Coupe
