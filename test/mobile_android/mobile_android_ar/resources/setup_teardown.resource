@@ -41,3 +41,8 @@ Wait and close Pub
 
 Clean up the test suite
   Close All Applications
+
+Relod Application and Login
+  Close All Applications
+  Open the application
+  As User I login in app
