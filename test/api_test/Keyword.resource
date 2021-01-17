@@ -8,7 +8,7 @@ Library  OperatingSystem
 Library  String
 
 *** Variables ***
-${BASE_URL}  https://vps-08303c09.vps.ovh.ca/api/v2/
+${BASE_URL}  https://vps-08303c09.vps.ovh.ca/api/v2
 
 *** Keywords ***
 The code status of request should be equald as expected
