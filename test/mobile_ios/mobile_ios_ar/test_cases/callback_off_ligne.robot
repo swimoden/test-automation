@@ -157,7 +157,7 @@ I validate Callback Request
 I should see success pop up
   Wait Until Element Is Visible  accessibility_id=تم بنجاح  
   Sleep  3s
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]  
+  Run Keyword And Continue On Failure  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]  
   Click Element  xpath=//XCUIElementTypeButton[@name="close icon"]
   Sleep  3s
 
