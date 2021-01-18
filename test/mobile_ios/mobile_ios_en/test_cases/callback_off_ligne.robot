@@ -39,6 +39,7 @@ I Succeed to make a Request callback from FAVORITES
 
 I Succeed to make finance callback from brand
   [Tags]  Ios_en_fiance_callback_brand_off_ligne
+  I can navigate to List Brand
   I can navigate to List of models  Audi
   I can navigate to the details of the model  Audi  A5 Coupe
   I can make a Request finance Callback  100  2 years  Mohamd Amine  6677  66770000  123456789012
@@ -59,8 +60,9 @@ I click Finance Action button
 I passed a Finance callback Request
   [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
   Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField  ${down_payment}
-  Click Element  xpath=//XCUIElementTypeStaticText[@name="${instalement_period}"]
+  Click Element  id=done
   Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="${instalement_period}"]
   I should sees the calculation result
   I achieved a finance call back request  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
 
