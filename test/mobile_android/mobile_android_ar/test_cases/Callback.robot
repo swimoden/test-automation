@@ -16,22 +16,22 @@ Force Tags  Ios  callback
 #  [Tags]  Ios_en_callback_brand
 #  As User I login in app
 #  I can navigate to List Brand
-#  I can navigate to List of models  Changan
-#  I can navigate to the details of the model  Changan  CS 85 
+#  I can navigate to List of models  شانجان
+#  I can navigate to the details of the model  شانجان  CS 85 
 #  I can make a Request Callback  Mohamd Amine  6677  66771100
 #  I go back to menu from model detail
 
 
 # I Succeed to make a Request callback from Recently Viewed
 #  [Tags]  Ios_en_callback_brand
-#  I visit a model and back to menu  Changan  CS 85 
+#  I visit a model and back to menu  شانجان  CS 85 
 #  I select mode From Recently Viewed
 #  I can make a Request Callback  Mohamd Amine  6677  66770000
 #  I go back to menu from model details Recently Viewed 
 
 # I Succeed to make a Request callback from FAVORITES
 #  [Tags]  Ios_en_callback_brand
-#  I visit a model add it to favorites and back to menu  Audi  A6
+#  I visit a model add it to favorites and back to menu  اودي  A6
 #  I can Open Menu
 #  I select favorites Item
 #  I select mode From favorites List  A6
@@ -42,8 +42,8 @@ Force Tags  Ios  callback
 I Succeed to make a Request finance callback from brand
   [Tags]  Ios_en_callback_brand
   I can navigate to List Brand
-  I can navigate to List of models  Audi
-  I can navigate to the details of the model  Audi  A5 Coupe
+  I can navigate to List of models  اودي
+  I can navigate to the details of the model  اودي  A5 Coupe
   I can make a Request finance Callback  100  2 Year  Mohamd Amine  6677  66770000  123456789012
   I go back to menu from model finance callback details  
   [Teardown]  NONE
@@ -56,7 +56,7 @@ I can make a Request finance Callback
   I passed a Finance callback Request  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
 
 I click Finance Action button
-  Click Element  xpath=//*[@text='FINANCE']
+  Click Element  xpath=//*[@text='تمويل']
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/calculate_btn
 
 
@@ -90,9 +90,9 @@ I select mode From favorites List
   Click Element  id=com.kuwait.showroomz.refac:id/model_name
 
 I select favorites Item
-  Wait Until Element Is Visible  xpath=//*[@text='FAVORITES']
-  Click Element  xpath=//*[@text='FAVORITES']
-  Wait Until Page Contains  CAR
+  Wait Until Element Is Visible  xpath=//*[@text='المفضلة']
+  Click Element  xpath=//*[@text='المفضلة']
+  Wait Until Page Contains  سيارات
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_btn
 
 I visit a model add it to favorites and back to menu
@@ -165,7 +165,7 @@ I validate Callback Request
   Click Element  id=com.kuwait.showroomz.refac:id/ok_btn
   Sleep  6s
 I should see success pop up
-  Wait Until Element Is Visible  xpath=//*[@text='Done SuccessFully']
+  Wait Until Element Is Visible  xpath=//*[@text='تم بنجاح']
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
   Sleep  2s
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
@@ -195,7 +195,7 @@ I can see model Actions buttons
   I can sees list of actions
 
 I click Callback Action button
-  Click Element  xpath=//*[@text='CALLBACK']
+  Click Element  xpath=//*[@text='طلب اتصال']
 
 I have access to model details screen
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_name_txtV
@@ -219,7 +219,7 @@ I selects model with name
   Click Element  xpath=//*[@text='${model_name}']
  ]
 I have access to the List of models
-  Wait Until Element Is Visible  xpath=//*[@text="Main Showroom"]
+  Wait Until Element Is Visible  xpath=//*[@text="المعرض الرئيسي"]
 
 I should Sees the List of model
   [Arguments]  ${brand_name}

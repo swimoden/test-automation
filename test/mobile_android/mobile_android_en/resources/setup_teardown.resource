@@ -60,3 +60,8 @@ Relod Application and Login
   Close All Applications
   Open the application
   As User I login in app
+
+Relod Application
+  Close All Applications
+  Open the application
+  As User I login in ap
