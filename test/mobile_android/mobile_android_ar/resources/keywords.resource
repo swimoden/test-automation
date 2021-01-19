@@ -21,7 +21,7 @@ I should sees profile screen
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/finance_request_txt
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/test_drives_txt
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/payments_txt
-  Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/logout_txt
+  # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/logout_txt
 
 
 I go back to menu

@@ -21,7 +21,7 @@ I should sees profile screen
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/finance_request_txt
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/test_drives_txt
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/payments_txt
-  Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/logout_txt
+  # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/logout_txt
 
 
 I go back to menu
@@ -50,23 +50,7 @@ I set user Information
   Input Text  id=com.kuwait.showroomz.refac:id/emailTextInputEditText  ${user_email}
   Input Text  id=com.kuwait.showroomz.refac:id/passwordTextInputEditText  ${user_password}
 
-I go back to menu from model details
-  Click Element  accessibility_id=back
-  Wait Until Page Contains Element  xpath=//XCUIElementTypeButton[@name="multiply"]
-  Click Element  xpath=//XCUIElementTypeButton[@name="multiply"]
-  Wait Until Page Contains Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
-  ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
-  Should Not Be Empty  ${elements}
-  Click Element  accessibility_id=back black
-  Run Keyword And Ignore Error  Close advertisement
-  Page Should Contain Element  accessibility_id=New
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
-  Click Element  accessibility_id=back
-  Run Keyword And Ignore Error  Close advertisement
-  Wait Until Element Is Visible  accessibility_id=menu  
+
 
 Close advertisement
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
@@ -86,21 +70,14 @@ I go back to menu from model details favorites
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
  I go back to menu from model finance callback details 
-  Click Element  accessibility_id=back
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="ic inetrior"]  
-  Click Element  accessibility_id=back
-  Wait Until Page Contains Element  xpath=//XCUIElementTypeButton[@name="multiply"]
-  Click Element  xpath=//XCUIElementTypeButton[@name="multiply"]
-  Wait Until Page Contains Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
-  ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
-  Should Not Be Empty  ${elements}
-  Click Element  accessibility_id=back black
-  Run Keyword And Ignore Error  Close advertisement
-  Page Should Contain Element  accessibility_id=New
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
-  Click Element  accessibility_id=back
-  Run Keyword And Ignore Error  Close advertisement
-  Wait Until Element Is Visible  accessibility_id=menu 
+  Click Element  id=com.kuwait.showroomz.refac:id/back_bnt
+  sleep  3s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back_button
+  sleep  1s
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+
+

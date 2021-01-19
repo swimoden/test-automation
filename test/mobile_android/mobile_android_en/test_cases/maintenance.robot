@@ -17,9 +17,16 @@ I Succeed to make a Request Maintenance callback from brand
   As User I login in app
   I can navigate to List Brand
   I can see maintenance subcategory  Nissan
-  I can make a Request Callback  Automated test  10010001  6677
+  I can make a Request Callback  Automated test  10010001  
+  I back to menu
 
 
+I Succeed to make a Request Maintenance callback from brand using wrong information
+  [Tags]  Ios_en_callback_brand
+  I can navigate to List Brand
+  I can see maintenance subcategory  Nissan
+  I make a Request Callback using wrong informations  Automated test  6677  
+  I back to menu
 
 *** Keywords ***
 I can see maintenance subcategory
@@ -29,6 +36,7 @@ I can see maintenance subcategory
   I can navigate to List of models  ${brand_name}
   sleep  4s
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/show_locations
+  Wait Until Element Is Visible  xpath=//*[@text='REQUEST APPOINTMENT']
   click element  xpath=//*[@text='REQUEST APPOINTMENT']
 
 
@@ -61,38 +69,50 @@ I can navigate to the details of the model
   I should Sees the details of the model  ${model_name}
 
 I can make a Request Callback
-  [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  
-  # I can see model Actions buttons
-  # I click Callback Action button
-  I passed a callback Request  ${nom_user}  ${false_phone_number}  ${phone_number}
+  [Arguments]  ${nom_user}  ${phone_number}  
+  I passed a callback Request  ${nom_user}  ${phone_number}
+
+I make a Request Callback using wrong informations
+  [Arguments]  ${nom_user}  ${false_phone_number}  
+  I passed a callback Request using wrong information  ${nom_user}  ${false_phone_number}
+
+I have access to callback popup
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/full_name_edit
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/phone_edit
 
 
 I passed a callback Request
-  [Arguments]  ${nom_user}  ${false_phone_number}  ${phone_number}  
+  [Arguments]  ${nom_user}  ${phone_number}  
+  I have access to callback popup
+  I set Full name  ${nom_user}
+  I set Phone Number  ${phone_number}
+  I validate Callback Request
+  I should see success pop up
+
+I passed a callback Request using wrong information
+  [Arguments]  ${nom_user}  ${false_phone_number} 
   I have access to callback popup
   I set Full name  ${nom_user}
   I set false Phone Number  ${false_phone_number}
   I validate Callback Request
   I cannot proceed Callback Request
-  I set Phone Number  ${phone_number}
-  I validate Callback Request
-  I should see success pop up
-
-I set civilId
-  [Arguments]  ${civil_id}
-  AppiumLibrary.Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[3]  ${civil_id}
 
 I cannot proceed Callback Request
-  Page Should Contain Element  com.kuwait.showroomz.refac:id/ok_btn
+  Wait Until Page Contains  Error
+  Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
+  Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
+
+
+
 
 I validate Callback Request
   Click Element  id=com.kuwait.showroomz.refac:id/ok_btn
   Sleep  6s
+
 I should see success pop up
   Wait Until Element Is Visible  xpath=//*[@text='Done SuccessFully']
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
-  Sleep  2s
-  # Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
+
 
 I set Full name
   [Arguments]  ${full_name}
@@ -108,14 +128,9 @@ I set false Phone Number
   AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/phone_edit  ${false_phone_number}
 
 
-I have access to callback popup
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/full_name_edit
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/phone_edit
 
-I can see model Actions buttons
-  Click Element  id=com.kuwait.showroomz.refac:id/click_here_up_icon
 
-  I can sees list of actions
+
 
 I click Callback Action button
   Click Element  xpath=//*[@text='CALLBACK']
@@ -127,9 +142,17 @@ I have access to model details screen
 I can sees list of actions
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/grid_actions_container
 
-I should Sees the details of the model
-  [Arguments]  ${model_name}
-  Wait Until Element Is Visible  xpath=//*[@text='${model_name}'] 
+I should Sees the List of model
+  [Arguments]  ${brand_name}
+
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_recycler
+  Wait Until Page Contains  ${brand_name}
+
+Close pub
+  sleep  7s
+  click Element  id=com.kuwait.showroomz.refac:id/circle_progress
 
 I selects model with name
   [Arguments]  ${model_name}
@@ -140,7 +163,8 @@ I selects model with name
   Swipe By Percent  50  80  50  20  1000
   END
   Click Element  xpath=//*[@text='${model_name}']
- ]
+
+
 I have access to the List of models
   Wait Until Element Is Visible  xpath=//*[@text="Main Showroom"]
 
@@ -166,8 +190,12 @@ I have access to Dashborad Screen
   Wait Until Element Is Visible  xpath=(//android.widget.ImageView[@content-desc="cat image"])[1]
 
 I navigate to List Brand
+  sleep  3s
   Click Element  xpath=(//android.widget.ImageView[@content-desc="cat image"])[1]
-  # Wait and close Pub
+  sleep  3s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  click element  id=com.kuwait.showroomz.refac:id/circle_progress
+
 
 I Should be on List Brand
   I Should Sees Sub Categories
@@ -183,3 +211,20 @@ I Should Sees Sub Categories
 I Should Sees List Brands
   ${elements}=  Get WebElements  id=com.kuwait.showroomz.refac:id/brands_recycler
   Should Not Be Empty  ${elements}
+
+I back to menu
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+
+
+  Wait Until Page Contains Element  xpath=//*[contains(@text,'Car')]
+
+  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
+  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
+  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
+  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
+  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button

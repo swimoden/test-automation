@@ -6,7 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Test Teardown  Run Keyword If Test Failed  Relod Application and Login
+Test Teardown  Run Keyword If Test Failed  Relod Application
 Force Tags  Ios  callback
 
 *** Variables ***
@@ -14,9 +14,8 @@ Force Tags  Ios  callback
 *** Test Cases ***
 I Succeed to make a Request Maintenance callback from brand
   [Tags]  Ios_en_callback_brand
-  As User I login in app
   I can navigate to List Brand
-  I can see maintenance subcategory  نيسان
+  I can see maintenance subcategory  Nissan
   I can make a Request Callback  Automated test  10010001  
   I back to menu
 
@@ -24,20 +23,20 @@ I Succeed to make a Request Maintenance callback from brand
 I Succeed to make a Request Maintenance callback from brand using wrong information
   [Tags]  Ios_en_callback_brand
   I can navigate to List Brand
-  I can see maintenance subcategory  نيسان
+  I can see maintenance subcategory  Nissan
   I make a Request Callback using wrong informations  Automated test  6677  
   I back to menu
 
 *** Keywords ***
 I can see maintenance subcategory
   [Arguments]  ${brand_name}
-  Wait Until Element Is Visible  xpath=//*[@text='الصيانة']
-  Click Element  xpath=//*[@text='الصيانة']
+  Wait Until Element Is Visible  xpath=//*[@text='Maintenance']
+  Click Element  xpath=//*[@text='Maintenance']
   I can navigate to List of models  ${brand_name}
   sleep  4s
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/show_locations
-  Wait Until Element Is Visible  xpath=//*[@text='طلب موعد']
-  click element  xpath=//*[@text='طلب موعد']
+  Wait Until Element Is Visible  xpath=//*[@text='REQUEST APPOINTMENT']
+  click element  xpath=//*[@text='REQUEST APPOINTMENT']
 
 
 
@@ -98,7 +97,7 @@ I passed a callback Request using wrong information
   I cannot proceed Callback Request
 
 I cannot proceed Callback Request
-  Wait Until Page Contains  خطأ
+  Wait Until Page Contains  Error
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
 
@@ -110,7 +109,7 @@ I validate Callback Request
   Sleep  6s
 
 I should see success pop up
-  Wait Until Element Is Visible  xpath=//*[@text='تم بنجاح']
+  Wait Until Element Is Visible  xpath=//*[@text='Done SuccessFully']
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
 
 
@@ -126,6 +125,11 @@ I set Phone Number
 I set false Phone Number
   [Arguments]  ${false_phone_number}
   AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/phone_edit  ${false_phone_number}
+
+
+
+
+
 
 I click Callback Action button
   Click Element  xpath=//*[@text='CALLBACK']
@@ -161,7 +165,7 @@ I selects model with name
 
 
 I have access to the List of models
-  Wait Until Element Is Visible  xpath=//*[@text="المعرض الرئيسي"]
+  Wait Until Element Is Visible  xpath=//*[@text="Main Showroom"]
 
 
 I selects a brand with name
@@ -209,7 +213,7 @@ I back to menu
   Run Keyword If  ${present}  Close pub
 
 
-  Wait Until Page Contains Element  xpath=//*[contains(@text,'سيارات')]
+  Wait Until Page Contains Element  xpath=//*[contains(@text,'Car')]
 
   Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
   Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
