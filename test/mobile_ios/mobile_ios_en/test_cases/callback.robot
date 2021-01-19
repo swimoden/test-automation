@@ -38,8 +38,8 @@ I Succeed to make a Request callback from FAVORITES
   I go back to menu from model details favorites
 
 
-I Succeed to make a Request finance callback from brand
-  [Tags]  Ios_en_fiance_callback_brand_off_ligne
+I Succeed to make finance callback from brand
+  [Tags]  Ios_en_fiance_callback_brand
   I can navigate to List Brand
   I can navigate to List of models  Audi
   I can navigate to the details of the model  Audi  A5 Coupe
@@ -61,8 +61,9 @@ I click Finance Action button
 I passed a Finance callback Request
   [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
   Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField  ${down_payment}
-  Click Element  xpath=//XCUIElementTypeStaticText[@name="${instalement_period}"]
+  Click Element  id=done
   Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="${instalement_period}"]
   I should sees the calculation result
   I achieved a finance call back request  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
 
@@ -235,7 +236,7 @@ I have access to Dashborad Screen
 
 I navigate to List Brand
   Click Element  accessibility_id=Car
-  Wait and close Pub
+  Run Keyword And Ignore Error  Wait and close Pub
 
 I Should be on List Brand
   I Should Sees Sub Categories
