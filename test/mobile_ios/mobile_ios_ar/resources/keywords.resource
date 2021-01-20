@@ -56,10 +56,10 @@ I go back to menu from model details
   Click Element  accessibility_id=back black
   Run Keyword And Ignore Error  Close advertisement
   Page Should Contain Element  accessibility_id=الجديدة
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
+  Page Should Contain Element  accessibility_id=المعتمدة
+  Page Should Contain Element  accessibility_id=الإيجار
+  Page Should Contain Element  accessibility_id=الإيجار اليومي
+  Page Should Contain Element  accessibility_id=الصيانة
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
   Wait Until Element Is Visible  accessibility_id=menu  
@@ -98,11 +98,18 @@ I go back to menu from model finance callback details
   Click Element  accessibility_id=back black
   Run Keyword And Ignore Error  Close advertisement
   Page Should Contain Element  accessibility_id=الجديدة
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
+  Page Should Contain Element  accessibility_id=المعتمدة
+  Page Should Contain Element  accessibility_id=الإيجار
+  Page Should Contain Element  accessibility_id=الإيجار اليومي
+  Page Should Contain Element  accessibility_id=الصيانة
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
   Wait Until Element Is Visible  accessibility_id=menu  
+
+I go back to menu from model finance callback details Recently Review
+  Click Element  accessibility_id=back
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الداخلي"]
+  Click Element  accessibility_id=back
+  Run Keyword And Ignore Error  Close advertisement
+  Wait Until Element Is Visible  accessibility_id=menu
 
