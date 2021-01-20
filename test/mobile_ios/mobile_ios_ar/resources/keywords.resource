@@ -36,7 +36,7 @@ As User I login in app
   I select Profile Item
   I set user Information  testAuto@test.com  testtest
   Click Element  xpath=//XCUIElementTypeButton[@name="دخول"]
-  I should sees profile screen  automated test1  testAuto@test.com  
+  I should sees profile screen  Mohamd Amine  testAuto@test.com  
   [Teardown]  I go back to menu
 
 I go back to menu
