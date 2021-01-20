@@ -125,16 +125,17 @@ I achieved a finance call back request
   I have access to callback popup
   I set Full name  ${nom_user}
   I set Phone Number  ${phone_number}
-  # I set civilId  ${civil_id}
+  I set civilId  ${civil_id}
   I validate Callback Request
   I should see success pop up
 
 I achieved a finance call back request using wrong informations
-  [Arguments]  ${nom_user}  ${false_phone_number}
+  [Arguments]  ${nom_user}  ${false_phone_number}  ${civil_id}
   Click Element  id=com.kuwait.showroomz.refac:id/callback_btn
   I have access to callback popup
   I set Full name  ${nom_user}
   I set false Phone Number  ${false_phone_number}
+  I set civilId  ${civil_id}
   I validate Callback Request
   I cannot proceed Callback Request
 
@@ -224,7 +225,7 @@ I passed a callback Request using wrong information
 
 I set civilId
   [Arguments]  ${civil_id}
-  AppiumLibrary.Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[3]  ${civil_id}
+  AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/civil_id  ${civil_id}
 
 I cannot proceed Callback Request
   Wait Until Page Contains  Error

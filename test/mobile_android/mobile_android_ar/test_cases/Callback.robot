@@ -12,6 +12,9 @@ Force Tags  Ios  callback
 *** Variables ***
 
 
+
+
+
 *** Test Cases ***
 I Succeed to make a Request callback from brand
   [Tags]  Ios_en_callback_brand
@@ -30,19 +33,19 @@ I Succeed to make a Request callback from brand
 #  I make a Request Callback using wrong information  Mohamd Amine  6677 
 #  I go back to menu from model detail
 
-I Succeed to make a Request callback from Recently Viewed
-  [Tags]  Ios_en_callback_brand
-  I visit a model and back to menu  شانجان  CS 85 
-  I select mode From Recently Viewed
-  I can make a Request Callback  Mohamd Amine  66770000
-  I go back to menu from model details Recently Viewed 
+# I Succeed to make a Request callback from Recently Viewed
+#  [Tags]  Ios_en_callback_brand
+#  I visit a model and back to menu  شانجان  CS 85 
+#  I select mode From Recently Viewed
+#  I can make a Request Callback  Mohamd Amine  66770000
+#  I go back to menu from model details Recently Viewed 
 
-I Succeed to make a Request callback from Recently Viewed using wrong information
-  [Tags]  Ios_en_callback_brand
-  I visit a model and back to menu  شانجان  CS 85
-  I select mode From Recently Viewed
-  I make a Request Callback using wrong information  Mohamd Amine  6677
-  I go back to menu from model details Recently Viewed
+# I Succeed to make a Request callback from Recently Viewed using wrong information
+#  [Tags]  Ios_en_callback_brand
+#  I visit a model and back to menu  شانجان  CS 85
+#  I select mode From Recently Viewed
+#  I make a Request Callback using wrong information  Mohamd Amine  6677
+#  I go back to menu from model details Recently Viewed
 
 # I Succeed to make a Request callback from FAVORITES
 #  [Tags]  Ios_en_callback_brand
@@ -63,22 +66,23 @@ I Succeed to make a Request callback from Recently Viewed using wrong informatio
 #  I go back to menu from model details favorites
 
 
-# I Succeed to make a Request finance callback from brand using wrong informations
-#  [Tags]  Ios_en_callback_brand
-#  I can navigate to List Brand
-#  I can navigate to List of models  اودي
-#  I can navigate to the details of the model  اودي  A5 Coupe
-#  I can make a Request finance Callback using wrong informations  100  2 Year  Mohamd Amine  6677  123456789012
-#  I go back to menu from model finance callback details  
+I Succeed to make a Request finance callback from brand using wrong informations
+  [Tags]  Ios_en_callback_brand
+  I can navigate to List Brand
+  I can navigate to List of models  اودي
+  I can navigate to the details of the model  اودي  A5 Coupe
+  I can make a Request finance Callback using wrong informations  100  2 Year  Mohamd Amine  6677  123456789012
+  I go back to menu from model finance callback details  
 
 
-# I Succeed to make a Request finance callback from brand
-#  [Tags]  Ios_en_callback_brand
-#  I can navigate to List Brand
-#  I can navigate to List of models  اودي
-#  I can navigate to the details of the model  اودي  A5 Coupe
-#  I can make a Request finance Callback  100  2 Year  Mohamd Amine  66770000  123456789012
-#  I go back to menu from model finance callback details  
+
+I Succeed to make a Request finance callback from brand
+  [Tags]  Ios_en_callback_brand
+  I can navigate to List Brand
+  I can navigate to List of models  اودي
+  I can navigate to the details of the model  اودي  A5 Coupe
+  I can make a Request finance Callback  100  2 Year  Mohamd Amine  66770000  123456789012
+  I go back to menu from model finance callback details  
 
 
 
@@ -91,16 +95,16 @@ I can make a Request finance Callback
   I passed a Finance callback Request  ${down_payment}  ${instalement_period}  ${nom_user}  ${phone_number}  ${civil_id}
 
 I can make a Request finance Callback using wrong informations
-  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  
+  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${civil_id}
   I can see model Actions buttons
   I click Finance Action button
-  I passed a Finance callback Request using wrong informations  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}
+  I passed a Finance callback Request using wrong informations  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${civil_id}
 
 
 I click Finance Action button
   Click Element  xpath=//*[@text='تمويل']
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/no_TV
-  Click Element  id=com.kuwait.showroomz.refac:id/no_TV
+  # Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/no_TV
+  # Click Element  id=com.kuwait.showroomz.refac:id/no_TV
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/calculate_btn
 
 
@@ -118,7 +122,7 @@ I passed a Finance callback Request using wrong informations
   Click Element  id=com.kuwait.showroomz.refac:id/two_year_text
   Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView
   I should sees the calculation result
-  I achieved a finance call back request using wrong informations  ${nom_user}  ${false_phone_number}
+  I achieved a finance call back request using wrong informations  ${nom_user}  ${false_phone_number}  ${civil_id}
 
 I achieved a finance call back request
   [Arguments]  ${nom_user}  ${phone_number}  ${civil_id}
@@ -131,12 +135,12 @@ I achieved a finance call back request
   I should see success pop up
 
 I achieved a finance call back request using wrong informations
-  [Arguments]  ${nom_user}  ${false_phone_number} ${civil_id}
+  [Arguments]  ${nom_user}  ${false_phone_number}  ${civil_id}
   Click Element  id=com.kuwait.showroomz.refac:id/callback_btn
   I have access to callback popup
   I set Full name  ${nom_user}
   I set false Phone Number  ${false_phone_number}
-  Callback.I set  civilId  ${civil_id}
+  I set civilId  ${civil_id}
   I validate Callback Request
   I cannot proceed Callback Request
 
@@ -150,7 +154,9 @@ I select mode From favorites List
 
 I select favorites Item
   Wait Until Element Is Visible  xpath=//*[@text='المفضلة']
-  Click Element  xpath=//*[@text='المفضلة']
+
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.TextView
+  # Click Element  xpath=//*[@text='المفضلة']
   Wait Until Page Contains  سيارات
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_btn
 
@@ -226,7 +232,7 @@ I passed a callback Request using wrong information
 
 I set civilId
   [Arguments]  ${civil_id}
-  AppiumLibrary.Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[3]  ${civil_id}
+  AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/civil_id  ${civil_id}
 
 I cannot proceed Callback Request
   Wait Until Page Contains  خطأ
@@ -278,7 +284,7 @@ I can sees list of actions
 
 I should Sees the details of the model
   [Arguments]  ${model_name}
-  Wait Until Element Is Visible  xpath=//*[@text='${model_name}'] 
+  Wait Until Keyword Succeeds  3x  3s  Wait Until Element Is Visible  xpath=//*[@text='${model_name}'] 
 
 I selects model with name
   [Arguments]  ${model_name}
@@ -295,7 +301,7 @@ I have access to the List of models
 
 I should Sees the List of model
   [Arguments]  ${brand_name}
-
+  sleep  3s
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
   Run Keyword If  ${present}  Close pub
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_recycler
