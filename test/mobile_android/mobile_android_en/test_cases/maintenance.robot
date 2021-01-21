@@ -168,11 +168,6 @@ I selects model with name
 I have access to the List of models
   Wait Until Element Is Visible  xpath=//*[@text="Main Showroom"]
 
-I should Sees the List of model
-  [Arguments]  ${brand_name}
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_recycler
-  Wait Until Page Contains  ${brand_name}
-
 
 I selects a brand with name
   [Arguments]  ${brand_name}

@@ -47,6 +47,10 @@ Relod Application and Login
   Open the application
   As User I login in app
 
+Relod Application
+  Close All Applications
+  Open the application
+
 I go back to menu from model detail
   Click Element  id=com.kuwait.showroomz.refac:id/back_button
   sleep  1s
@@ -67,6 +71,3 @@ I go back to menu from model detail
   Click Element  id=com.kuwait.showroomz.refac:id/back
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
-Relod Application
-  Close All Applications
-  Open the application

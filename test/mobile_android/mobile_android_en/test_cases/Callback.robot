@@ -21,7 +21,7 @@ I Succeed to make a Request callback from brand
   I can make a Request Callback  Mohamd Amine  66771100
   I go back to menu from model detail
 
-I  make a Request callback from brand using wrong information
+I make a Request callback from brand using wrong information
   [Tags]  Ios_en_callback_brand
   I can navigate to List Brand
   I can navigate to List of models  Changan
@@ -67,7 +67,7 @@ I Succeed to make a Request finance callback from brand using wrong informations
   I can navigate to List Brand
   I can navigate to List of models  Audi
   I can navigate to the details of the model  Audi  A5 Coupe
-  I can make a Request finance Callback using wrong informations  100  2 Year  Mohamd Amine  6677
+  I can make a Request finance Callback using wrong informations  100  2 Year  Mohamd Amine  6677  123456789012
   I go back to menu from model finance callback details  
 
 
@@ -90,16 +90,16 @@ I can make a Request finance Callback
   I passed a Finance callback Request  ${down_payment}  ${instalement_period}  ${nom_user}  ${phone_number}  ${civil_id}
 
 I can make a Request finance Callback using wrong informations
-  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  
+  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${civil_id}
   I can see model Actions buttons
   I click Finance Action button
-  I passed a Finance callback Request using wrong informations  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}
+  I passed a Finance callback Request using wrong informations  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${civil_id}
 
 
 I click Finance Action button
   Click Element  xpath=//*[@text='FINANCE']
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/no_TV
-  Click Element  id=com.kuwait.showroomz.refac:id/no_TV
+  # Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/no_TV
+  # Click Element  id=com.kuwait.showroomz.refac:id/no_TV
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/calculate_btn
 
 
@@ -112,12 +112,12 @@ I passed a Finance callback Request
   I achieved a finance call back request  ${nom_user}  ${phone_number}  ${civil_id}
 
 I passed a Finance callback Request using wrong informations
-  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}
+  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${civil_id}
   Input Text  id=com.kuwait.showroomz.refac:id/down_payment_txt  ${down_payment}
   Click Element  id=com.kuwait.showroomz.refac:id/two_year_text
   Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView
   I should sees the calculation result
-  I achieved a finance call back request using wrong informations  ${nom_user}  ${false_phone_number}
+  I achieved a finance call back request using wrong informations  ${nom_user}  ${false_phone_number}  ${civil_id}
 
 I achieved a finance call back request
   [Arguments]  ${nom_user}  ${phone_number}  ${civil_id}
@@ -277,7 +277,7 @@ I can sees list of actions
 
 I should Sees the details of the model
   [Arguments]  ${model_name}
-  Wait Until Element Is Visible  xpath=//*[@text='${model_name}'] 
+  Wait Until Keyword Succeeds  3x  3s  Wait Until Element Is Visible  xpath=//*[@text='${model_name}']  
 
 I selects model with name
   [Arguments]  ${model_name}
@@ -294,7 +294,7 @@ I have access to the List of models
 
 I should Sees the List of model
   [Arguments]  ${brand_name}
-
+  sleep  3s
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
   Run Keyword If  ${present}  Close pub
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_recycler
