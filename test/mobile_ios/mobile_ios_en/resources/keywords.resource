@@ -42,7 +42,7 @@ As User I login in app
   I select Profile Item
   I set user Information  testAuto@test.com  testtest
   Click Element  xpath=//XCUIElementTypeButton[@name="LOGIN"]
-  I should sees profile screen  automated test1  testAuto@test.com  
+  I should sees profile screen  Mohamd Amine  testAuto@test.com  
   [Teardown]  I go back to menu
 
 
@@ -108,3 +108,10 @@ I go back to menu from model details favorites
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
   Wait Until Element Is Visible  accessibility_id=menu 
+
+I go back to menu from model finance callback details Recently Review
+  Click Element  accessibility_id=back
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="ic inetrior"]  
+  Click Element  accessibility_id=back
+  Run Keyword And Ignore Error  Close advertisement
+  Wait Until Element Is Visible  accessibility_id=menu

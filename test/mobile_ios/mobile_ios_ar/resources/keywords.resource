@@ -36,7 +36,7 @@ As User I login in app
   I select Profile Item
   I set user Information  testAuto@test.com  testtest
   Click Element  xpath=//XCUIElementTypeButton[@name="دخول"]
-  I should sees profile screen  automated test1  testAuto@test.com  
+  I should sees profile screen  Mohamd Amine  testAuto@test.com  
   [Teardown]  I go back to menu
 
 I go back to menu
@@ -56,10 +56,10 @@ I go back to menu from model details
   Click Element  accessibility_id=back black
   Run Keyword And Ignore Error  Close advertisement
   Page Should Contain Element  accessibility_id=الجديدة
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
+  Page Should Contain Element  accessibility_id=المعتمدة
+  Page Should Contain Element  accessibility_id=الإيجار
+  Page Should Contain Element  accessibility_id=الإيجار اليومي
+  Page Should Contain Element  accessibility_id=الصيانة
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
   Wait Until Element Is Visible  accessibility_id=menu  
@@ -98,11 +98,18 @@ I go back to menu from model finance callback details
   Click Element  accessibility_id=back black
   Run Keyword And Ignore Error  Close advertisement
   Page Should Contain Element  accessibility_id=الجديدة
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
+  Page Should Contain Element  accessibility_id=المعتمدة
+  Page Should Contain Element  accessibility_id=الإيجار
+  Page Should Contain Element  accessibility_id=الإيجار اليومي
+  Page Should Contain Element  accessibility_id=الصيانة
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
   Wait Until Element Is Visible  accessibility_id=menu  
+
+I go back to menu from model finance callback details Recently Review
+  Click Element  accessibility_id=back
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الداخلي"]
+  Click Element  accessibility_id=back
+  Run Keyword And Ignore Error  Close advertisement
+  Wait Until Element Is Visible  accessibility_id=menu
 

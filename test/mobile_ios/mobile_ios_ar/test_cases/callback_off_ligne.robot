@@ -21,17 +21,17 @@ I Succeed to make a Request callback from brand
 
 I Succeed to make a Request callback from Recently Viewed
   [Tags]  Ios_ar_callback_recently_view_off_ligne
-  I visit a model and back to menu  شانجان  سي أس 95 كلاسيك
+  I visit a model and back to menu  شانجان  سي اس 75
   I select mode From Recently Viewed
   I can make a Request Callback  Mohamd Amine  6677  66770000
   I go back to menu from model details Recently Viewed
 
 I Succeed to make a Request callback from FAVORITES
   [Tags]  Ios_ar_callback_FAVORITES_off_ligne
-  I visit a model add it to favorites and back to menu  شانجان  سي أس 95 كلاسيك
+  I visit a model add it to favorites and back to menu  شانجان  سي اس 75
   I can Open Menu
   I select favorites Item
-  I select mode From favorites List  سي أس 95 كلاسيك
+  I select mode From favorites List  سي اس 75
   I can make a Request Callback  Mohamd Amine  6677  66770000
   I go back to menu from model details favorites
 
@@ -42,6 +42,13 @@ I Succeed to make a Request finance callback from brand
   I can navigate to the details of the model  شانجان  CS 85
   I can make a Request finance Callback  100  2 سنوات  Mohamd Amine  6677  66770000  123456789012
   I go back to menu from model finance callback details  
+
+I Succeed to make finance callback from Recently Viewed
+  [Tags]  Ios_ar_fiance_callback_brand_recently_view_off_ligne
+  I visit a model and back to menu  شانجان  سي اس 75
+  I select mode From Recently Viewed
+  I can make a Request finance Callback  100  2 سنوات  Mohamd Amine  6677  66770000  123456789012
+  I go back to menu from model finance callback details Recently Review 
   [Teardown]  NONE
 
 
@@ -60,8 +67,8 @@ I passed a Finance callback Request
   [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
   Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField  ${down_payment}
   Click Element  id=done
-  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[6]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage
   Click Element  xpath=//XCUIElementTypeStaticText[@name="${instalement_period}"]
+  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[6]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage
   I should sees the calculation result
   I achieved a finance call back request  ${nom_user}  ${false_phone_number}  ${phone_number}  ${civil_id}
 
@@ -208,6 +215,7 @@ I have access to the List of models
 
 I should Sees the List of model
   [Arguments]  ${brand_name}
+  Run Keyword And Ignore Error  Wait and close Pub
   Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الفرع الرئيسي"]
   Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]
   Wait Until Element Is Visible  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
@@ -229,7 +237,7 @@ I have access to Dashborad Screen
 
 I navigate to List Brand
   Click Element  accessibility_id=سيارات
-  Run Keyword And Ignore Error Wait and close Pub
+  Run Keyword And Ignore Error  Wait and close Pub
 
 I Should be on List Brand
   I Should Sees Sub Categories
@@ -237,10 +245,10 @@ I Should be on List Brand
 
 I Should Sees Sub Categories
   Page Should Contain Element  accessibility_id=الجديدة
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
+  Page Should Contain Element  accessibility_id=المعتمدة
+  Page Should Contain Element  accessibility_id=الإيجار
+  Page Should Contain Element  accessibility_id=الإيجار اليومي
+  Page Should Contain Element  accessibility_id=الصيانة
 
 
 I Should Sees List Brands
