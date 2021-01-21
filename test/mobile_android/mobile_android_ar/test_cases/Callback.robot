@@ -25,45 +25,45 @@ I Succeed to make a Request callback from brand
   I can make a Request Callback  Mohamd Amine  66771100
   I go back to menu from model detail
 
-# I make a Request callback from brand using wrong information
-#  [Tags]  Ios_en_callback_brand
-#  I can navigate to List Brand
-#  I can navigate to List of models  شانجان
-#  I can navigate to the details of the model  Changan  CS 85 
-#  I make a Request Callback using wrong information  Mohamd Amine  6677 
-#  I go back to menu from model detail
+I make a Request callback from brand using wrong information
+  [Tags]  Ios_en_callback_brand
+  I can navigate to List Brand
+  I can navigate to List of models  شانجان
+  I can navigate to the details of the model  Changan  CS 85 
+  I make a Request Callback using wrong information  Mohamd Amine  6677 
+  I go back to menu from model detail
 
-# I Succeed to make a Request callback from Recently Viewed
-#  [Tags]  Ios_en_callback_brand
-#  I visit a model and back to menu  شانجان  CS 85 
-#  I select mode From Recently Viewed
-#  I can make a Request Callback  Mohamd Amine  66770000
-#  I go back to menu from model details Recently Viewed 
+I Succeed to make a Request callback from Recently Viewed
+  [Tags]  Ios_en_callback_brand
+  I visit a model and back to menu  شانجان  CS 85 
+  I select mode From Recently Viewed
+  I can make a Request Callback  Mohamd Amine  66770000
+  I go back to menu from model details Recently Viewed 
 
-# I Succeed to make a Request callback from Recently Viewed using wrong information
-#  [Tags]  Ios_en_callback_brand
-#  I visit a model and back to menu  شانجان  CS 85
-#  I select mode From Recently Viewed
-#  I make a Request Callback using wrong information  Mohamd Amine  6677
-#  I go back to menu from model details Recently Viewed
+I Succeed to make a Request callback from Recently Viewed using wrong information
+  [Tags]  Ios_en_callback_brand
+  I visit a model and back to menu  شانجان  CS 85
+  I select mode From Recently Viewed
+  I make a Request Callback using wrong information  Mohamd Amine  6677
+  I go back to menu from model details Recently Viewed
 
-# I Succeed to make a Request callback from FAVORITES
-#  [Tags]  Ios_en_callback_brand
-#  I visit a model add it to favorites and back to menu  اودي  A6
-#  I can Open Menu
-#  I select favorites Item
-#  I select mode From favorites List  A6
-#  I can make a Request Callback  Mohamd Amine  66770000
-#  I go back to menu from model details favorites
+I Succeed to make a Request callback from FAVORITES
+  [Tags]  Ios_en_callback_brand
+  I visit a model add it to favorites and back to menu  اودي  A6
+  I can Open Menu
+  I select favorites Item
+  I select mode From favorites List  A6
+  I can make a Request Callback  Mohamd Amine  66770000
+  I go back to menu from model details favorites
 
-# I Succeed to make a Request callback from FAVORITES using wrong informations
-#  [Tags]  Ios_en_callback_brand
-#  I visit a model add it to favorites and back to menu  اودي  A6
-#  I can Open Menu
-#  I select favorites Item
-#  I select mode From favorites List  A6
-#  I make a Request Callback using wrong information  Mohamd Amine  6677
-#  I go back to menu from model details favorites
+I Succeed to make a Request callback from FAVORITES using wrong informations
+  [Tags]  Ios_en_callback_brand
+  I visit a model add it to favorites and back to menu  اودي  A6
+  I can Open Menu
+  I select favorites Item
+  I select mode From favorites List  A6
+  I make a Request Callback using wrong information  Mohamd Amine  6677
+  I go back to menu from model details favorites
 
 
 I Succeed to make a Request finance callback from brand using wrong informations
@@ -117,7 +117,7 @@ I passed a Finance callback Request
   I achieved a finance call back request  ${nom_user}  ${phone_number}  ${civil_id}
 
 I passed a Finance callback Request using wrong informations
-  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}
+  [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${civil_id}
   Input Text  id=com.kuwait.showroomz.refac:id/down_payment_txt  ${down_payment}
   Click Element  id=com.kuwait.showroomz.refac:id/two_year_text
   Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView
@@ -313,10 +313,10 @@ Close pub
 
 I selects a brand with name
   [Arguments]  ${brand_name}
-  FOR  ${i}  IN RANGE  20
+  FOR  ${i}  IN RANGE  30
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[contains(@text,'${brand_name}')]
   Exit For Loop If  ${present}
-  Swipe By Percent  50  80  50  20  1000
+  Swipe By Percent  50  80  50  40  1000
   END
   Click Element  xpath=//*[contains(@text,'${brand_name}')]
 

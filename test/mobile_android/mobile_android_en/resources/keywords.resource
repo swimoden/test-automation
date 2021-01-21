@@ -76,8 +76,14 @@ I go back to menu from model details favorites
   Run Keyword If  ${present}  Close pub
   Click Element  id=com.kuwait.showroomz.refac:id/back_button
   sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+
   Click Element  id=com.kuwait.showroomz.refac:id/back
   sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+
   Click Element  id=com.kuwait.showroomz.refac:id/back
 
 
