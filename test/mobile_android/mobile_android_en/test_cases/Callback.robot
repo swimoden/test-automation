@@ -260,10 +260,11 @@ I have access to callback popup
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/phone_edit
 
 I can see model Actions buttons
-  I have access to model details screen
+  I have access to model details screen  
   sleep  3s
   Click Element  id=com.kuwait.showroomz.refac:id/click_here_up_icon
   I can sees list of actions
+
 
 I click Callback Action button
   Click Element  xpath=//*[@text='CALLBACK']

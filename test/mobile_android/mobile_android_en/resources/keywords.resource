@@ -59,9 +59,14 @@ Close advertisement
 I go back to menu from model details Recently Viewed
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
   Click Element  id=com.kuwait.showroomz.refac:id/back_button
-  # Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
-  # Click Element  xpath=//XCUIElementTypeButton[@name="close icon"]
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button 
+
+I go back to menu from test drive screen -model Recently Viewed
+  Click Element  id=com.kuwait.showroomz.refac:id/back_bnt
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
+  Click Element  id=com.kuwait.showroomz.refac:id/back_button
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button 
+
 
 I go back to menu from model details favorites
   Click Element  id=com.kuwait.showroomz.refac:id/back_button
