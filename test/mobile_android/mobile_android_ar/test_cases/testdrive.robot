@@ -1,5 +1,5 @@
 ** Settings ***
-Documentation  Request callback from brand
+Documentation  Request test drive from brand
 Library  FakerLibrary
 Library  Collections
 Resource  ../resources/setup_teardown.resource
@@ -7,44 +7,44 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Android  Test_Drive Test_Drive_En
+Force Tags  Android  Test_Drive Test_Drive_Ar
 
 *** Variables ***
 
 *** Test Cases ***
 I Succeed to make a Request test drive from brand using correct informations
-  [Tags]  Android_En_Test_drive_from_brand
+  [Tags]  Android_Ar_Test_drive_from_brand
   As User I login in app
   I can navigate to List Brand
-  I can navigate to List of models  Changan
+  I can navigate to List of models  شانجان
   I can navigate to the details of the model  Changan  CS 85
   I can make a test drive  Mohamd Amine  66771100  testAuto@test.com
   I go back to menu from model detail
 
 I make a Request test drive from brand using wrong informations
-  [Tags]  Android_En_Test_drive_from_brand
+  [Tags]  Android_Ar_Test_drive_from_brand
   I can navigate to List Brand
-  I can navigate to List of models  Changan
+  I can navigate to List of models  شانجان
   I can navigate to the details of the model  Changan  CS 85
   I make a test drive using wrong informations  Mohamd Amine  6677  testAuto@test.com
   I go back to menu from test drive request screen
 
 I Succeed to make a Request test drive from Recently Viewed using correct informations
-  [Tags]  Android_En_Test_drive_from_Recently_Viewed
-  I visit a model and back to menu  Changan  CS 85 
+  [Tags]  Android_Ar_Test_drive_from_Recently_Viewed
+  I visit a model and back to menu  شانجان  CS 85 
   I select model From Recently Viewed
   I can make a test drive  Mohamd Amine  66771100  testAuto@test.com
   I go back to menu from model details Recently Viewed 
 
 I make a Request test drive from Recently Viewed using wrong informations
-  [Tags]  Android_En_Test_drive_from_Recently_Viewed
-  I visit a model and back to menu  Changan  CS 85
+  [Tags]  Android_Ar_Test_drive_from_Recently_Viewed
+  I visit a model and back to menu  شانجان  CS 85
   I select model From Recently Viewed
   I make a test drive using wrong informations  Mohamd Amine  6677  testAuto@test.com
   I go back to menu from test drive screen -model Recently Viewed 
 
 I Succeed to make a Request test drive with delivery from dashboard using correct informations
-  [Tags]  Android_En_Test_drive_With_Delivery
+  [Tags]  Android_Ar_Test_drive_With_Delivery
   I can navigate to List Brand
   I can navigate to List of models  BYD
   I can navigate to the details of the model  BYD  Tang
@@ -52,7 +52,7 @@ I Succeed to make a Request test drive with delivery from dashboard using correc
   I go back to menu from model detail
 
 I Succeed to make a Request test drive with delivery from dashboard using wrong informations
-  [Tags]  Android_En_Test_drive_With_Delivery
+  [Tags]  Android_Ar_Test_drive_With_Delivery
   I can navigate to List Brand
   I can navigate to List of models  BYD
   I can navigate to the details of the model  BYD  Tang
@@ -61,8 +61,6 @@ I Succeed to make a Request test drive with delivery from dashboard using wrong 
 
 
 *** Keywords ***
-
-
 I select model From Recently Viewed
   # Wait Until Element Is Visible  xpath=//*[@id='com.kuwait.showroomz.refac:id/recently_recycler']
   Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
@@ -116,7 +114,7 @@ I make a test drive using wrong informations
 I make a test drive with delivery using wrong informations
   [Arguments]  ${nom_user}  ${false_phone_number}  ${email}
   I can see model Actions buttons
-  Click Element  xpath=//*[@text='TEST DRIVE']
+  Click Element  xpath=//*[@text='تجربة قيادة']
   I click my delivery to my location button
   I select timing test drive to my location
   I add an address
@@ -128,7 +126,7 @@ I make a test drive with delivery using wrong informations
 I can make a test drive with delivery using correct informations
   [Arguments]  ${nom_user}  ${phone_number}  ${email}
   I can see model Actions buttons
-  Click Element  xpath=//*[@text='TEST DRIVE']
+  Click Element  xpath=//*[@text='تجربة قيادة']
   I click my delivery to my location button
   I select timing test drive to my location
   I add an address
@@ -146,7 +144,7 @@ I validate test drive Request
   Sleep  6s
 
 I cannot proceed Callback Request
-  Wait Until Page Contains  Error
+  Wait Until Page Contains  خطأ
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
 
@@ -154,7 +152,7 @@ I cannot proceed test drive Request
   Page Should Contain Element  com.kuwait.showroomz.refac:id/ok_btn
 
 I should see failed pop up
-  Wait Until Element Is Visible  xpath=//*[@text='Done SuccessFully']
+  Wait Until Element Is Visible  xpath=//*[@text='تم بنجاح']
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
   Sleep  2s
 
@@ -163,7 +161,7 @@ I validate Callback Request
   Sleep  6s
 
 I should see success pop up
-  Wait Until Element Is Visible  xpath=//*[@text='Done SuccessFully']
+  Wait Until Element Is Visible  xpath=//*[@text='تم بنجاح']
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
   Sleep  2s
 
@@ -195,7 +193,7 @@ I can see model Actions buttons
   I can sees list of actions
 
 I click test drive Action button
-  Click Element  xpath=//*[@text='TEST DRIVE']
+  Click Element  xpath=//*[@text='تجربة قيادة']
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/title_txt
 
 Select the time
@@ -281,7 +279,7 @@ I enter wrong informations
   I set Email  ${email}
 
 I select the preferred showroom
-  Click Element  xpath=//*[@text='TEST DRIVE']
+  Click Element  xpath=//*[@text='تجربة قيادة']
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/title_txt
 
 I have access to model details screen
@@ -307,7 +305,7 @@ I selects model with name
   Click Element  xpath=//*[@text='${model_name}']
 
 I have access to the List of models
-  Wait Until Element Is Visible  xpath=//*[@text="Main Showroom"]
+  Wait Until Element Is Visible  xpath=//*[@text="المعرض الرئيسي"]
 
 I should Sees the List of model
   [Arguments]  ${brand_name}
