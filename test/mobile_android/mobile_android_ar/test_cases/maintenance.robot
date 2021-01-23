@@ -7,13 +7,13 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Ios  callback
+Force Tags  Android  Maintenance Maintenance_Ar
 
 *** Variables ***
 
 *** Test Cases ***
 I Succeed to make a Request Maintenance callback from brand
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_Ar_Maintenance_Brand
   As User I login in app
   I can navigate to List Brand
   I can see maintenance subcategory  نيسان
@@ -22,7 +22,7 @@ I Succeed to make a Request Maintenance callback from brand
 
 
 I Succeed to make a Request Maintenance callback from brand using wrong information
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_Ar_Maintenance_Brand
   I can navigate to List Brand
   I can see maintenance subcategory  نيسان
   I make a Request Callback using wrong informations  Automated test  6677  

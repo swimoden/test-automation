@@ -7,13 +7,13 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
-Force Tags  Ios  callback
+Force Tags  Android  Maintenance Maintenance_Offline_En
 
 *** Variables ***
 
 *** Test Cases ***
 I Succeed to make a Request Maintenance callback from brand
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_Maintenance_Offline_Brand
   I can navigate to List Brand
   I can see maintenance subcategory  Nissan
   I can make a Request Callback  Automated test  10010001  
@@ -21,7 +21,7 @@ I Succeed to make a Request Maintenance callback from brand
 
 
 I Succeed to make a Request Maintenance callback from brand using wrong information
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_Maintenance_Offline_Brand
   I can navigate to List Brand
   I can see maintenance subcategory  Nissan
   I make a Request Callback using wrong informations  Automated test  6677  

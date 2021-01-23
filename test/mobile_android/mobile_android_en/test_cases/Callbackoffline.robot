@@ -7,13 +7,13 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application 
-Force Tags  Ios  callback
+Force Tags  Android  Callback_Offline  Callback_Offline_En
 
 *** Variables ***
 
 *** Test Cases ***
 I Succeed to make a Request callback from brand
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_callback_brand
   I can navigate to List Brand
   I can navigate to List of models  Changan
   I can navigate to the details of the model  Changan  CS 85 
@@ -21,7 +21,7 @@ I Succeed to make a Request callback from brand
   I go back to menu from model detail
 
 I make a Request callback from brand using wrong information
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_callback_brand
   I can navigate to List Brand
   I can navigate to List of models  Changan
   I can navigate to the details of the model  Changan  CS 85 
@@ -29,21 +29,21 @@ I make a Request callback from brand using wrong information
   I go back to menu from model detail
 
 I Succeed to make a Request callback from Recently Viewed
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_callback_Recently_Viewed
   I visit a model and back to menu  Changan  CS 85 
   I select mode From Recently Viewed
   I can make a Request Callback  Mohamd Amine  66770000
   I go back to menu from model details Recently Viewed 
 
 I Succeed to make a Request callback from Recently Viewed using wrong information
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_callback_Recently_Viewed
   I visit a model and back to menu  Changan  CS 85
   I select mode From Recently Viewed
   I make a Request Callback using wrong information  Mohamd Amine  6677
   I go back to menu from model details Recently Viewed
 
 I Succeed to make a Request callback from FAVORITES
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_callback_From_Favorites
   I visit a model add it to favorites and back to menu  Audi  A6
   I can Open Menu
   I select favorites Item
@@ -52,7 +52,7 @@ I Succeed to make a Request callback from FAVORITES
   I go back to menu from model details favorites
 
 I Succeed to make a Request callback from FAVORITES using wrong informations
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_callback_From_Favorites
   I visit a model add it to favorites and back to menu  Audi  A6
   I can Open Menu
   I select favorites Item
@@ -62,7 +62,7 @@ I Succeed to make a Request callback from FAVORITES using wrong informations
 
 
 I Succeed to make a Request finance callback from brand using wrong informations
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_Finance
   I can navigate to List Brand
   I can navigate to List of models  Audi
   I can navigate to the details of the model  Audi  A5 Coupe
@@ -71,7 +71,7 @@ I Succeed to make a Request finance callback from brand using wrong informations
 
 
 I Succeed to make a Request finance callback from brand
-  [Tags]  Ios_en_callback_brand
+  [Tags]  Android_En_Finance
   I can navigate to List Brand
   I can navigate to List of models  Audi
   I can navigate to the details of the model  Audi  A5 Coupe
