@@ -9,14 +9,7 @@ pipeline {
             string(defaultValue: 'Ios_en_callback_brand', description: 'Test Execution', name: 'tags', trim: true)
     }
     stages {
-        stage('send notification') {
-            steps {
-                mail to: "${params.notifie}",
-                subject: "Test Automation Mobile Pipline ${env.BUILD_TAG} Test Execution ${params.TestExecutionKey}",
-                body: "start build ${env.BUILD_TAG} at ${new Date()}"
-            }
-        }
-        stage('Display Docker environment') {
+        stage('pre requise install') {
             steps {
                 sh 'pip3 install -r requirements.txt'
                 script {
@@ -26,7 +19,7 @@ pipeline {
         }
         stage('Connect to browserstack') {
             steps {
-                browserstack('b41aa05d-5e33-4582-94be-d175eddaaaa2') {
+                browserstack('3aac3daa-8942-481b-9716-c75251d9aa7c') {
                 }
             }
         }
