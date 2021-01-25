@@ -11,8 +11,7 @@ pipeline {
     stages {
         stage('pre requise install') {
             steps {
-                sh 'pip3 install robotframework '
-                sh 'pip3 install robotframework-pythonlibcore '
+                sh 'python3 -m pip install -r requirements.txt'
                 script {
                     DEVICE = params.DevicesName.replaceAll(' ', '_')
                 }
