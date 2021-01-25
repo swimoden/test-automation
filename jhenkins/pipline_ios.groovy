@@ -12,6 +12,7 @@ pipeline {
         stage('pre requise install') {
             steps {
                 sh 'python3 -m pip install -r requirements.txt'
+                sh 'python3 -m pip freeze'
                 script {
                     DEVICE = params.DevicesName.replaceAll(' ', '_')
                 }
