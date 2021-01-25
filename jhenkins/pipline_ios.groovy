@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('pre requise install') {
             steps {
-                sh 'python3 -m pip install -r requirements.txt'
+                sh 'python3.8 -m pip install -r requirements.txt'
                 sh 'python3 -m pip freeze'
                 script {
                     DEVICE = params.DevicesName.replaceAll(' ', '_')
@@ -27,7 +27,7 @@ pipeline {
         stage('Execute tests with robot') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "python3 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DEVICE} -v OS_VERSION:${params.os_version} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
+                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DEVICE} -v OS_VERSION:${params.os_version} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
                 }
             }
         }
