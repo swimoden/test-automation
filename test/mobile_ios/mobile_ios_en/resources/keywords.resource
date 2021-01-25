@@ -60,7 +60,7 @@ I go back to menu from model details
   Should Not Be Empty  ${elements}
   Click Element  accessibility_id=back black
   Run Keyword And Ignore Error  Close advertisement
-  Page Should Contain Element  accessibility_id=New
+  Page Should Contain Element  xpath=//XCUIElementTypeStaticText[@name="New"]
   Page Should Contain Element  accessibility_id=Certified
   Page Should Contain Element  accessibility_id=Leasing
   Page Should Contain Element  accessibility_id=Rent
@@ -100,7 +100,7 @@ I go back to menu from model details favorites
   Should Not Be Empty  ${elements}
   Click Element  accessibility_id=back black
   Run Keyword And Ignore Error  Close advertisement
-  Page Should Contain Element  accessibility_id=New
+  Page Should Contain Element  axpath=//XCUIElementTypeStaticText[@name="New"]
   Page Should Contain Element  accessibility_id=Certified
   Page Should Contain Element  accessibility_id=Leasing
   Page Should Contain Element  accessibility_id=Rent

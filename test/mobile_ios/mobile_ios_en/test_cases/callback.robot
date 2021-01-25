@@ -252,7 +252,7 @@ I Should be on List Brand
   I Should Sees List Brands
 
 I Should Sees Sub Categories
-  Page Should Contain Element  accessibility_id=New
+  Page Should Contain Element  xpath=//XCUIElementTypeStaticText[@name="New"]
   Page Should Contain Element  accessibility_id=Certified
   Page Should Contain Element  accessibility_id=Leasing
   Page Should Contain Element  accessibility_id=Rent
