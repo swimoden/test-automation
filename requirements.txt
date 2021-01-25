@@ -5,7 +5,4 @@ robotframework==3.2.2
 robotframework-appiumlibrary==1.5.0.6
 robotframework-faker==5.0.0
 robotframework-jsonlibrary==0.3.1
-robotframework-pabot==1.10.0
 robotframework-requests==0.7.1
-robotframework-seleniumlibrary==4.5.0
-selenium==3.141.0
