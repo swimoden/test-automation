@@ -8,13 +8,21 @@ Library  OperatingSystem
 Library  String
 
 *** Variables ***
-# ${USER_NAME}  marwenouni1
-# ${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
-${APPIUM_SERVER}  http://localhost:4730/wd/hub
-${APP}  d:app.apk
-${DEVICE}  Galaxy A51
-${OS_VERSION}  9.0 
-${platformName}  android
+
+# ${APPIUM_SERVER}  http://localhost:4730/wd/hub
+# ${APP}  d:app.apk
+# ${DEVICE}  Galaxy A51
+# ${OS_VERSION}  9.0 
+# ${platformName}  android
+
+
+${USER_NAME}  marwenouni1
+${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
+${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
+${APP}  bs://2238307a6683691e7b08935312becd60e290e885
+${DEVICE}  Samsung Galaxy A51
+${OS_VERSION}  10.0
+${BUILD}  local build
 
 
 *** Keywords ***
