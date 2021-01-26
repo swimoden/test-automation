@@ -32,13 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('Execute tests with robot with second phone') {
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${SecondDevicesName} -v OS_VERSION:${params.os_version} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
-                }
-            }
-        }
+        
         stage('Publish Robot Framework HTML report') {
             steps {
                 robot outputPath: '', passThreshold: 100.0, unstableThreshold: 100.0
