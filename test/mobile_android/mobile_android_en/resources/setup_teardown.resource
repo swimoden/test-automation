@@ -23,6 +23,7 @@ ${APP}  bs://2238307a6683691e7b08935312becd60e290e885
 ${DEVICE}  Samsung Galaxy A51
 ${OS_VERSION}  10.0
 ${BUILD}  local build
+${platformName}  android
 
 
 *** Keywords ***
