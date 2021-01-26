@@ -28,6 +28,7 @@ ${platformName}  android
 
 *** Keywords ***
 Open the application
+  ${DEVICE} =  Replace String  ${DEVICE}  _  ${SPACE}
   Open Application  ${APPIUM_SERVER}  app=${APP}  platformName=${platformName}  device=${DEVICE}  automationName=UiAutomator2  appPackage=com.kuwait.showroomz.refac  os_version=${OS_VERSION}  project=Showroomz  name=${SUITE NAME.rsplit('.')[0]}
   Set Appium Timeout  30 seconds
   Select English language
