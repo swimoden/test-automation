@@ -15,7 +15,7 @@ pipeline {
                 sh 'python3.8 -m pip install -r requirements.txt'
                 sh 'python3.8 -m pip freeze'
                 script {
-                    DEVICE = params.DevicesName.replaceAll(' ', '_')
+                    // DEVICE = params.DevicesName.replaceAll(' ', '_')
                 }
             }
         }
