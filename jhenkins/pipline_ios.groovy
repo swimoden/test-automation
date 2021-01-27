@@ -50,28 +50,28 @@ pipeline {
         stage('Execute tests with robot with phone2') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DevicesName2} -v OS_VERSION:${params.os_version_phone2} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
+                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DEVICE2} -v OS_VERSION:${params.os_version_phone2} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
                 }
             }
         }
         stage('Execute tests with robot with phone3') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DevicesName3} -v OS_VERSION:${params.os_version_phone3} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
+                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DEVICE3} -v OS_VERSION:${params.os_version_phone3} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
                 }
             }
         }
         stage('Execute tests with robot with  phone4') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DevicesName4} -v OS_VERSION:${params.os_version_phone4} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
+                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DEVICE4} -v OS_VERSION:${params.os_version_phone4} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
                 }
             }
         }
         stage('Execute tests with robot with phone5') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DevicesName5} -v OS_VERSION:${params.os_version_phone5} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
+                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DEVICE5} -v OS_VERSION:${params.os_version_phone5} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
                 }
             }
         }
