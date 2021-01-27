@@ -7,7 +7,7 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
-
+Force Tags  Ios  callback_offligne_ar Ios_ar
 *** Variables ***
 
 *** Test Cases ***

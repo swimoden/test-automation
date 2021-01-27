@@ -6,7 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Ios  callback
+Force Tags  Ios  callback_en  Ios_en
 
 *** Variables ***
 
@@ -247,9 +247,7 @@ I navigate to List Brand
   Click Element  accessibility_id=Car
   Run Keyword And Ignore Error  Wait and close Pub
 
-I Should be on List Brand
-  I Should Sees Sub Categories
-  I Should Sees List Brands
+I Should be on List BrandIos
 
 I Should Sees Sub Categories
   Page Should Contain Element  xpath=//XCUIElementTypeStaticText[@name="New"]
