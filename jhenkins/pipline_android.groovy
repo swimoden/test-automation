@@ -5,7 +5,7 @@ pipeline {
     parameters {
             string(defaultValue: 'Samsung Galaxy A51', description: 'Device name', name: 'DevicesName', trim: true)
             string(defaultValue: 'Samsung Galaxy A51', description: 'Device name', name: 'SecondDevicesName', trim: true)
-            string(defaultValue: 'bs://2238307a6683691e7b08935312becd60e290e885', description: 'URL Application', name: 'AppUrl', trim: true)
+            string(defaultValue: 'bs://860a96962ee7510e9068dd1a936ed656a5019233', description: 'URL Application', name: 'AppUrl', trim: true)
             string(defaultValue: '10.0', description: 'Operating System version', name: 'os_version', trim: true)
             string(defaultValue: 'Android_en_callback_brand', description: 'Test Execution', name: 'tags', trim: true)
     }
