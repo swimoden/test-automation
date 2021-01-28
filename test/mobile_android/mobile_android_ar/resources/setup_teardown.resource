@@ -22,9 +22,11 @@ ${APP}  bs://2238307a6683691e7b08935312becd60e290e885
 ${DEVICE}  Samsung Galaxy A51
 ${OS_VERSION}  10.0
 ${BUILD}  local build
+${platformName}  android
 
 *** Keywords ***
 Open the application
+  ${DEVICE} =  Replace String  ${DEVICE}  _  ${SPACE}
   Open Application  ${APPIUM_SERVER}  app=${APP}  platformName=${platformName}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  name=${SUITE NAME.rsplit('.')[0]}
   Set Appium Timeout  30 seconds
   Select Arabic language
