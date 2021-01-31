@@ -10,6 +10,7 @@ Suite Teardown  Clean up the test suite
 Force Tags  Android  Filter  Filter_En
 
 *** Variables ***
+${dest_path}  /data/local/tmp/test_push_file.txt
 
 *** Test Cases ***
 
@@ -51,11 +52,55 @@ Force Tags  Android  Filter  Filter_En
 #  I can navigate to List of models  Nissan
 #  I can see locations
 
-I Succeed to make a Request callback from brand
-  [Tags]  Android_En_filter_brand
+# I Succeed to book from new car
+#  [Tags]  Android_En_book_newcar
+#  As User I login in app
+#  I can navigate to List Brand
+#  I can navigate to List of models  Changan
+#  I can navigate to the details of the model  Changan  CS 85 
+# I navigate to booking screen
+#  I can book using correct information
+
+# I Succeed to book from new car
+#  [Tags]  Android_En_book_newcar
+#  As User I login in app
+#  I can navigate to List Brand
+#  I can navigate to leasing category
+#  I can navigate to List of models  Automak
+#  I can navigate to the details of the model  Automak  Prado 
+#  I select book now from best dealing
+#  I can book using correct information
+
+# I Succeed to book from rent car
+#  [Tags]  Android_En_book_rent
+#  As User I login in app
+#  I can navigate to List Brand
+#  I can navigate to rent category
+#  I can navigate to List of models  Automak
+#  I can navigate to the details of the model  Automak  Santa Fe 
+#  I select book now with daily contract
+#  I can book using correct informations
+
+# I Succeed to book from recently viewed
+#  [Tags]  Android_En_book_recently_viewed
+#  As User I login in app
+#  I can navigate to List Brand
+#  I can navigate to rent category
+#  I visit a model and back to menu  Automak  Santa Fe
+#  I select model From Recently Viewed
+#  I select book now with daily contract
+#  I can book using correct informations
+
+
+I Succeed to make a callback request from rent category
+  [Tags]  Android_En_callback_rent
+  As User I login in app
   I can navigate to List Brand
-  I can navigate to List of models  Changan
-  I can navigate to the details of the model  Changan  CS 85 
+  I can navigate to rent category
+  I can navigate to List of models  Automak
+  I can navigate to the details of the model  Automak  Santa Fe 
+  I can make a Request Callback from rent category using correct informations  Mohamd Amine  66771100
+  I go back to menu from model detail
 
 
 
@@ -74,6 +119,13 @@ I succeed to find brand
   [Arguments]  ${brand_name} 
   Wait Until Element Is Visible  xpath=//*[contains(@text,'${brand_name}')]
 
+I can navigate to leasing category
+  Click Element  xpath=//*[@text='Leasing']
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_btn
+
+I can navigate to rent category
+  Click Element  xpath=//*[@text='Rent']
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_btn
 
 I succeed to search car using filter from maintenance subcategory
   [Arguments]  ${brand_name1}  ${brand_name2}
@@ -104,10 +156,11 @@ I Should Sees Sub Categories of Marine
 
 I selects model with name
   [Arguments]  ${model_name}
-
+  Sleep  8s
   FOR  ${i}  IN RANGE  20
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[@text='${model_name}']
   Exit For Loop If  ${present}
+  Sleep  2s
   Swipe By Percent  50  80  50  20  1000
   END
   Click Element  xpath=//*[@text='${model_name}']
@@ -138,11 +191,134 @@ I can see locations
   Click Element  id=com.kuwait.showroomz.refac:id/navigate
   wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout
 
-I can book using correct information
-  [Arguments]  ${nom_user}  ${phone_number}  
+I navigate to booking screen
   I can see model Actions buttons
   I click Book Now Action button
+
+I can book using correct information
+
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/user_information
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
+
+
+  Press Keycode  120  #take screen shot to upload it to device
+
+  Sleep  3s
+
+  Wait Until Element Is Visible  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
+  Click Element  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
+
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadImage
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'Screenshot')]
+  Click Element  xpath=//*[contains(@text,'Screenshot')]
+  sleep  30s
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/pay_btn
+  Click Element  id=com.kuwait.showroomz.refac:id/pay_btn
+  wait Until Element Is Visible  xpath=//android.view.View[@content-desc=" KNET"]
+  Click Element  xpath=//android.view.View[@content-desc=" KNET"]
+  Wait Until Element Is Visible  xpath=//*[@text='Select Your Bank']
+  Click Element  xpath=//*[@text='Select Your Bank']
+  Wait Until Element Is Visible  xpath=//*[@text='Knet Test Card [KNET1]']
+  Click Element  xpath=//*[@text='Knet Test Card [KNET1]']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
+  AppiumLibrary.Clear Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
+  AppiumLibrary.Input Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText  0000000001
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[1]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[1]
+  Wait Until Element Is Visible  xpath=//*[@text='09']
+  Click Element  xpath=//*[@text='09']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[2]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[2]
+  Wait Until Element Is Visible  xpath=//*[@text='2021']
+  Click Element  xpath=//*[@text='2021']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText
+  AppiumLibrary.Clear Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText
+  AppiumLibrary.Input Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText  1234
+  Click Element  xpath=//*[@text='Submit']
+  Wait Until Element Is Visible  xpath=//*[@text='Confirm']
+  Click Element  xpath=//*[@text='Confirm']
+  Wait Until Element Is Visible  xpath=//*[@text='Form Submitted Successfully']
+
+I can book using correct informations
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.Spinner[1]/android.widget.TextView
+  # Click Element  id=com.kuwait.showroomz.refac:id/start_day_date_container
+  # Click Element  id=com.kuwait.showroomz.refac:id/end_day_date_container
+  click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.Spinner[1]/android.widget.TextView
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[4]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[4]
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.Spinner[2]/android.widget.TextView
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.Spinner[2]/android.widget.TextView
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[5]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[5]
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadImage
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
+  Press Keycode  120  #take screen shot to upload it to device
+
+  Sleep  3s
+
+  Wait Until Element Is Visible  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
+  Click Element  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
+
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadImage
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'Screenshot')]
+  Click Element  xpath=//*[contains(@text,'Screenshot')]
+  sleep  30s
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadLicenseImage
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadLicenseImage
+
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'Screenshot')]
+  Click Element  xpath=//*[contains(@text,'Screenshot')]
+  sleep  30s
+  Swipe By Percent  50  80  50  20  1000
+  Click Element  id=com.kuwait.showroomz.refac:id/pay_btn
+  wait Until Element Is Visible  xpath=//android.view.View[@content-desc=" KNET"]
+  Click Element  xpath=//android.view.View[@content-desc=" KNET"]
+  Wait Until Element Is Visible  xpath=//*[@text='Select Your Bank']
+  Click Element  xpath=//*[@text='Select Your Bank']
+  Wait Until Element Is Visible  xpath=//*[@text='Knet Test Card [KNET1]']
+  Click Element  xpath=//*[@text='Knet Test Card [KNET1]']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
+  AppiumLibrary.Clear Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
+  AppiumLibrary.Input Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText  0000000001
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[1]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[1]
+  Wait Until Element Is Visible  xpath=//*[@text='09']
+  Click Element  xpath=//*[@text='09']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[2]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[2]
+  Wait Until Element Is Visible  xpath=//*[@text='2021']
+  Click Element  xpath=//*[@text='2021']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText
+  AppiumLibrary.Clear Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText
+  AppiumLibrary.Input Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText  1234
+  Click Element  xpath=//*[@text='Submit']
+  Wait Until Element Is Visible  xpath=//*[@text='Confirm']
+  Click Element  xpath=//*[@text='Confirm']
+  Wait Until Element Is Visible  xpath=//*[@text='Form Submitted Successfully']
+
+
+
+
+
+I select book now from best dealing
+  sleep  3s
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
+  Click Element  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
+  wait Until Element Is Visible  xpath=//*[contains(@text,'BOOK NOW')]
+  Click Element  id=com.kuwait.showroomz.refac:id/checkbox
+  Click Element  xpath=//*[contains(@text,'BOOK NOW')]
+
+I select book now with daily contract
+  sleep  7s
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
+  Click Element  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
+  wait Until Element Is Visible  xpath=//*[contains(@text,'BOOK NOW')]
+  Click Element  xpath=//*[contains(@text,'1 DAYS CONTRACT')]
+  Click Element  xpath=//*[contains(@text,'BOOK NOW')]
+
+
 
 
 
@@ -221,6 +397,7 @@ I select favorites Item
   Wait Until Page Contains  CAR
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_btn
 
+
 I visit a model add it to favorites and back to menu
   [Arguments]  ${brand_name}  ${model_name}
   I can navigate to List Brand
@@ -232,14 +409,13 @@ I visit a model add it to favorites and back to menu
 I add model to favorites List
   Click Element  id=com.kuwait.showroomz.refac:id/favorite_img
 
-I select mode From Recently Viewed
+I select model From Recently Viewed
   # Wait Until Element Is Visible  xpath=//*[@id='com.kuwait.showroomz.refac:id/recently_recycler']
   Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
   Click Element  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
 
 I visit a model and back to menu
   [Arguments]  ${brand_name}  ${model_name}
-  I can navigate to List Brand
   I can navigate to List of models  ${brand_name}
   I can navigate to the details of the model  ${brand_name}  ${model_name}
   I go back to menu from model detail
@@ -262,10 +438,14 @@ I can navigate to the details of the model
   I selects model with name  ${model_name}
   I should Sees the details of the model  ${model_name}
 
-I can make a Request Callback
+I can make a Request Callback from rent category using correct informations
   [Arguments]  ${nom_user}  ${phone_number}  
-  I can see model Actions buttons
-  I click Callback Action button
+  # I can see model Actions buttons
+  sleep  7s
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
+  Click Element  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
+  wait Until Element Is Visible  xpath=//*[contains(@text,'CALLBACK')]
+  Click Element  xpath=//*[contains(@text,'CALLBACK')]
   I passed a callback Request  ${nom_user}  ${phone_number}
 
 I make a Request Callback using wrong information
@@ -369,6 +549,7 @@ I selects a brand with name
   FOR  ${i}  IN RANGE  20
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[contains(@text,'${brand_name}')]
   Exit For Loop If  ${present}
+  Sleep  2s
   Swipe By Percent  50  80  50  20  1000
   END
   Click Element  xpath=//*[contains(@text,'${brand_name}')]

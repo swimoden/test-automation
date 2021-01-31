@@ -16,11 +16,11 @@ I should sees profile screen
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/edit_profile_btn
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/changePassword_btn
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/favorite_txt
-  Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/callbacks_txt
-  Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/finance_txt
-  Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/finance_request_txt
-  Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/test_drives_txt
-  Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/payments_txt
+  # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/callbacks_txt
+  # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/finance_txt
+  # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/finance_request_txt
+  # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/test_drives_txt
+  # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/payments_txt
   # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/logout_txt
 
 
