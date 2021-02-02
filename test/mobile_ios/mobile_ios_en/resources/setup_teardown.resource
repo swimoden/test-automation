@@ -2,8 +2,6 @@
 Documentation  Mobile Test
 Resource  ../resources/keywords.resource
 Library  AppiumLibrary  
-Library  RequestsLibrary
-Library  JSONLibrary
 Library  Collections
 Library  OperatingSystem
 Library  String
@@ -12,7 +10,7 @@ Library  String
 ${USER_NAME}  guedhamimohamedm1
 ${ACESS_KEY}  phAYz3KfvGtvNR4KoZ97
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-${APP}  bs://167020785b0914f222af4be7b8f8181fde5f0f26
+${APP}  bs://d222dd044a3ce22a25255c5e4c927d65adbedc7c
 ${DEVICE}  iPhone XS
 ${OS_VERSION}  14.0
 ${BUILD}  local build
@@ -20,6 +18,7 @@ ${BUILD}  local build
 
 *** Keywords ***
 Open the application
+  ${DEVICE} =  Replace String  ${DEVICE}  _  ${SPACE}
   Open Application  ${APPIUM_SERVER}  app=${APP}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  build=${BUILD}  name=${SUITE NAME.rsplit('.')[0]}  language=en  locale=kw_CA  autoAcceptAlerts=true  
   Set Appium Timeout  30 seconds
   Run Keyword And Ignore Error  Allow Applications Location Service

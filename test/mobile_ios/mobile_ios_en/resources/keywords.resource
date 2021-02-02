@@ -1,8 +1,6 @@
 *** Settings ***
 Documentation  Mobile Test
 Library  AppiumLibrary  
-Library  RequestsLibrary
-Library  JSONLibrary
 Library  Collections
 Library  OperatingSystem
 Library  String
