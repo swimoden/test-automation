@@ -13,7 +13,7 @@ Force Tags  Ios  searsh_offligne
 
 *** Test Cases ***
 I Succeed to Search from Brands screen Marine
-  [Tags]  Ios_en_marine_searsh_off_ligne
+  [Tags]  Ios_ar_marine_searsh_off_ligne
   I can navigate to List Marine brands
   I can navigate to search screen
   I can search  SPARK TRIXX 2UP 
@@ -21,9 +21,8 @@ I Succeed to Search from Brands screen Marine
   I Should be back to List Marine brands
   I go back to menu from List Marine brands
 
-
 I Succeed to Search from Brands screen bike
-  [Tags]  Ios_en_bike_searsh_off_ligne
+  [Tags]  Ios_ar_bike_searsh_off_ligne
   I can navigate to List bike brands
   I can navigate to bike model  KAWASAKI - MOTORCYCLES
   I can navigate to search screen
@@ -42,12 +41,12 @@ I can navigate to bike model
 
 I should be in bike model
   [Arguments]  ${name_model} 
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Main Showroom"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الفرع الرئيسي"]
   Wait Until Element Is Visible  accessibility_id=${name_model}
 
 I go back to menu from Bike model
   Click Element  accessibility_id=back black
-  Wait Until Element Is Visible  accessibility_id=BIKE
+  Wait Until Element Is Visible  accessibility_id=دراجات
   Wait Until Element Is Visible  accessibility_id=back
   Click Element  accessibility_id=back
   I have access to Dashborad Screen 
@@ -70,12 +69,12 @@ I can close search Screen
   Click Element  accessibility_id=multiply
 
 I Should be back to List Marine brands
-  Wait Until Element Is Visible  accessibility_id=MARINE
+  Wait Until Element Is Visible  accessibility_id=معدات بحرية
   Wait Until Element Is Visible  accessibility_id=back
 
 I Should be back to List Bike model
   [Arguments]  ${name_model}
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Main Showroom"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الفرع الرئيسي"]
   Wait Until Element Is Visible  accessibility_id=${name_model}
   Wait Until Element Is Visible  accessibility_id=back black
 
@@ -90,7 +89,7 @@ I should see search result
 
 I set search text
   [Arguments]  ${search_text}
-  Input Text  xpath=//XCUIElementTypeTextField[@value="You can Search by Brand, Model or budget"]  ${search_text}
+  Input Text  xpath=//XCUIElementTypeTextField[@value="ادخل اسم الوكيل او المودل او السعر"]  ${search_text}
 
 I can navigate to List Marine brands
   I have access to Dashborad Screen 
@@ -102,17 +101,17 @@ I can navigate to search screen
   I Should be on search Screen
 
 I navigate to search Screen
-  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]
+  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]
 
 I Should be on search Screen
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeTextField[@value="You can Search by Brand, Model or budget"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeTextField[@value="ادخل اسم الوكيل او المودل او السعر"]
 
 I navigate to List Marine Brand
-  Click Element  accessibility_id=Marine
+  Click Element  accessibility_id=معدات بحرية
   Run Keyword And Ignore Error  Wait and close Pub
 
 I navigate to List bike Brand
-  Click Element  accessibility_id=Bike
+  Click Element  accessibility_id=دراجات
   Run Keyword And Ignore Error  Wait and close Pub
 
 I Should be on List Bike Brand
@@ -129,6 +128,6 @@ I have access to List Marine Brand
 
 
 I have access to Dashborad Screen
-  Wait Until Element Is Visible  accessibility_id=Car
-  Wait Until Element Is Visible  accessibility_id=Marine
-  Wait Until Element Is Visible  accessibility_id=Bike 
+  Wait Until Element Is Visible  accessibility_id=دراجات
+  Wait Until Element Is Visible  accessibility_id=معدات بحرية
+  Wait Until Element Is Visible  accessibility_id=سيارات 

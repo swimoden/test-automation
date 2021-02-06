@@ -23,7 +23,7 @@ Open the application
   Set Appium Timeout  30 seconds
   Run Keyword And Ignore Error  Allow Applications Location Service
   Choose language  ENGLISH  
-  Wait and close Pub
+  Run Keyword And Continue On Failure  Wait and close Pub
 
 Choose language
   [Arguments]  ${language}
@@ -35,8 +35,8 @@ Allow Applications Location Service
   Click Element  name=Allow While Using App
 
 Wait and close Pub
-  Wait Until Element Is Visible  accessibility_id=close icon  timeout=20  
-  Click Element  accessibility_id=close icon
+  Run Keyword And Ignore Error  Wait Until Element Is Visible  accessibility_id=close icon  timeout=20  
+  Run Keyword And Ignore Error  Click Element  accessibility_id=close icon
 
 Clean up the test suite
   Close All Applications

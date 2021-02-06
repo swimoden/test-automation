@@ -11,7 +11,7 @@ Library  String
 ${USER_NAME}  guedhamimohamedm1
 ${ACESS_KEY}  phAYz3KfvGtvNR4KoZ97
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-${APP}  bs://167020785b0914f222af4be7b8f8181fde5f0f26
+${APP}  bs://d222dd044a3ce22a25255c5e4c927d65adbedc7c
 ${DEVICE}  iPhone 11 Pro Max
 ${OS_VERSION}  14 
 ${BUILD}  local build
@@ -23,7 +23,7 @@ Open the application
   Set Appium Timeout  30 seconds
   Run Keyword And Ignore Error  Allow Applications Location Service
   Choose language  عربي  
-  Wait and close Pub
+  Run Keyword And Ignore Error  Wait and close Pub
 
 Choose language
   [Arguments]  ${language}
@@ -35,8 +35,8 @@ Allow Applications Location Service
   Click Element  name=Allow While Using App
 
 Wait and close Pub
-  Wait Until Element Is Visible  accessibility_id=close icon  timeout=20  
-  Click Element  accessibility_id=close icon
+  Run Keyword And Ignore Error  Wait Until Element Is Visible  accessibility_id=close icon  timeout=20  
+  Run Keyword And Ignore Error  Click Element  accessibility_id=close icon
 
 Clean up the test suite
   Close All Applications
