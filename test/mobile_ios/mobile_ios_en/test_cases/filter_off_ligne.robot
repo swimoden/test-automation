@@ -32,14 +32,22 @@ I Succeed to make a maintenance filter
   [Teardown]  NONE
 
 I Succeed to Search from Brands screen bike
-  [Tags]  Ios_en_bike_searsh_off_ligne
+  [Tags]  Ios_en_bike_filter_off_ligne
   I can navigate to List bike brands
   I can navigate to filter screen
   I can apply filter  5000  2 wheels  BMW
+  I should sees bikes  G310 GS - COSMIC BLACK  RnineT Scrambler
+  I go back to menu from bike filter
+  [Teardown]  NONE
 
 
 
 *** Keywords ***
+I should sees bikes
+  [Arguments]  ${first_bike}  ${second_bike}
+  Wait Until Page Contains Element  xpath=//XCUIElementTypeStaticText[@name="${first_bike}"]
+  Wait Until Page Contains Element  xpath=//XCUIElementTypeStaticText[@name="${second_bike}"]
+
 I can navigate to List bike brands
   I have access to Dashborad Screen 
   I navigate to List bike Brand 
@@ -84,6 +92,15 @@ I go back to menu from maintenance filter
   Run Keyword And Ignore Error  Close advertisement
   Page Should Contain Element  accessibility_id=Rent
   Page Should Contain Element  accessibility_id=Maintenance
+  Click Element  accessibility_id=back
+  Run Keyword And Ignore Error  Close advertisement
+  Wait Until Element Is Visible  accessibility_id=menu
+
+I go back to menu from bike filter
+  Click Element  accessibility_id=back black
+  Click Element  accessibility_id=multiply
+  Run Keyword And Ignore Error  Close advertisement
+  Page Should Contain Element  xpath=//XCUIElementTypeStaticText[@name="BIKE"]
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
   Wait Until Element Is Visible  accessibility_id=menu
