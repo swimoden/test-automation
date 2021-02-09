@@ -4,12 +4,21 @@ Library  AppiumLibrary
 Library  RequestsLibrary
 Library  JSONLibrary
 Library  Collections
+Library  customlib.py
 Library  OperatingSystem
 Library  String
+Library  HttpLibrary.HTTP
+Library  JSONLibrary
+Library  json
 
+
+*** Variables ***
+${BASE_URL}  https://vps-08303c09.vps.ovh.ca/api/v2
+${id_auth}  880e3d89-07f9-4f09-a1da-bc131dea55a5
 *** Keywords ***
 
-
+I send my civil id picture to the phone
+  send_image_to_device
 I should sees profile screen
   [Arguments]  ${name}  ${email}  
   Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/profile_txt
@@ -141,12 +150,13 @@ I Should Sees Sub Categories of Marine
 
 I selects model with name
   [Arguments]  ${model_name}
-  Sleep  8s
+  # Sleep  8s
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_recycler
   FOR  ${i}  IN RANGE  20
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[@text='${model_name}']
   Exit For Loop If  ${present}
   Sleep  2s
-  Swipe By Percent  50  80  50  20  1000
+  Swipe By Percent  50  80  50  40  1000
   END
   Click Element  xpath=//*[@text='${model_name}']
 
@@ -171,6 +181,7 @@ I Should Sees Sub Categories of Bike
   Wait Until Page Contains  Bike
 
 I can see locations
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/show_locations
   Click Element  id=com.kuwait.showroomz.refac:id/show_locations
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/loc_recycler
   Click Element  id=com.kuwait.showroomz.refac:id/navigate
@@ -181,31 +192,35 @@ I navigate to booking screen
   I click Book Now Action button
 
 I can book using correct information
-
+  I send my civil id picture to the phone
+  Sleep  2s
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/user_information
   Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
-
-
-  Press Keycode  120  #take screen shot to upload it to device
-
-  Sleep  3s
-
+  # Press Keycode  120  #take screen shot to upload it to device
   Wait Until Element Is Visible  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
   Click Element  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
-
+  I send my civil id picture to the phone
+  Sleep  2s
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadImage
   Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
-  Wait Until Element Is Visible  xpath=//*[contains(@text,'Screenshot')]
-  Click Element  xpath=//*[contains(@text,'Screenshot')]
-  sleep  30s
+  ${yes}=  Run Keyword And Return Status  page Should Contain Element  xpath=//*[contains(@text,'file')]
+  Run Keyword If  ${yes}  Upload picture to phone
+  ...  ELSE IF  ${yes} == False  Upload civil picture to phone
+
+  Swipe By Percent  50  80  50  20  1000
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/pay_btn
   Click Element  id=com.kuwait.showroomz.refac:id/pay_btn
   wait Until Element Is Visible  xpath=//android.view.View[@content-desc=" KNET"]
   Click Element  xpath=//android.view.View[@content-desc=" KNET"]
   Wait Until Element Is Visible  xpath=//*[@text='Select Your Bank']
   Click Element  xpath=//*[@text='Select Your Bank']
-  Wait Until Element Is Visible  xpath=//*[@text='Knet Test Card [KNET1]']
-  Click Element  xpath=//*[@text='Knet Test Card [KNET1]']
+  Sleep  1s
+  Swipe By Percent  50  80  50  20  1000
+  # Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[11]
+  # Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[11]
+
+  Wait Until Element Is Visible  xpath=//*[@text='Knet Test Card [KNET1]' or @text='KNET TEST CARD [KNET1]']
+  Click Element  xpath=//*[@text='Knet Test Card [KNET1]' or @text='KNET TEST CARD [KNET1]']
   Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
   AppiumLibrary.Clear Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
   AppiumLibrary.Input Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText  0000000001
@@ -225,6 +240,7 @@ I can book using correct information
   Click Element  xpath=//*[@text='Confirm']
   Wait Until Element Is Visible  xpath=//*[@text='Form Submitted Successfully']
 
+
 I can book using correct informations
   Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.Spinner[1]/android.widget.TextView
   # Click Element  id=com.kuwait.showroomz.refac:id/start_day_date_container
@@ -237,33 +253,41 @@ I can book using correct informations
   Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[5]
   Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[5]
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadImage
-  Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
-  Press Keycode  120  #take screen shot to upload it to device
 
-  Sleep  3s
+  Sleep  2s
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
+  # Press Keycode  120  #take screen shot to upload it to device
+
 
   Wait Until Element Is Visible  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
   Click Element  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
 
+  I send my civil id picture to the phone
+  Sleep  2s
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadImage
   Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
-  Wait Until Element Is Visible  xpath=//*[contains(@text,'Screenshot')]
-  Sleep  2s
-  Click Element  xpath=//*[contains(@text,'Screenshot')]
-  sleep  30s
+
+  ${yes}=  Run Keyword And Return Status  page Should Contain Element  xpath=//*[contains(@text,'file')]
+  Run Keyword If  ${yes}  Upload picture to phone
+  ...  ELSE IF  ${yes} == False  Upload civil picture to phone
+
+
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadLicenseImage
   Click Element  id=com.kuwait.showroomz.refac:id/uploadLicenseImage
+  ${yes}=  Run Keyword And Return Status  page Should Contain Element  xpath=//*[contains(@text,'file')]
+  Run Keyword If  ${yes}  Upload license file to phone
+  ...  ELSE IF  ${yes} == False  Upload license picture to phone
 
-  Wait Until Element Is Visible  xpath=//*[contains(@text,'Screenshot')]
-  Sleep  2s
-  Click Element  xpath=//*[contains(@text,'Screenshot')]
-  sleep  30s
+
   Swipe By Percent  50  80  50  20  1000
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/pay_btn
   Click Element  id=com.kuwait.showroomz.refac:id/pay_btn
   wait Until Element Is Visible  xpath=//android.view.View[@content-desc=" KNET"]
   Click Element  xpath=//android.view.View[@content-desc=" KNET"]
   Wait Until Element Is Visible  xpath=//*[@text='Select Your Bank']
   Click Element  xpath=//*[@text='Select Your Bank']
+  Sleep  1s
+  Swipe By Percent  50  80  50  20  1000
   Wait Until Element Is Visible  xpath=//*[@text='Knet Test Card [KNET1]']
   Click Element  xpath=//*[@text='Knet Test Card [KNET1]']
   Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
@@ -286,6 +310,59 @@ I can book using correct informations
   Wait Until Element Is Visible  xpath=//*[@text='Form Submitted Successfully']
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
 
+Upload civil picture to phone
+
+  Wait Until Element Is Visible  xpath=//android.widget.ImageButton[@content-desc="Show roots"]
+  Click Element  xpath=//android.widget.ImageButton[@content-desc="Show roots"]
+  Wait Until Element Is Visible  xpath=//android.widget.TextView[@text="Downloads"]
+  #  or @text="Gallery"]
+  Click Element  xpath=//android.widget.TextView[@text="Downloads"]
+  #  or @text="Gallery"]
+  # Wait Until Element Is Visible  xpath=//*[contains(@text,'Pictures')]
+  # Click Element  xpath=//*[@text="Pictures"]
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'file')]
+  Sleep  2s
+  Click Element  xpath=//*[contains(@text,'file')]
+  Sleep  20s
+
+Upload license picture to phone
+
+  Wait Until Element Is Visible  xpath=//android.widget.ImageButton[@content-desc="Show roots"]
+  Click Element  xpath=//android.widget.ImageButton[@content-desc="Show roots"]
+  Wait Until Element Is Visible  xpath=//*[@text="Downloads"]
+  Click Element  xpath=//*[@text="Downloads"]
+  # Wait Until Element Is Visible  xpath=//*[contains(@text,'Pictures')]
+  # Click Element  xpath=//*[@text="Pictures"]
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'file')]
+  Sleep  2s
+  Click Element  xpath=//*[contains(@text,'file')]
+  Sleep  20s
+
+Upload picture to phone
+
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'file')]
+  Sleep  2s
+  Click Element  xpath=//*[contains(@text,'file')]
+  Sleep  20s
+
+Upload license file to phone
+
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'file')]
+  Sleep  2s
+  Click Element  xpath=//*[contains(@text,'file')]
+  Sleep  20s
+
+take a screen shot
+  Press Keycode  120
+  Sleep  30s
+  Swipe By Percent  50  80  50  20  1000
+  Wait Until Element Is Visible  xpath=//*[@text='Allow' or @text='ALLOW']
+  Click Element  xpath=//*[@text='Allow' or @text='ALLOW']
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'Screen')]
+  Wait Until Element Is Visible  xpath=Click Element  xpath=//*[contains(@text,'Screen')]
+  Wait Until Element Is Visible  xpath=//android.widget.ImageButton[@content-desc="Show roots"]
+  Click Element  xpath=//android.widget.ImageButton[@content-desc="Show roots"]
+  Images
 
 
 I select book now from best dealing
@@ -407,12 +484,17 @@ I visit a model from rent category and add it to favorites and back to menu
   I add model to favorites List
   I go back to menu from model detail
 
+I select mode From Recently Viewed
+  # Wait Until Element Is Visible  xpath=//*[@id='com.kuwait.showroomz.refac:id/recently_recycler']
+  Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
+  Click Element  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
 
 I add model to favorites List
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/favorite_img
   Click Element  id=com.kuwait.showroomz.refac:id/favorite_img
 
 I select model From Recently Viewed
-  # Wait Until Element Is Visible  xpath=//*[@id='com.kuwait.showroomz.refac:id/recently_recycler']
+  Swipe By Percent  50  80  50  50  1000
   Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
   Click Element  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
 
@@ -440,14 +522,23 @@ I can navigate to the details of the model
   I selects model with name  ${model_name}
   I should Sees the details of the model  ${model_name}
 
+I can make a Request Callback
+  [Arguments]  ${nom_user}  ${phone_number}  
+  I can see model Actions buttons
+  I click Callback Action button
+  I passed a callback Request  ${nom_user}  ${phone_number}
+
+I click Callback Action button
+  Click Element  xpath=//*[@text='CALLBACK']
+
 I can make a Request Callback from rent category using correct informations
   [Arguments]  ${nom_user}  ${phone_number}  
   # I can see model Actions buttons
   sleep  7s
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
   Click Element  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
-  wait Until Element Is Visible  xpath=//*[contains(@text,'CALLBACK')]
-  Click Element  xpath=//*[contains(@text,'CALLBACK')]
+  wait Until Element Is Visible  xpath=//*[@text='CallBack' or @text='CALLBACK']
+  Click Element  xpath=//*[@text='CallBack' or @text='CALLBACK']
   I passed a callback Request  ${nom_user}  ${phone_number}
 
 I make a Request Callback from rent category using wrong informations
@@ -455,8 +546,8 @@ I make a Request Callback from rent category using wrong informations
   sleep  7s
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
   Click Element  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
-  wait Until Element Is Visible  xpath=//*[contains(@text,'CALLBACK')]
-  Click Element  xpath=//*[contains(@text,'CALLBACK')]
+  wait Until Element Is Visible  xpath=//*[@text='CallBack' or @text='CALLBACK']
+  Click Element  xpath=//*[@text='CallBack' or @text='CALLBACK']
   I passed a callback Request using wrong information  ${nom_user}  ${false_phone_number} 
 
 
@@ -568,7 +659,7 @@ I selects a brand with name
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[contains(@text,'${brand_name}')]
   Exit For Loop If  ${present}
   Sleep  2s
-  Swipe By Percent  50  80  50  20  1000
+  Swipe By Percent  50  80  50  40  1000
   END
   Click Element  xpath=//*[contains(@text,'${brand_name}')]
 
@@ -580,6 +671,7 @@ I have access to Dashborad Screen
 
 I navigate to List Brand
   sleep  3s
+  wait Until Element Is Visible  xpath=(//android.widget.ImageView[@content-desc="cat image"])[1]
   Click Element  xpath=(//android.widget.ImageView[@content-desc="cat image"])[1]
   sleep  3s
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
@@ -603,3 +695,99 @@ I Should Sees List Brands
   Should Not Be Empty  ${elements}
 
 
+I back to menu from search brand screen
+  Click Element  id=com.kuwait.showroomz.refac:id/close_button
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+I back to menu from search model screen
+  Click Element  id=com.kuwait.showroomz.refac:id/close_button
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+I back to menu from filter model screen
+  Click Element  id=com.kuwait.showroomz.refac:id/back_button
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/close_button
+  Click Element  id=com.kuwait.showroomz.refac:id/close_button
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+
+I back to menu from filter brand screen
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/close_button
+  Click Element  id=com.kuwait.showroomz.refac:id/close_button
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+
+I go back to menu from model detail
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
+  Click Element  id=com.kuwait.showroomz.refac:id/back_button
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Wait Until Page Contains Element  xpath=//*[contains(@text,'Car')]
+
+
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+I get the client id
+  [Arguments]  ${email}  ${password}
+  Create Session  mySession  ${BASE_URL}  verify=true
+  ${id} =  Set Variable  ${id_auth}
+  ${body} =  Create Dictionary  email=testAuto@test.com  password=testtest
+  ${header} =  Create Dictionary  accept=application/json  Authorization=${id_auth}  Content-Type=application/json
+  ${response} =  Post Request  mySession  /authentication_token  headers=${header}  json=${body}
+  ${json}=  Evaluate  json.loads('''${response.content}''')  json
+  [return]  ${json}[user][id]
+
+Delete all client favorites
+  [Arguments]  ${email}  ${password}
+  ${client_id} =  I get the client id  ${email}  ${password}
+  Create Session  mySession  ${BASE_URL}
+  ${id} =  Set Variable  ${id_auth}
+  ${header} =  Create Dictionary  accept=application/ld+json  Authorization=880e3d89-07f9-4f09-a1da-bc131dea55a5
+  ${response}=  Get Request  mySession  clients/${client_id}/delete-all-favorites/?_locale=en
+  Log To Console  ${response.content}
+  The code status of request should be equald as expected  ${response.status_code}  200  
+  Relod Application
+
+Relod Application and Login
+  Close All Applications
+  Open the application
+  As User I login in app
+
+Relod Application
+  Close All Applications
+  Open the application

@@ -198,25 +198,4 @@ Navigate to search screen
 
 
 
-I back to menu from search brand screen
-  Click Element  id=com.kuwait.showroomz.refac:id/close_button
-  sleep  1s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  Close pub
-  Click Element  id=com.kuwait.showroomz.refac:id/back
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
-
-I back to menu from search model screen
-  Click Element  id=com.kuwait.showroomz.refac:id/close_button
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back
-  sleep  1s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  Close pub
-  Click Element  id=com.kuwait.showroomz.refac:id/back
-  sleep  1s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  Close pub
-  Click Element  id=com.kuwait.showroomz.refac:id/back
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
-
 

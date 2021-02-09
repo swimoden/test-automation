@@ -9,30 +9,34 @@ Library  String
 
 *** Variables ***
 
-${APPIUM_SERVER}  http://localhost:4730/wd/hub
-${APP}  d:app.apk
-${DEVICE}  Samsung Galaxy A51
-${OS_VERSION}  10.0 
-${platformName}  android
-
-
-# ${USER_NAME}  marwenouni1
-# ${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
-# ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-# ${APP}  bs://860a96962ee7510e9068dd1a936ed656a5019233
-# ${DEVICE}  Samsung Galaxy A10
-# ${OS_VERSION}  9.0
-# ${BUILD}  local build
+# ${APPIUM_SERVER}  http://localhost:4730/wd/hub
+# ${APP}  d:app.apk
+# ${file_path}  /sdcard/Download
+# ${file_destin}  d:imp.png
+# ${DEVICE}  Samsung Galaxy A51
+# ${OS_VERSION}  10.0 
 # ${platformName}  android
 
 
+${USER_NAME}  marwenouni1
+${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
+${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
+${APP}  bs://860a96962ee7510e9068dd1a936ed656a5019233
+${fileu_pload}  media://2489a5cdaf7836d0fced85d36997650a58c17fcb
+${DEVICE}  Samsung Galaxy Note 10
+${OS_VERSION}  9.0
+${BUILD}  local build
+${platformName}  android
+
+
 *** Keywords ***
+Get device
+  [Return]  ${DEVICE}
+
 Open the application
   ${DEVICE} =  Replace String  ${DEVICE}  _  ${SPACE}
   Open Application  ${APPIUM_SERVER}  app=${APP}  platformName=${platformName}  device=${DEVICE}  automationName=UiAutomator2  appPackage=com.kuwait.showroomz.refac  os_version=${OS_VERSION}  project=Showroomz  autoAcceptAlerts=true  name=${SUITE NAME.rsplit('.')[0]}
-  Set Appium Timeout  30 seconds
-
-  Capture Page Screenshot  filename=None
+  Set Appium Timeout  60 seconds
   Select English language
 
 
@@ -71,26 +75,6 @@ I go back to menu from test drive request screen
   Click Element  id=com.kuwait.showroomz.refac:id/back
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
-
-I go back to menu from model detail
-  Click Element  id=com.kuwait.showroomz.refac:id/back_button
-  sleep  1s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  Close pub
-  Click Element  id=com.kuwait.showroomz.refac:id/back
-  sleep  1s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  Close pub
-  Wait Until Page Contains Element  xpath=//*[contains(@text,'Car')]
-
-
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
-  Click Element  id=com.kuwait.showroomz.refac:id/back
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
 I go back to menu from test drive request - add address
   Click Element  id=com.kuwait.showroomz.refac:id/back_btn

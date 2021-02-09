@@ -82,6 +82,7 @@ I go back to menu from test drive request screen
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
 I go back to menu from model detail
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
   Click Element  id=com.kuwait.showroomz.refac:id/back_button
   sleep  1s
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
