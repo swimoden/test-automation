@@ -36,6 +36,7 @@ I go back to menu
 
 
 As User I login in app
+  Log To Console  setup_teardown.Get device  stream=STDOUT  no_newline=False  
   I can Open Menu
   I select Profile Item
   I set user Information  testAuto@test.com  testtest
