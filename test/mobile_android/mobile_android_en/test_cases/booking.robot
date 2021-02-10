@@ -2,7 +2,6 @@
 Documentation  book vehicles
 Library  FakerLibrary
 Library  Collections
-Library  ../resources/test_cases/customlib
 Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application

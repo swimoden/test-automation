@@ -7,7 +7,7 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
-Force Tags  Android  Android_change_langage_En Android_change_langage
+Force Tags  Android  Android_en  Android_change_langage_En Android_change_langage
 
 *** Variables ***
 

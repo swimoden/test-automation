@@ -7,7 +7,7 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Android  Filter  Filter_En
+Force Tags  Android  Android_en  Filter  Filter_En
 
 *** Variables ***
 
@@ -22,11 +22,11 @@ I Succeed to make a search brand using filter
   I succeed to find brand  Abarth 695
   I back to menu from filter brand screen
 
-I Succeed to make a Request callback from brand
+I Succeed to make a search from maintenance category
   [Tags]  Android_En_filter_maintenance
   I can navigate to List Brand
   I succeed to search car using filter from maintenance subcategory  ABARTH  ACURA
-  Relod Application
+  I back to menu from filter brand screen
 
 I Succeed to search vehicle using filter from subcategory Marine
   [Tags]  Android_En_filter_marine
