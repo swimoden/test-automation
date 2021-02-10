@@ -7,7 +7,7 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Android  Callback  Callback_En
+Force Tags  Android  Android_en  Callback  Callback_En
 
 *** Variables ***
 
@@ -30,7 +30,7 @@ I make a Request callback from brand using wrong information
   I go back to menu from model detail
 
 I Succeed to make a Request callback from Recently Viewed
-  [Tags]  Android_En_callback_Recently_Viewed
+  [Tags]  Android_En_callback_Recently_Viewed1
   I visit a model and back to menu  Changan  CS 85 
   I select mode From Recently Viewed
   I can make a Request Callback  Mohamd Amine  66770000

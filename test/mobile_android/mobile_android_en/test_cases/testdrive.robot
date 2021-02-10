@@ -7,7 +7,7 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Android  Test_Drive Test_Drive_En
+Force Tags  Android  Android_en  Test_Drive Test_Drive_En
 
 *** Variables ***
 
@@ -61,37 +61,6 @@ I Succeed to make a Request test drive with delivery from dashboard using wrong 
 
 
 *** Keywords ***
-
-
-I select model From Recently Viewed
-  Swipe By Percent  50  80  50  50  1000
-  Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
-  Click Element  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
-
-I visit a model and back to menu
-  [Arguments]  ${brand_name}  ${model_name}
-  I can navigate to List Brand
-  I can navigate to List of models  ${brand_name}
-  I can navigate to the details of the model  ${brand_name}  ${model_name}
-  I go back to menu from model detail
-
-I can navigate to List Brand
-  I have access to Dashborad Screen 
-  I navigate to List Brand 
-  I Should be on List Brand 
-
-
-I can navigate to List of models
-  [Arguments]  ${brand_name}
-  I have access to List Brand
-  I selects a brand with name  ${brand_name}
-  I should Sees the List of model  ${brand_name}
-
-I can navigate to the details of the model
-  [Arguments]  ${brand_name}  ${model_name}
-  I have access to the List of models
-  I selects model with name  ${model_name}
-  I should Sees the details of the model  ${model_name}
 
 I can make a test drive
   [Arguments]  ${nom_user}  ${phone_number}  ${email}
@@ -167,33 +136,6 @@ I should see success pop up
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
   Sleep  2s
 
-I set Full name
-  [Arguments]  ${full_name}
-  AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/full_name_edit  ${full_name}
-
-I set Phone Number
-  [Arguments]  ${phone_number}
-  # AppiumLibrary.Clear Text  id=com.kuwait.showroomz.refac:id/phone_edit
-  AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/phone_edit  ${phone_number}
-
-I set false Phone Number
-  [Arguments]  ${false_phone_number}
-  AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/phone_edit  ${false_phone_number}
-
-I set Email
-  [Arguments]  ${email}
-  AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/email_edit  ${email}
-
-I have access to callback popup
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/full_name_edit
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/phone_edit
-
-I can see model Actions buttons
-  I have access to model details screen  
-  sleep  3s
-  Click Element  id=com.kuwait.showroomz.refac:id/click_here_up_icon
-  I can sees list of actions
-
 I click test drive Action button
   Click Element  xpath=//*[@text='TEST DRIVE']
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/title_txt
@@ -268,94 +210,4 @@ I add an address
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/full_name_edit
 
 
-I enter correct information
-  [Arguments]  ${nom_user}  ${phone_number}  ${email}
-  I set Full name  ${nom_user}
-  I set Phone Number  ${phone_number}
-  I set Email  ${email}
 
-I enter wrong informations
-  [Arguments]  ${nom_user}  ${false_phone_number}  ${email}
-  I set Full name  ${nom_user}
-  I set Phone Number  ${false_phone_number}
-  I set Email  ${email}
-
-I select the preferred showroom
-  Click Element  xpath=//*[@text='TEST DRIVE']
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/title_txt
-
-I have access to model details screen
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_name_txtV
-
-
-I can sees list of actions
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/grid_actions_container
-
-I should Sees the details of the model
-  [Arguments]  ${model_name}
-  Wait Until Keyword Succeeds  3x  3s  Wait Until Element Is Visible  xpath=//*[@text='${model_name}']  
-
-
-I selects model with name
-  [Arguments]  ${model_name}
-
-  FOR  ${i}  IN RANGE  20
-  ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[@text='${model_name}']
-  Exit For Loop If  ${present}
-  Swipe By Percent  50  80  50  20  1000
-  END
-  Click Element  xpath=//*[@text='${model_name}']
-
-I have access to the List of models
-  Wait Until Element Is Visible  xpath=//*[@text="Main Showroom"]
-
-I should Sees the List of model
-  [Arguments]  ${brand_name}
-  sleep  3s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  Close pub
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_recycler
-  Wait Until Page Contains  ${brand_name}
-
-
-I selects a brand with name
-  [Arguments]  ${brand_name}
-  FOR  ${i}  IN RANGE  20
-  ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[contains(@text,'${brand_name}')]
-  Exit For Loop If  ${present}
-  Swipe By Percent  50  80  50  20  1000
-  END
-  Click Element  xpath=//*[contains(@text,'${brand_name}')]
-
-I have access to List Brand
-  I Should Sees List Brands
-
-I have access to Dashborad Screen
-  Wait Until Element Is Visible  xpath=(//android.widget.ImageView[@content-desc="cat image"])[1]
-
-I navigate to List Brand
-  sleep  3s
-  Click Element  xpath=(//android.widget.ImageView[@content-desc="cat image"])[1]
-  sleep  3s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  click element  id=com.kuwait.showroomz.refac:id/circle_progress
-
-
-I Should be on List Brand
-  I Should Sees Sub Categories
-  I Should Sees List Brands
-
-I Should Sees Sub Categories
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
-
-I Should Sees List Brands
-  ${elements}=  Get WebElements  id=com.kuwait.showroomz.refac:id/brands_recycler
-  Should Not Be Empty  ${elements}
-
-Close pub
-  sleep  7s
-  click Element  id=com.kuwait.showroomz.refac:id/circle_progress
