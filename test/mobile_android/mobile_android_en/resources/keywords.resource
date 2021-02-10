@@ -7,7 +7,7 @@ Library  Collections
 Library  customlib.py
 Library  OperatingSystem
 Library  String
-Library  HttpLibrary.HTTP
+# Library  HttpLibrary.HTTP
 Library  JSONLibrary
 Library  json
 
@@ -31,6 +31,15 @@ I should sees profile screen
   # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/test_drives_txt
   # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/payments_txt
   # Wait Until Page Contains Element  id=com.kuwait.showroomz.refac:id/logout_txt
+
+I back to menu
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Wait Until Page Contains Element  xpath=//*[contains(@text,'Car')]
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
 
 I go back to menu
@@ -161,7 +170,7 @@ I selects model with name
   Click Element  xpath=//*[@text='${model_name}']
 
 I can navigate to List Brand of Bike
-  I have access to Dashborad Screen 
+  I have access to Dashboard Screen 
   I navigate to List Brand of Bike
   I Should be on List Brand of Bike
 
@@ -498,14 +507,16 @@ I select model From Recently Viewed
   Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
   Click Element  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
 
+
 I visit a model and back to menu
   [Arguments]  ${brand_name}  ${model_name}
+  I can navigate to List Brand
   I can navigate to List of models  ${brand_name}
   I can navigate to the details of the model  ${brand_name}  ${model_name}
   I go back to menu from model detail
 
 I can navigate to List Brand
-  I have access to Dashborad Screen 
+  I have access to Dashboard Screen 
   I navigate to List Brand 
   I Should be on List Brand 
 
@@ -550,6 +561,10 @@ I make a Request Callback from rent category using wrong informations
   Click Element  xpath=//*[@text='CallBack' or @text='CALLBACK']
   I passed a callback Request using wrong information  ${nom_user}  ${false_phone_number} 
 
+
+I make a Request Callback using wrong informations
+  [Arguments]  ${nom_user}  ${false_phone_number}  
+  I passed a callback Request using wrong information  ${nom_user}  ${false_phone_number}
 
 
 I make a Request Callback using wrong information
@@ -666,7 +681,7 @@ I selects a brand with name
 I have access to List Brand
   I Should Sees List Brands
 
-I have access to Dashborad Screen
+I have access to Dashboard Screen
   Wait Until Element Is Visible  xpath=(//android.widget.ImageView[@content-desc="cat image"])[1]
 
 I navigate to List Brand
@@ -688,7 +703,7 @@ I Should Sees Sub Categories
   # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
   Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
   Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
 
 I Should Sees List Brands
   ${elements}=  Get WebElements  id=com.kuwait.showroomz.refac:id/brands_recycler
@@ -783,11 +798,4 @@ Delete all client favorites
   The code status of request should be equald as expected  ${response.status_code}  200  
   Relod Application
 
-Relod Application and Login
-  Close All Applications
-  Open the application
-  As User I login in app
 
-Relod Application
-  Close All Applications
-  Open the application
