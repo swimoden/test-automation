@@ -16,6 +16,7 @@ Library  String
 # ${platformName}  android
 
 
+
 ${USER_NAME}  marwenouni1
 ${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
