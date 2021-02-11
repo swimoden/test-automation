@@ -9,21 +9,22 @@ Library  String
 
 *** Variables ***
 
-${APPIUM_SERVER}  http://localhost:4730/wd/hub
-${APP}  d:app.apk
-${DEVICE}  Samsung Galaxy A51
-${OS_VERSION}  10.0 
-${platformName}  android
-
-
-# ${USER_NAME}  marwenouni1
-# ${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
-# ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-# ${APP}  bs://860a96962ee7510e9068dd1a936ed656a5019233
-# ${DEVICE}  Samsung Galaxy Note 10
-# ${OS_VERSION}  9.0
-# ${BUILD}  local build
+# ${APPIUM_SERVER}  http://localhost:4730/wd/hub
+# ${APP}  d:app.apk
+# ${DEVICE}  Samsung Galaxy A51
+# ${OS_VERSION}  10.0 
 # ${platformName}  android
+
+
+
+${USER_NAME}  marwenouni1
+${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
+${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
+${APP}  bs://860a96962ee7510e9068dd1a936ed656a5019233
+${DEVICE}  Samsung Galaxy Note 10
+${OS_VERSION}  9.0
+${BUILD}  local build
+${platformName}  android
 
 
 *** Keywords ***
