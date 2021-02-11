@@ -7,7 +7,6 @@ Library  Collections
 Library  customlib.py
 Library  OperatingSystem
 Library  String
-# Library  HttpLibrary.HTTP
 Library  JSONLibrary
 Library  json
 
@@ -126,9 +125,16 @@ I can navigate to leasing category
   Click Element  xpath=//*[@text='Leasing']
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_btn
 
-I can navigate to rent category
-  Click Element  xpath=//*[@text='Rent']
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_btn
+I can navigate to List Brand of Marine
+  I have access to Dashborad Screen 
+  I navigate to List Brand of Marine
+  I Should be on List Brand of Marine
+
+I have access to Dashborad Screen
+  Wait Until Element Is Visible  xpath=(//android.widget.ImageView[@content-desc="cat image"])[1]
+  Wait Until Element Is Visible  xpath=(//android.widget.ImageView[@content-desc="cat image"])[2]
+  Wait Until Element Is Visible  xpath=(//android.widget.ImageView[@content-desc="cat image"])[3]
+
 
 I succeed to search car using filter from maintenance subcategory
   [Arguments]  ${brand_name1}  ${brand_name2}
@@ -165,7 +171,7 @@ I selects model with name
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[@text='${model_name}']
   Exit For Loop If  ${present}
   Sleep  2s
-  Swipe By Percent  50  80  50  40  1000
+  Run Keyword If  ${present} == False  Swipe By Percent  50  80  50  40  1000
   END
   Click Element  xpath=//*[@text='${model_name}']
 
@@ -540,7 +546,12 @@ I can make a Request Callback
   I passed a callback Request  ${nom_user}  ${phone_number}
 
 I click Callback Action button
+  Wait Until Element Is Visible  xpath=//*[@text='CALLBACK']
   Click Element  xpath=//*[@text='CALLBACK']
+
+I click compare Action button
+  Wait Until Element Is Visible  xpath=//*[@text='COMPARE']
+  Click Element  xpath=//*[@text='COMPARE']
 
 I can make a Request Callback from rent category using correct informations
   [Arguments]  ${nom_user}  ${phone_number}  
@@ -674,7 +685,7 @@ I selects a brand with name
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[contains(@text,'${brand_name}')]
   Exit For Loop If  ${present}
   Sleep  2s
-  Swipe By Percent  50  80  50  40  1000
+  Run Keyword If  ${present} == False  Swipe By Percent  50  80  50  40  1000
   END
   Click Element  xpath=//*[contains(@text,'${brand_name}')]
 
@@ -797,5 +808,9 @@ Delete all client favorites
   Log To Console  ${response.content}
   The code status of request should be equald as expected  ${response.status_code}  200  
   Relod Application
+
+The code status of request should be equald as expected
+  [Arguments]  ${actuel_code_status}  ${expected_code_status}
+  Should Be Equal As Strings  ${actuel_code_status}  ${expected_code_status}
 
 

@@ -7,7 +7,7 @@ Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Android  Android_en  Maintenance Maintenance_En
+Force Tags  Android  Android_en  Maintenance  Maintenance_En
 
 *** Variables ***
 

@@ -7,6 +7,7 @@ from json import dumps
 from pathlib import Path
 import os
 from io import BytesIO
+import PIL
 from PIL import Image, ImageDraw
 
 
