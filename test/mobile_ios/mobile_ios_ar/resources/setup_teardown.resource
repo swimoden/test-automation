@@ -8,8 +8,8 @@ Library  OperatingSystem
 Library  String
 
 *** Variables ***
-${USER_NAME}  guedhamimohamedm1
-${ACESS_KEY}  phAYz3KfvGtvNR4KoZ97
+${USER_NAME}  bambounamed1
+${ACESS_KEY}  kotdtzWABxQR5cxwMxiK
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
 ${APP}  bs://d222dd044a3ce22a25255c5e4c927d65adbedc7c
 ${DEVICE}  iPhone 11 Pro Max
