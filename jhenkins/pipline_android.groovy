@@ -43,5 +43,10 @@ pipeline {
                 browserStackReportPublisher 'app-automate'
             }
         }
+           stage('Publish report Robot Framework') {
+            steps {
+                 publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report\\report.html', reportName: 'HTML Report', reportTitles: ''])
+            }
+        }
     }
 }
