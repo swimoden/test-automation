@@ -5,14 +5,15 @@ Library  Collections
 Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Test Teardown  Run Keyword If Test Failed  Relod Application
+Test Teardown  Run Keyword If Test Failed  Relod Application and Login
 Force Tags  Ios  callback
 
 *** Variables ***
 
 *** Test Cases ***
 I Succeed to make a car filter
-  [Tags]  Ios_en_filter_car_off_ligne
+  [Tags]  Ios_en_filter_car
+  [Setup]  As User I login in app
   I can navigate to List Brand
   I can navigate to filter screen
   I can apply filter  5000  sedan  Abarth
@@ -21,7 +22,7 @@ I Succeed to make a car filter
   [Teardown]  NONE
 
 I Succeed to make a maintenance filter
-  [Tags]  Ios_en_filter_maintenance_off_ligne
+  [Tags]  Ios_en_filter_maintenance
   I can navigate to List Brand
   I can navigate to sub category Maintenance
   I Should sees Filter 
@@ -32,8 +33,7 @@ I Succeed to make a maintenance filter
   [Teardown]  NONE
 
 I Succeed to Search from Brands screen bike
-  [Tags]  Ios_en_bike_filter_off_ligne
-  I can navigate to List bike brands
+  [Tags]  Ios_en_bike_filter
   I can navigate to filter screen
   I can apply filter  5000  2 wheels  BMW
   I should sees bikes  G310 GS - COSMIC BLACK  RnineT Scrambler
