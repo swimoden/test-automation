@@ -7,10 +7,10 @@ Library  OperatingSystem
 Library  String
 
 *** Variables ***
-${USER_NAME}  guedhamimohamedm1
-${ACESS_KEY}  phAYz3KfvGtvNR4KoZ97
+${USER_NAME}  bambounamed1
+${ACESS_KEY}  kotdtzWABxQR5cxwMxiK
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-${APP}  bs://d222dd044a3ce22a25255c5e4c927d65adbedc7c
+${APP}  bs://5a655452000a8ab33b25e14a3ed2c84f403846c7
 ${DEVICE}  iPhone XS
 ${OS_VERSION}  14.0
 ${BUILD}  local build
