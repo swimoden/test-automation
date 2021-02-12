@@ -28,14 +28,14 @@ pipeline {
         stage('Execute tests with robot with first phone') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "python3.8 -m robot  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DEVICE} -v OS_VERSION:${params.os_version} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags} ."
+                    sh "python3.8 -m robot  --outputdir report  -v BUILD:${env.BUILD_TAG} -v DEVICE:${DEVICE} -v OS_VERSION:${params.os_version} -v REMOTE_BUILD:True  -v APP:${params.AppUrl}  -i ${params.tags}  ."
                 }
             }
         }
         
         stage('Publish Robot Framework HTML report') {
             steps {
-                robot outputPath: '', passThreshold: 100.0, unstableThreshold: 100.0
+                robot outputPath: 'report', passThreshold: 100.0, unstableThreshold: 100.0
             }
         }
         stage('Attache BrowserStack test results') {
