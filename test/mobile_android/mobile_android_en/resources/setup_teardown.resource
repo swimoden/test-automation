@@ -33,7 +33,7 @@ Get device
 
 Open the application
   ${DEVICE} =  Replace String  ${DEVICE}  _  ${SPACE}
-  Open Application  ${APPIUM_SERVER}  app=${APP}  platformName=${platformName}  device=${DEVICE}  automationName=UiAutomator2  appPackage=com.kuwait.showroomz.refac  os_version=${OS_VERSION}  project=Showroomz  autoAcceptAlerts=true  name=${SUITE NAME.rsplit('.')[0]}
+  Open Application  ${APPIUM_SERVER}  app=${APP}  build=${BUILD}  platformName=${platformName}  device=${DEVICE}  automationName=UiAutomator2  appPackage=com.kuwait.showroomz.refac  os_version=${OS_VERSION}  project=Showroomz  autoAcceptAlerts=true  name=${SUITE NAME.rsplit('.')[0]}
   Set Appium Timeout  60 seconds
   Select English language
 

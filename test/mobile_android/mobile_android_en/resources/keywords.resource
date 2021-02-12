@@ -500,6 +500,7 @@ I visit a model from rent category and add it to favorites and back to menu
   I go back to menu from model detail
 
 I select mode From Recently Viewed
+  Swipe By Percent  50  80  50  50  1000
   # Wait Until Element Is Visible  xpath=//*[@id='com.kuwait.showroomz.refac:id/recently_recycler']
   Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
   Click Element  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
