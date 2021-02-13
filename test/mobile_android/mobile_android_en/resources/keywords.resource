@@ -401,7 +401,7 @@ I select book now with daily contract
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
   Click Element  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
   wait Until Element Is Visible  xpath=//*[contains(@text,'BOOK NOW')]
-  Click Element  xpath=//*[contains(@text,'1 DAYS CONTRACT')]
+  Click Element  xpath=//*[contains(@text,'DAILY')]
   Click Element  xpath=//*[contains(@text,'BOOK NOW')]
 
 I select book now with weekly contract
@@ -409,7 +409,7 @@ I select book now with weekly contract
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
   Click Element  id=com.kuwait.showroomz.refac:id/programs_click_here_up_icon
   wait Until Element Is Visible  xpath=//*[contains(@text,'BOOK NOW')]
-  Click Element  xpath=//*[contains(@text,'WEEKS CONTRACT')]
+  Click Element  xpath=//*[contains(@text,'WEEKLY')]
   Click Element  xpath=//*[contains(@text,'BOOK NOW')]
 
 
@@ -443,7 +443,7 @@ I passed a Finance callback Request
   [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${phone_number}  ${civil_id}
   Input Text  id=com.kuwait.showroomz.refac:id/down_payment_txt  ${down_payment}
   Click Element  id=com.kuwait.showroomz.refac:id/two_year_text
-  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView
   I should sees the calculation result
   I achieved a finance call back request  ${nom_user}  ${phone_number}  ${civil_id}
 
@@ -451,7 +451,7 @@ I passed a Finance callback Request using wrong informations
   [Arguments]  ${down_payment}  ${instalement_period}  ${nom_user}  ${false_phone_number}  ${civil_id}
   Input Text  id=com.kuwait.showroomz.refac:id/down_payment_txt  ${down_payment}
   Click Element  id=com.kuwait.showroomz.refac:id/two_year_text
-  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView
   I should sees the calculation result
   I achieved a finance call back request using wrong informations  ${nom_user}  ${false_phone_number}  ${civil_id}
 
@@ -526,6 +526,12 @@ I select model From Recently Viewed
 I visit a model and back to menu
   [Arguments]  ${brand_name}  ${model_name}
   I can navigate to List Brand
+  I can navigate to List of models  ${brand_name}
+  I can navigate to the details of the model  ${brand_name}  ${model_name}
+  I go back to menu from model detail
+
+I visit a model and GO back to menu
+  [Arguments]  ${brand_name}  ${model_name}
   I can navigate to List of models  ${brand_name}
   I can navigate to the details of the model  ${brand_name}  ${model_name}
   I go back to menu from model detail
@@ -820,13 +826,30 @@ I go back to menu from bike model detail
   Click Element  id=com.kuwait.showroomz.refac:id/back
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
+I enter correct information
+  [Arguments]  ${nom_user}  ${phone_number}  ${email}
+  I set Full name  ${nom_user}
+  I set Phone Number  ${phone_number}
+  I set Email  ${email}
+
+I enter wrong informations
+  [Arguments]  ${nom_user}  ${false_phone_number}  ${email}
+  I set Full name  ${nom_user}
+  I set Phone Number  ${false_phone_number}
+  I set Email  ${email}
+
+I set Email
+  [Arguments]  ${email}
+  AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/email_edit  ${email}
+
 ###############  Gallery  #############
 
-#############  sahre
+#############  share
 I share model
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/share_button
   Click Element  id=com.kuwait.showroomz.refac:id/share_button
-  Wait Until Element Is Visible  xpath=//*[contains(@text,'showroomz.com')]
+  # Wait Until Element Is Visible  xpath=//*[contains(@text,'showroomz.com')]
+  Sleep  4s
   Press Keycode  4
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
 #############
@@ -887,8 +910,10 @@ I add another model to second trim
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_edit_text
   AppiumLibrary.Clear Text  id=com.kuwait.showroomz.refac:id/filter_edit_text
   AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/filter_edit_text  ${text}
-  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout
-  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout 
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout
+  #/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout
+
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/trim_two
 
   # Click Element  id=com.kuwait.showroomz.refac:id/trim_two
