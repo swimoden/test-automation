@@ -54,7 +54,7 @@ I Succeed to book from recently viewed
   As User I login in app
   I can navigate to List Brand
   I can navigate to rent category
-  I visit a model and back to menu  Automak  Santa Fe
+  I visit a model and GO back to menu  Automak  Santa Fe
   I select model From Recently Viewed
   I select book now with daily contract
   I can book using correct informations
@@ -80,7 +80,7 @@ I Succeed to make a callback request from rent category using correct informatio
   I can navigate to List of models  Automak
   I can navigate to the details of the model  Automak  Santa Fe
   I can make a Request Callback from rent category using correct informations  Mohamd Amine  66771100
-  I go back to menu from model detail
+  Relod Application
 
 I make a callback request from rent category using wrong informations
   [Tags]  Android_En_callback_rent
@@ -90,6 +90,6 @@ I make a callback request from rent category using wrong informations
   I can navigate to List of models  Automak
   I can navigate to the details of the model  Automak  Santa Fe
   I make a Request Callback from rent category using wrong informations  Mohamd Amine  6677
-  I go back to menu from model detail
+  Relod Application
 
 *** Keywords ***

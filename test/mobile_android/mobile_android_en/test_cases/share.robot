@@ -1,13 +1,13 @@
 ** Settings ***
-Documentation  show gallery,interior & exterior
+Documentation  Share model
 Library  FakerLibrary
 Library  Collections
 Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-# Test Teardown  Run Keyword If Test Failed  Relod Application
-Force Tags  Android  Android_en  Gallery  Gallery_En
+Test Teardown  Run Keyword If Test Failed  Relod Application and Login
+Force Tags  Android  Android_en  Share  Share_En
 
 *** Variables ***
 
@@ -17,6 +17,7 @@ Force Tags  Android  Android_en  Gallery  Gallery_En
 
 I Succeed to share a model from car category
   [Tags]  Android_En_share
+  As User I login in app
   I can navigate to List Brand
   I can navigate to List of models  HAVAL
   I can navigate to the details of the model  HAVAL  H2

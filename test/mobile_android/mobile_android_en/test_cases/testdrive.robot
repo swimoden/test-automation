@@ -142,14 +142,15 @@ I click test drive Action button
 
 Select the time
   FOR  ${i}  IN RANGE  1  11
-  click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${i}]
+  click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${i}]
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/confirm_deliver_to_location
   Exit For Loop If  ${present}
   END
 
 Select the time of delivery to my location
   FOR  ${i}  IN RANGE  1  11
-  click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${i}]
+  click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${i}]
+ # /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${i}]
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/confirm_deliver_to_my_location
   Exit For Loop If  ${present}
   END
@@ -161,9 +162,9 @@ I select timing test drive at showroom
   Click element  id=com.kuwait.showroomz.refac:id/checkbox
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
 
-
   FOR  ${i}  IN RANGE  1  7
-  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[1]/android.widget.LinearLayout[${i}]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[1]/android.widget.LinearLayout[${i}]
+
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/time_recycler
   Run Keyword If  ${present}  Select the time
   ${present2}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/confirm_deliver_to_location
@@ -183,7 +184,7 @@ I select timing test drive to my location
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
 
   FOR  ${i}  IN RANGE  1  7
-  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[1]/android.widget.LinearLayout[${i}]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[1]/android.widget.LinearLayout[${i}]
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/time_recycler
   Run Keyword If  ${present}  Select the time of delivery to my location
   ${present2}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/confirm_deliver_to_my_location
