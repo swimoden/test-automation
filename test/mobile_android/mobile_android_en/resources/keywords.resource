@@ -50,7 +50,9 @@ I can Open Menu
   Click Element  id=com.kuwait.showroomz.refac:id/menu_button
 
 I select Profile Item
-  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'PROFILE')]
+  Click Element  xpath=//*[contains(@text,'PROFILE')]
+
   Wait Until Page Contains  Login To your account 
 
 As User I login in app
@@ -125,6 +127,11 @@ I can navigate to leasing category
   Click Element  xpath=//*[@text='Leasing']
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_btn
 
+I can navigate to rent category
+  Click Element  xpath=//*[@text='Rent']
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_btn
+
+
 I can navigate to List Brand of Marine
   I have access to Dashborad Screen 
   I navigate to List Brand of Marine
@@ -167,7 +174,8 @@ I selects model with name
   [Arguments]  ${model_name}
   # Sleep  8s
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_recycler
-  FOR  ${i}  IN RANGE  20
+  Sleep  2s  
+  FOR  ${i}  IN RANGE  30
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[@text='${model_name}']
   Exit For Loop If  ${present}
   Sleep  2s
@@ -500,7 +508,7 @@ I visit a model from rent category and add it to favorites and back to menu
   I go back to menu from model detail
 
 I select mode From Recently Viewed
-  Swipe By Percent  50  80  50  50  1000
+  Swipe By Percent  50  80  50  20  1000
   # Wait Until Element Is Visible  xpath=//*[@id='com.kuwait.showroomz.refac:id/recently_recycler']
   Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
   Click Element  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
@@ -510,7 +518,7 @@ I add model to favorites List
   Click Element  id=com.kuwait.showroomz.refac:id/favorite_img
 
 I select model From Recently Viewed
-  Swipe By Percent  50  80  50  50  1000
+  Swipe By Percent  50  80  50  20  1000
   Wait Until Element Is Visible  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
   Click Element  xpath=//androidx.recyclerview.widget.RecyclerView[@resource-id='com.kuwait.showroomz.refac:id/recently_recycler']/android.view.ViewGroup[1]
 
@@ -682,7 +690,8 @@ Close pub
 
 I selects a brand with name
   [Arguments]  ${brand_name}
-  FOR  ${i}  IN RANGE  20
+  Sleep  2s
+  FOR  ${i}  IN RANGE  40
   ${present}=  Run Keyword And Return Status  Page should contain element  xpath=//*[contains(@text,'${brand_name}')]
   Exit For Loop If  ${present}
   Sleep  2s
@@ -711,10 +720,11 @@ I Should be on List Brand
   I Should Sees List Brands
 
 I Should Sees Sub Categories
+  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.TextView
   # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
   # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
   # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
 
 I Should Sees List Brands
@@ -779,16 +789,141 @@ I go back to menu from model detail
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
   Run Keyword If  ${present}  Close pub
   Wait Until Page Contains Element  xpath=//*[contains(@text,'Car')]
-
-
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
-  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
   Click Element  id=com.kuwait.showroomz.refac:id/back
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
+I go back to menu from marine model detail
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
+  Click Element  id=com.kuwait.showroomz.refac:id/back_button
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Wait Until Page Contains Element  xpath=//*[contains(@text,'Marine')]
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+I go back to menu from bike model detail
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
+  Click Element  id=com.kuwait.showroomz.refac:id/back_button
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Wait Until Page Contains Element  xpath=//*[contains(@text,'Bike')]
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+###############  Gallery  #############
+
+#############  sahre
+I share model
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/share_button
+  Click Element  id=com.kuwait.showroomz.refac:id/share_button
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'showroomz.com')]
+  Press Keycode  4
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
+#############
+
+I show the interior
+  wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/interior_button
+  Click Element  id=com.kuwait.showroomz.refac:id/interior_button
+  wait Until Element Is Visible  xpath=//*[@text='Back']
+  Click Element  xpath=//*[@text='Back']
+  I go back to menu from model details Recently Viewed
+
+I show the exterior
+  wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/exterior_button
+  Click Element  id=com.kuwait.showroomz.refac:id/exterior_button
+  wait Until Element Is Visible  xpath=//*[@text='Back']
+  Click Element  xpath=//*[@text='Back']
+  I go back to menu from model details Recently Viewed  
+
+I show the exterior from interior
+  wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/exterior_button
+  Click Element  id=com.kuwait.showroomz.refac:id/interior_button
+  wait Until Element Is Visible  xpath=//*[@text='Back']
+  wait Until Element Is Visible  xpath=//*[@text='Exterior']
+  Click Element  xpath=//*[@text='Exterior']
+  Wait Until Element Is Visible  xpath=//*[@text='Interior']
+  Click Element  xpath=//*[@text='Back']
+  I go back to menu from model details Recently Viewed
+
+I show the interior from Exterior
+  wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/exterior_button
+  Click Element  id=com.kuwait.showroomz.refac:id/exterior_button
+  wait Until Element Is Visible  xpath=//*[@text='Back']
+  wait Until Element Is Visible  xpath=//*[@text='Interior']
+  Click Element  xpath=//*[@text='Interior']
+  Wait Until Element Is Visible  xpath=//*[@text='Exterior']
+  Click Element  xpath=//*[@text='Back']
+  I go back to menu from model details Recently Viewed  
+
+I show gallery
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/gallery
+  Click Element  id=com.kuwait.showroomz.refac:id/gallery
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/gallery_container
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/exit_icon
+  Click Element  id=com.kuwait.showroomz.refac:id/exit_icon
+
+##################  end galler  ####################
+####################  Comapre ######################
+
+I open compare model screen
+  I can see model Actions buttons
+  I click compare Action button
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_one_img
+
+I add another model to second trim
+  [Arguments]  ${text}  ${model_name}  ${select}
+  Click Element  id=com.kuwait.showroomz.refac:id/add_model_btn 
+
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_edit_text
+  AppiumLibrary.Clear Text  id=com.kuwait.showroomz.refac:id/filter_edit_text
+  AppiumLibrary.Input Text  id=com.kuwait.showroomz.refac:id/filter_edit_text  ${text}
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout 
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/trim_two
+
+  # Click Element  id=com.kuwait.showroomz.refac:id/trim_two
+  # Wait Until Element Is Visible  xpath=//*[@text='${select}']
+  # Click Element  xpath=//*[@text='SV']
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/detailsTwo
+
+I refresh compare screen
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/reload_img
+  Click Element  id=com.kuwait.showroomz.refac:id/reload_img
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/close_button
+  Click Element  id=com.kuwait.showroomz.refac:id/close_button
+
+I back to menu from compare model screen
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_btn
+  Click Element  id=com.kuwait.showroomz.refac:id/back_btn
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
+  Click Element  id=com.kuwait.showroomz.refac:id/back_button
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+
+I can navigate to certified category
+  Click Element  xpath=//*[@text='Certified']
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_btn
+
+
+####################  end compare  #################
 I get the client id
   [Arguments]  ${email}  ${password}
   Create Session  mySession  ${BASE_URL}  verify=true

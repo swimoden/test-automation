@@ -6,7 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Test Teardown  Run Keyword If Test Failed  Relod Application and Login
+# Test Teardown  Run Keyword If Test Failed  Relod Application and Login
 Force Tags  Android  Android_en  Callback  Callback_En
 
 *** Variables ***
