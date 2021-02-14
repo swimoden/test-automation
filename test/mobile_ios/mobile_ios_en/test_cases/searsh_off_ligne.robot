@@ -63,7 +63,7 @@ I can navigate to List bike brands
   I Should be on List Bike Brand
 
 I go back to menu from List Marine brands
-  Click Element  accessibility_id=backkjkj
+  Click Element  accessibility_id=back
   I have access to Dashborad Screen 
 
 I can close search Screen
