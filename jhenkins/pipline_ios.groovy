@@ -3,10 +3,10 @@ def DEVICE
 pipeline {
     agent any
     parameters {
-            string(defaultValue: 'Samsung Galaxy A51', description: 'Device name', name: 'DevicesName', trim: true)
+            string(defaultValue: 'iPhone 11 Pro Max', description: 'Device name', name: 'DevicesName', trim: true)
             string(defaultValue: 'bs://5a655452000a8ab33b25e14a3ed2c84f403846c7', description: 'URL Application', name: 'AppUrl', trim: true)
             string(defaultValue: '14.0', description: 'Operating System version', name: 'os_version', trim: true)
-            string(defaultValue: 'iPhone 11 Pro Max', description: 'Test Execution', name: 'tags', trim: true)
+            string(defaultValue: 'Ios_en_marine_searsh_off_ligne', description: 'Test Execution', name: 'tags', trim: true)
     }
     stages {
         stage('pre requise install') {
