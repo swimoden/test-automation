@@ -9,12 +9,12 @@ Test Teardown  Run Keyword If Test Failed  Relod Application
 Force Tags  Ios  maintenance_off_ligne
 
 *** Test Cases ***
-I Succeed to make a Request callback from brand
-  [Tags]  Ios_en_maintenance_callback_off_ligne
+I Succeed to make a Maintenance Request callback from brand
+  [Tags]  Ios_ar_maintenance_callback_off_ligne
   I can navigate to List Brand
   I can navigate to sub category Maintenance
-  I can navigate to brand  Nissan
-  I can make a Maintenance Request Callback  Mohamd Amine  6677  68820091
+  I can navigate to brand  نيسان
+  I can make a Maintenance Request Callback  Mohamd Amine  6677  66770000
   [Teardown]  NONE
 
 *** Keywords ***
@@ -25,26 +25,22 @@ I can make a Maintenance Request Callback
   I passed a callback Request  ${nom_user}  ${false_phone_number}  ${phone_number}
 
 I click Request Appointment buttons
-  Click Element  accessibility_id=Request Appointment
+  Click Element  xpath=(//XCUIElementTypeStaticText[@name="طلب موعد"])[2]
 
 I can see Request Appointment buttons
-  Wait Until Element Is Visible  accessibility_id=Request Appointment
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="طلب موعد"])[2]
 
 I can navigate to brand
   [Arguments]  ${brand_name}
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton
-  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeTextField[@value="You can Search by Brand, Model or budget"]  
-  Input Text  xpath=//XCUIElementTypeTextField[@value="You can Search by Brand, Model or budget"]  ${brand_name}
-  Wait Until Page Contains Element  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]  timeout=20s
-  Click Element  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]
-  Wait Until Element Is Visible  accessibility_id=Request Appointment
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="نيسان"]
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="نيسان"]
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="طلب موعد"])[2]
 
 I should be in the Maintenance model view
-  Wait Until Element Is Visible  accessibility_id=Request Appointment
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="طلب موعد"])[2]
 
 I can navigate to sub category Maintenance
-  Click Element  accessibility_id=Maintenance
+  Click Element  accessibility_id=الصيانة
 
 I can navigate to List Brand
   I have access to Dashborad Screen 
@@ -73,7 +69,7 @@ I validate Callback Request
   Click Element  accessibility_id=tick mark icon
 
 I should see success pop up
-  Wait Until Element Is Visible  accessibility_id=Success  
+  Wait Until Element Is Visible  accessibility_id=تم بنجاح 
   Sleep  5s
   wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
   Click Element  xpath=//XCUIElementTypeButton[@name="close icon"]
@@ -93,16 +89,16 @@ I set false Phone Number
   AppiumLibrary.Input Text  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField[2]  ${false_phone_number}
 
 I have access to callback popup
-  Wait Until Element Is Visible  accessibility_id=Please Add your information to be contacted
+  Wait Until Element Is Visible  accessibility_id=الرجاء أدخل معلوماتك لالتواصل معك
 
 I have access to List Brand
   I Should Sees List Brands
 
 I have access to Dashborad Screen
-  Wait Until Element Is Visible  accessibility_id=Car  
+  Wait Until Element Is Visible  accessibility_id=سيارات 
 
 I navigate to List Brand
-  Click Element  accessibility_id=Car
+  Click Element  accessibility_id=سيارات 
   Run Keyword And Ignore Error  Wait and close Pub
 
 I Should be on List Brand
@@ -110,11 +106,11 @@ I Should be on List Brand
   I Should Sees List Brands
 
 I Should Sees Sub Categories
-  Page Should Contain Element  accessibility_id=New
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
+  Page Should Contain Element  accessibility_id=الجديدة
+  Page Should Contain Element  accessibility_id=المعتمدة
+  Page Should Contain Element  accessibility_id=الإيجار
+  Page Should Contain Element  accessibility_id=الإيجار اليومي
+  Page Should Contain Element  accessibility_id=الصيانة
 
 I Should Sees List Brands
   ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell

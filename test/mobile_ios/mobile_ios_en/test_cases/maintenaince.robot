@@ -5,16 +5,16 @@ Library  Collections
 Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Force Tags  Ios  callback
+Force Tags  Ios  maintenance
 
 *** Test Cases ***
-I Succeed to make a Request callback from brand
+I Succeed to make a Maintenance callback from brand
   [Tags]  Ios_en_maintenance_callback
   [Setup]  As User I login in app
   I can navigate to List Brand
   I can navigate to sub category Maintenance
   I can navigate to brand  Nissan
-  I can make a Maintenance Request Callback  Mohamd Amine  6677  66770000
+  I can make a Maintenance Request Callback  Mohamd Amine  6677  68820091
   [Teardown]  NONE
 
 *** Keywords ***
