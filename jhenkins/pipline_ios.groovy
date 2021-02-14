@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Publish report Robot Framework') {
             steps {
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '', reportFiles: 'report\\report.html', reportName: 'HTML Report', reportTitles: ''])
+                publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: false, reportDir: '', reportFiles: 'report\\report.html', reportName: 'HTML Report', reportTitles: ''])
             }
         }
     }
