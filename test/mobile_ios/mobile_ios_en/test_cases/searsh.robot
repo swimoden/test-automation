@@ -4,6 +4,7 @@ Library  FakerLibrary
 Library  Collections
 Library  DateTime
 Resource  ../resources/setup_teardown.resource
+Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application and Login
@@ -13,7 +14,7 @@ Force Tags  Ios  searsh
 
 *** Test Cases ***
 I Succeed to Search from Brands screen Marine
-  [Tags]  Ios_en_marine_searsh_off_ligne
+  [Tags]  Ios_en_marine_searsh
   [Setup]  As User I login in app
   I can navigate to List Marine brands
   I can navigate to search screen
@@ -23,7 +24,7 @@ I Succeed to Search from Brands screen Marine
   I go back to menu from List Marine brands
 
 I Succeed to Search from Brands screen bike
-  [Tags]  Ios_en_bike_searsh_off_ligne
+  [Tags]  Ios_en_bike_searsh
   I can navigate to List bike brands
   I can navigate to bike model  KAWASAKI - MOTORCYCLES
   I can navigate to search screen
