@@ -31,12 +31,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Publish Robot Framework HTML report') {
-            steps {
-                robot outputPath: 'report', passThreshold: 100.0, unstableThreshold: 100.0
-            }
-        }
         stage('Attache BrowserStack test results') {
             steps {
                 browserStackReportPublisher 'app-automate'
