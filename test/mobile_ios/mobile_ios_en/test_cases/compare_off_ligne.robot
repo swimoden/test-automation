@@ -21,8 +21,6 @@ I Succeed to make a car compare
   I can reflesh compare 
   I go back to menu from model compare
 
-
-
 I Succeed to make a car compare certified
   [Tags]  Ios_en_car_compare_certified_off_ligne
   I can navigate to List Brand

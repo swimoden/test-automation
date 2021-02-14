@@ -3,6 +3,7 @@ Documentation  Request callback from brand
 Library  FakerLibrary
 Library  Collections
 Resource  ../resources/setup_teardown.resource
+Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
@@ -12,16 +13,16 @@ Force Tags  Ios  show
 
 *** Test Cases ***
 I Succeed to Show interior default
-  [Tags]  Ios_en_Show_interior_default_off_ligne
-  I visit a model and back to menu  Audi  Q7
+  [Tags]  Ios_ar_Show_interior_default_off_ligne
+  I visit a model and back to menu  شانجان  سي اس 75
   I select mode From Recently Viewed
   I can navigate to interior 
   I should be in interior 
   I go back to menu from interieur 
 
 I Succeed to Show interior from Exterior
-  [Tags]  Ios_en_Show_interior_from_Exterior_off_ligne
-  I visit a model and back to menu  Audi  Q7
+  [Tags]  Ios_ar_Show_interior_from_Exterior_off_ligne
+  I visit a model and back to menu  شانجان  سي اس 75
   I select mode From Recently Viewed
   I can navigate to Exterior 
   I should be in Exterior 
@@ -30,16 +31,16 @@ I Succeed to Show interior from Exterior
   I go back to menu from interieur 
 
 I Succeed to Show Exterior default
-  [Tags]  Ios_en_Show_Exterior_default_off_ligne
-  I visit a model and back to menu  Audi  Q7
+  [Tags]  Ios_ar_Show_Exterior_default_off_ligne
+  I visit a model and back to menu  شانجان  سي اس 75
   I select mode From Recently Viewed
   I can navigate to Exterior 
   I should be in Exterior 
   I go back to menu from Exterior 
 
 I Succeed to Show Exterior from
-  [Tags]  Ios_en_Show_Exterior_from_Interior_off_ligne
-  I visit a model and back to menu  Audi  Q7
+  [Tags]  Ios_ar_Show_Exterior_from_Interior_off_ligne
+  I visit a model and back to menu  شانجان  سي اس 75
   I select mode From Recently Viewed
   I can navigate to interior 
   I should be in interior
@@ -48,24 +49,25 @@ I Succeed to Show Exterior from
   I go back to menu from Exterior 
 
 I Succeed to Show Gallery
-  [Tags]  Ios_en_Show_Gallery_off_ligne
+  [Tags]  Ios_ar_Show_Gallery_off_ligne
   I can navigate to List Marine brands
   I can navigate to List of models marine  JETSURF
   I can navigate to marine model  Race DFI Model
   I can navigate to gallory 
   I should be in gallory
   I go back to menu from gallory
+  [Teardown]  NONE
 
 
 I Succeed to share car model
-  [Tags]  Ios_en_share_car_model_off_ligne
+  [Tags]  Ios_ar_share_car_model_off_ligne
   I can navigate to List Brand
-  I can navigate to List of models  Audi
-  I can navigate to the details of the model  Audi  A5 Coupe
+  I can navigate to List of models  شانجان
+  I can navigate to the details of the model  شانجان  CS 85
   I can share car model 
   I should be in car share screen
   I go back to menu from car share screen
-
+  [Teardown]  NONE
 
 I Succeed to share marine mode
   [Tags]  Ios_en_share_marine_mode_off_ligne
@@ -75,7 +77,7 @@ I Succeed to share marine mode
   I can share marine model
   I should be in marine share screen
   I go back to menu from marine share screen
-
+  [Teardown]  NONE
 
 I Succeed to share bike mode
   [Tags]  Ios_en_share_bike_mode_off_ligne
@@ -123,7 +125,7 @@ I go back to menu from marine share screen
   Click Element  xpath=//XCUIElementTypeButton[@name="back"]
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="back black"]
   Click Element  xpath=//XCUIElementTypeButton[@name="back black"]
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="MARINE"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="معدات بحرية"]
   Click Element  xpath=//XCUIElementTypeButton[@name="back"]
   Wait Until Element Is Visible  accessibility_id=menu
 
@@ -151,17 +153,17 @@ I go back to menu from car share screen
   Should Not Be Empty  ${elements}
   Click Element  accessibility_id=back black
   Run Keyword And Ignore Error  Close advertisement
-  Page Should Contain Element  accessibility_id=New
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
+  Page Should Contain Element  accessibility_id=الجديدة
+  Page Should Contain Element  accessibility_id=المعتمدة
+  Page Should Contain Element  accessibility_id=الإيجار
+  Page Should Contain Element  accessibility_id=الإيجار اليومي
+  Page Should Contain Element  accessibility_id=الصيانة
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
-  Wait Until Element Is Visible  accessibility_id=menu 
+  Wait Until Element Is Visible  accessibility_id=menu  
 
 I should be in car share screen
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeOther[@name="Please check A5 Coupe and tell me your opinion."]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeOther[@name="Please check CS 85 and tell me your opinion."]
 
 I can share car model
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="ic share"]
@@ -173,7 +175,7 @@ I go back to menu from gallory
   Click Element  xpath=//XCUIElementTypeButton[@name="back"]
   Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="back black"]
   Click Element  xpath=//XCUIElementTypeButton[@name="back black"]
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="MARINE"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="معدات بحرية"]
   Click Element  xpath=//XCUIElementTypeButton[@name="back"]
   Wait Until Element Is Visible  accessibility_id=menu
 
@@ -182,8 +184,8 @@ I should be in gallory
   Wait Until Page Contains Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView[2]
 
 I can navigate to gallory
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="gallery"]
-  Click Element  xpath=//XCUIElementTypeStaticText[@name="gallery"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="صور"]
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="صور"]
 
 I can navigate to List of models marine
   [Arguments]  ${model_name}
@@ -205,42 +207,42 @@ I Should be on List Marine Brand
   Wait Until Element Is Visible  accessibility_id=Sea Doo
 
 I navigate to List Marine Brand
-  Click Element  accessibility_id=Marine
+  Click Element  accessibility_id=معدات بحرية
   Run Keyword And Ignore Error  Wait and close Pub
 
 I can navigate to Exterior from Interior
-  Click Element  xpath=(//XCUIElementTypeButton[@name="Exterior"])[2]
+  Click Element  xpath=(//XCUIElementTypeButton[@name="الخارجي"])[2]
 
 I can navigate to Interior from Exterior
-  Click Element  xpath=(//XCUIElementTypeButton[@name="Interior"])[2]
+  Click Element  xpath=(//XCUIElementTypeButton[@name="الداخلي"])[2]
 
 I can navigate to Exterior
-  Click Element  xpath=//XCUIElementTypeStaticText[@name="Exterior"]
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="الخارجي"]
 
 I should be in Exterior
-  Wait Until Element Is Visible  xpath=(//XCUIElementTypeButton[@name="Interior"])[2]
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="Back"]
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeButton[@name="الداخلي"])[2]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="رجوع"]
 
 I go back to menu from Exterior
-  Click Element  accessibility_id=Back
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Exterior"]
+  Click Element  accessibility_id=رجوع
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الخارجي"]
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
   Wait Until Element Is Visible  accessibility_id=menu 
 
 I go back to menu from interieur
-  Click Element  accessibility_id=Back
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Interior"]
+  Click Element  accessibility_id=رجوع
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الداخلي"]
   Click Element  accessibility_id=back
   Run Keyword And Ignore Error  Close advertisement
   Wait Until Element Is Visible  accessibility_id=menu 
 
 I can navigate to interior
-  Click Element  xpath=//XCUIElementTypeStaticText[@name="Interior"]
+  Click Element  xpath=//XCUIElementTypeStaticText[@name="الداخلي"]
 
 I should be in interior
-  Wait Until Element Is Visible  xpath=(//XCUIElementTypeButton[@name="Exterior"])[2]
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="Back"]
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeButton[@name="الخارجي"])[2]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="رجوع"]
 
 I click Finance Action button
   Click Element  xpath=//XCUIElementTypeStaticText[@name="Finance"]
@@ -292,8 +294,9 @@ I add brand to favorites List
   Click Element  xpath=//XCUIElementTypeButton[@name="ic favorites"]
 
 I select mode From Recently Viewed
-  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="Car | New | "])[2] 
-  Click Element  xpath=(//XCUIElementTypeStaticText[@name="Car | New | "])[2] 
+  Wait Until Element Is Visible  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2] 
+  Click Element  xpath=(//XCUIElementTypeStaticText[@name="سيارات | الجديدة | "])[2]
+
 
 I visit a model and back to menu
   [Arguments]  ${brand_name}  ${model_name}
@@ -391,22 +394,19 @@ I should Sees the details of the model
 
 I selects model with name
   [Arguments]  ${model_name}
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton
-  Click Element  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeTextField[@value="You can Search by Brand, Model or budget"]  
-  Input Text  xpath=//XCUIElementTypeTextField[@value="You can Search by Brand, Model or budget"]  ${model_name}
-  Wait Until Page Contains Element  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]  timeout=20s
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
   Click Element  xpath=//XCUIElementTypeStaticText[@name="${model_name}"]
-    # xpath=//XCUIElementTypeStaticText[@name="Changan "]
+
 I have access to the List of models
   [Arguments]  ${brand_name}
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Main Showroom"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الفرع الرئيسي"]
 
 I should Sees the List of model
   [Arguments]  ${brand_name}
   Run Keyword And Ignore Error  Wait and close Pub
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="Main Showroom"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="الفرع الرئيسي"]
   Wait Until Element Is Visible  xpath=//XCUIElementTypeStaticText[@name="${brand_name}"]
+  Wait Until Element Is Visible  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
   ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell
   Should Not Be Empty  ${elements}
 
@@ -421,10 +421,12 @@ I have access to List Brand
   I Should Sees List Brands
 
 I have access to Dashborad Screen
-  Wait Until Element Is Visible  accessibility_id=Car  
+  Wait Until Element Is Visible  accessibility_id=دراجات
+  Wait Until Element Is Visible  accessibility_id=معدات بحرية
+  Wait Until Element Is Visible  accessibility_id=سيارات 
 
 I navigate to List Brand
-  Click Element  accessibility_id=Car
+  Click Element  accessibility_id=سيارات
   Run Keyword And Ignore Error  Wait and close Pub
 
 I Should be on List Brand
@@ -432,11 +434,11 @@ I Should be on List Brand
   I Should Sees List Brands
 
 I Should Sees Sub Categories
-  Page Should Contain Element  accessibility_id=New
-  Page Should Contain Element  accessibility_id=Certified
-  Page Should Contain Element  accessibility_id=Leasing
-  Page Should Contain Element  accessibility_id=Rent
-  Page Should Contain Element  accessibility_id=Maintenance
+  Page Should Contain Element  accessibility_id=الجديدة
+  Page Should Contain Element  accessibility_id=المعتمدة
+  Page Should Contain Element  accessibility_id=الإيجار
+  Page Should Contain Element  accessibility_id=الإيجار اليومي
+  Page Should Contain Element  accessibility_id=الصيانة
 
 I Should Sees List Brands
   ${elements}=  Get WebElements  xpath=//XCUIElementTypeApplication[@name="Showroomz_refac"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell

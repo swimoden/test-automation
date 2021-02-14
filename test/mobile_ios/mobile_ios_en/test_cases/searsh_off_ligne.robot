@@ -7,7 +7,7 @@ Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
-Force Tags  Ios  searsh_offligne
+Force Tags  Ios  searsh_off_ligne
 
 *** Variables ***
 
@@ -20,7 +20,7 @@ I Succeed to Search from Brands screen Marine
   I can close search Screen
   I Should be back to List Marine brands
   I go back to menu from List Marine brands
-
+  [Teardown]  NONE
 
 I Succeed to Search from Brands screen bike
   [Tags]  Ios_en_bike_searsh_off_ligne
