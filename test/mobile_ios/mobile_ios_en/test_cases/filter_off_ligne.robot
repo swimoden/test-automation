@@ -6,7 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
-Force Tags  Ios  callback
+Force Tags  Ios  Ios_en filter
 
 *** Variables ***
 
@@ -18,7 +18,7 @@ I Succeed to make a car filter
   I can apply filter  5000  sedan  Abarth
   I should be in car page  Abarth 695
   I go back to menu from car filter
-  [Teardown]  NONE
+
 
 I Succeed to make a maintenance filter
   [Tags]  Ios_en_filter_maintenance_off_ligne
@@ -29,7 +29,7 @@ I Succeed to make a maintenance filter
   I can apply maintenance filter  Acura
   I Should be in page List of location and map with pins  Acura: ACURA Al Mulla Quick service Al Rai
   I go back to menu from maintenance filter
-  [Teardown]  NONE
+
 
 I Succeed to Search from Brands screen bike
   [Tags]  Ios_en_bike_filter_off_ligne

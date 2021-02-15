@@ -6,7 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Test Teardown  Run Keyword If Test Failed  Relod Application
+Force Tags  Ios  Ios_en  register
 
 *** Variables ***
 ${phone_number_error}  Phone number, Error: Phone number must be 8 digits

@@ -11,7 +11,7 @@ Library  String
 ${USER_NAME}  bambounamed1
 ${ACESS_KEY}  kotdtzWABxQR5cxwMxiK
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-${APP}  bs://d222dd044a3ce22a25255c5e4c927d65adbedc7c
+${APP}  bs://fc0516f14f4eba7657cf5c0880d2d4d2893484f2
 ${DEVICE}  iPhone 11 Pro Max
 ${OS_VERSION}  14 
 ${BUILD}  local build

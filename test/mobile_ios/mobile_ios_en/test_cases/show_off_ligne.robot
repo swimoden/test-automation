@@ -6,7 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
-Force Tags  Ios  show
+Force Tags  Ios  Ios_en  show
 
 *** Variables ***
 
@@ -86,8 +86,6 @@ I Succeed to share bike mode
   I should be in Bike share screen
   I go back to menu from Bike share screen 
   [Teardown]  NONE
-
-
 
 *** Keywords ***
 I go back to menu from Bike share screen

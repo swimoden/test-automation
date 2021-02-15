@@ -6,7 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
-Force Tags  Ios  callback
+Force Tags  Ios  Ios_en  callback
 
 *** Variables ***
 

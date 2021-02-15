@@ -5,7 +5,7 @@ Library  Collections
 Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Force Tags  Ios  maintenance
+Force Tags  Ios  Ios_en  maintenance
 
 *** Test Cases ***
 I Succeed to make a Maintenance callback from brand
