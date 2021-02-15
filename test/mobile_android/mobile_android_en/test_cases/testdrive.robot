@@ -52,7 +52,8 @@ I Succeed to make a Request test drive with delivery from dashboard using correc
   I go back to menu from model detail
 
 I Succeed to make a Request test drive with delivery from dashboard using wrong informations
-  [Tags]  Android_En_Test_drive_With_Delivery
+  [Tags]  Android_En_Test_drive_With_Delivery1
+  As User I login in app
   I can navigate to List Brand
   I can navigate to List of models  BYD
   I can navigate to the details of the model  BYD  Tang
@@ -141,16 +142,15 @@ I click test drive Action button
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/title_txt
 
 Select the time
-  FOR  ${i}  IN RANGE  1  11
-  click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${i}]
+  FOR  ${j}  IN RANGE  1  11
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${j}]
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/confirm_deliver_to_location
   Exit For Loop If  ${present}
   END
 
 Select the time of delivery to my location
-  FOR  ${i}  IN RANGE  1  11
-  click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${i}]
- # /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${i}]
+  FOR  ${j}  IN RANGE  1  11
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[${j}]
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/confirm_deliver_to_my_location
   Exit For Loop If  ${present}
   END
@@ -192,8 +192,8 @@ I select timing test drive to my location
   END
 
 
-  click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[2]
-  click Element  id=com.kuwait.showroomz.refac:id/confirm_deliver_to_my_location
+  # Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[2]
+  Click Element  id=com.kuwait.showroomz.refac:id/confirm_deliver_to_my_location
 
 I add an address
   sleep  2s
