@@ -4,7 +4,6 @@ pipeline {
     agent any
     parameters {
             string(defaultValue: 'Samsung Galaxy A51', description: 'Device name', name: 'DevicesName', trim: true)
-            string(defaultValue: 'Samsung Galaxy A51', description: 'Device name', name: 'SecondDevicesName', trim: true)
             string(defaultValue: 'bs://860a96962ee7510e9068dd1a936ed656a5019233', description: 'URL Application', name: 'AppUrl', trim: true)
             string(defaultValue: '10.0', description: 'Operating System version', name: 'os_version', trim: true)
             string(defaultValue: 'Android_en_callback_brand', description: 'Test Execution', name: 'tags', trim: true)
@@ -45,7 +44,9 @@ pipeline {
         }
            stage('Publish report Robot Framework') {
             steps {
-                 publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report\\report.html', reportName: 'HTML Report', reportTitles: ''])
+                publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '', reportFiles: 'report\\report.html', reportName: 'HTML Report', reportTitles: ''])
+          
+        
             }
         }
     }
