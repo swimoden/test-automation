@@ -52,8 +52,7 @@ I Succeed to make a Request test drive with delivery from dashboard using correc
   I go back to menu from model detail
 
 I Succeed to make a Request test drive with delivery from dashboard using wrong informations
-  [Tags]  Android_En_Test_drive_With_Delivery1
-  As User I login in app
+  [Tags]  Android_En_Test_drive_With_Delivery
   I can navigate to List Brand
   I can navigate to List of models  BYD
   I can navigate to the details of the model  BYD  Tang

@@ -21,7 +21,7 @@ ${USER_NAME}  marwenouni1
 ${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
 ${APP}  bs://b95e4325980ebdc88eebc06155c31ca79d44bafc
-${DEVICE}  Samsung Galaxy Note 10
+${DEVICE}  Samsung Galaxy S10
 ${OS_VERSION}  9.0
 ${BUILD}  local build
 ${platformName}  android

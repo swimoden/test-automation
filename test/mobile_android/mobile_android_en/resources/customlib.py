@@ -31,7 +31,7 @@ def send_image_to_device():
     driver = appiumlib._current_application()
     driver.implicitly_wait(20)
     dest_path2 = '/sdcard/Download/file.png'
-    dest_path1 = '/sdcard/DCIM/Camera/file.png'
+    # dest_path1 = '/sdcard/DCIM/Camera/file.png'
     dest_path = '/sdcard/Pictures/file.png'
     image = Image.new("RGB", (300, 50))
     draw = ImageDraw.Draw(image)
@@ -47,5 +47,5 @@ def send_image_to_device():
 
     base64_string = base64_bytes.decode('utf-8')
     driver.push_file(dest_path, base64_string)
-    driver.push_file(dest_path1, base64_string)
+    # driver.push_file(dest_path1, base64_string)
     driver.push_file(dest_path2, base64_string)
