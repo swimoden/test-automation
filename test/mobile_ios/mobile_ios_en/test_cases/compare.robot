@@ -53,7 +53,7 @@ I Succeed to make a marine compare
   I can navigate to List of models  KAWASAKI - MOTORCYCLES
   I can navigate to the details of the model  KAWASAKI - MOTORCYCLES  NINJA ZX 10R
   I can see model Actions buttons
-  I can make a compare request  INJA ZX 10R  NINJA ZX 14R  NINJA® ZX™-14R ABS 
+  I can make a compare request  NINJA ZX 10R  NINJA ZX 14R  NINJA® ZX™-14R ABS 
   I can reflesh compare 
   I go back to menu from model compare 
   [Teardown]  NONE

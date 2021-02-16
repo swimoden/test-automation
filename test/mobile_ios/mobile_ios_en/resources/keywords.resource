@@ -74,7 +74,7 @@ Close advertisement
 I go back to menu from model details Recently Viewed
   Wait Until Element Is Visible  accessibility_id=back
   Click Element  accessibility_id=back
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
+  Run Keyword And Continue On Failure  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
   Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
   Wait Until Element Is Visible  accessibility_id=menu  
 

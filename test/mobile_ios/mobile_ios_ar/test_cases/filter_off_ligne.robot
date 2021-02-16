@@ -237,5 +237,5 @@ I Should Sees List Brands
   Should Not Be Empty  ${elements}
 
 Close advertisement
-  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
-  Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
+  Run Keyword And Continue On Failure  Wait Until Element Is Visible  xpath=//XCUIElementTypeButton[@name="close icon"]
+  Run Keyword And Continue On Failure  Click Element  xpath=//XCUIElementTypeButton[@name="close icon"] 
