@@ -214,6 +214,10 @@ I navigate to booking screen
   I can see model Actions buttons
   I click Book Now Action button
 
+I navigate to buy now screen
+  I can see model Actions buttons
+  I click Buy Now Action button
+
 I can book using correct information
   I send my civil id picture to the phone
   Sleep  2s
@@ -334,6 +338,62 @@ I can book using correct informations
   Wait Until Element Is Visible  xpath=//*[@text='Form Submitted Successfully']
   Click Element  id=com.kuwait.showroomz.refac:id/exit_btn
   # xpath updated
+
+I can buy model using correct information
+  I send my civil id picture to the phone
+  Sleep  2s
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/user_information
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
+  # Press Keycode  120  #take screen shot to upload it to device
+  Wait Until Element Is Visible  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
+  Click Element  xpath=//android.widget.Button[contains(@text,'Autoriser') or contains(@text,'Allow') or contains(@text,'ALLOW')]
+  I send my civil id picture to the phone
+  Sleep  2s
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadImage
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadImage
+  ${yes}=  Run Keyword And Return Status  page Should Contain Element  xpath=//*[contains(@text,'file')]
+  Run Keyword If  ${yes}  Upload picture to phone
+  ...  ELSE IF  ${yes} == False  Upload civil picture to phone
+
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/uploadLicenseImage
+  Click Element  id=com.kuwait.showroomz.refac:id/uploadLicenseImage
+  ${yes}=  Run Keyword And Return Status  page Should Contain Element  xpath=//*[contains(@text,'file')]
+  Run Keyword If  ${yes}  Upload license file to phone
+  ...  ELSE IF  ${yes} == False  Upload license picture to phone
+
+  Swipe By Percent  50  80  50  20  1000
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/pay_btn
+  Click Element  id=com.kuwait.showroomz.refac:id/pay_btn
+  wait Until Element Is Visible  xpath=//android.view.View[@content-desc=" KNET"]
+  Click Element  xpath=//android.view.View[@content-desc=" KNET"]
+  Wait Until Element Is Visible  xpath=//*[@text='Select Your Bank']
+  Click Element  xpath=//*[@text='Select Your Bank']
+  Sleep  1s
+  Swipe By Percent  50  80  50  20  1000
+
+  Swipe By Percent  50  80  50  20  1000
+  Wait Until Element Is Visible  xpath=//*[@text='Knet Test Card [KNET1]']
+  Click Element  xpath=//*[@text='Knet Test Card [KNET1]']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
+  AppiumLibrary.Clear Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText
+  AppiumLibrary.Input Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[3]/android.view.View[3]/android.widget.EditText  0000000001
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[1]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[1]
+  Wait Until Element Is Visible  xpath=//*[@text='09']
+  Click Element  xpath=//*[@text='09']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[2]
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[4]/android.widget.Spinner[2]
+  Wait Until Element Is Visible  xpath=//*[@text='2021']
+  Click Element  xpath=//*[@text='2021']
+  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText
+  AppiumLibrary.Clear Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText
+  AppiumLibrary.Input Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View[7]/android.view.View[5]/android.view.View[2]/android.widget.EditText  1234
+  Click Element  xpath=//*[@text='Submit']
+  Wait Until Element Is Visible  xpath=//*[@text='Confirm']
+  Click Element  xpath=//*[@text='Confirm']
+  Wait Until Element Is Visible  xpath=//*[@text='Form Submitted Successfully']
+
+
 Upload civil picture to phone
 
   Wait Until Element Is Visible  xpath=//android.widget.ImageButton[@content-desc="Show roots"]
@@ -667,6 +727,9 @@ I can see model Actions buttons
 
 I click Book Now Action button
   Click Element  xpath=//*[@text='BOOK NOW']
+
+I click Buy Now Action button
+  Click Element  xpath=//*[@text='BUY NOW']
 
 I have access to model details screen
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/model_name_txtV

@@ -6,7 +6,7 @@ Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Test Teardown  Run Keyword If Test Failed  Relod Application and Login
+Test Teardown  Run Keyword If Test Failed  Relod Application
 Force Tags  Android  Android_en  Gallery  Gallery_En
 
 *** Variables ***
@@ -17,7 +17,6 @@ Force Tags  Android  Android_en  Gallery  Gallery_En
 
 I Succeed to show interior from recently viewed
   [Tags]  Android_En_exterior_recently_viewed
-  As User I login in app
   I visit a model and back to menu  BMW  M5
   I select model From Recently Viewed
   I show the interior
