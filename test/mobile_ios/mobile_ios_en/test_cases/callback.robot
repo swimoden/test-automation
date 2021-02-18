@@ -129,7 +129,7 @@ I can navigate to List Brand
 
 I can navigate to List of models
   [Arguments]  ${model_name}
-  I have access to List Brand
+  # I have access to List Brand
   I selects a brand with name  ${model_name}
   I should Sees the List of model  ${model_name}
 
@@ -249,7 +249,7 @@ I navigate to List Brand
 
 I Should be on List Brand
   I Should Sees Sub Categories
-  I Should Sees List Brands
+  # I Should Sees List Brands
 
 I Should Sees Sub Categories
   Page Should Contain Element  accessibility_id=New
