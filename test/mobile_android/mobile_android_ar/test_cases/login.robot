@@ -4,7 +4,7 @@ Documentation  Register
 Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-
+Force Tags  Android  Android_en
 *** Test Cases ***
 As User I login in app
   I can Open Menu

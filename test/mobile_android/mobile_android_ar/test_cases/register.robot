@@ -6,15 +6,15 @@ Resource  ../resources/setup_teardown.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
 Test Teardown  Run Keyword If Test Failed  Relod Application
-Force Tags  Android  Android_Register_Ar  Android_Register
+Force Tags  Android  Android_en  Android_Register_En  Android_Register
 
 
 
 *** Variables ***
-${phone_number_error}  رقم الهاتف فارغ
-${name_error}  الاسم فارغ 
-${email_error}  بريد إلكتروني خاطئ
-${password_error}  رمز مرور خاطئ 
+${phone_number_error}  Phone is empty
+${name_error}  Name is empty
+${email_error}  Invalid Email
+${password_error}  Invalid Password
 
 
 *** Test Cases ***
@@ -39,7 +39,7 @@ As User I try to register
 
 
 As User I try to reset password
-  [Tags]  Android_reset_password_ar
+  [Tags]  Android_reser_password_ar
   I can Open Menu
   I select Profile Item
   I navigate to forget password page
@@ -52,13 +52,13 @@ I can Open Menu
   Click Element  id=com.kuwait.showroomz.refac:id/menu_button
 
 I select Profile Item
-  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView
-  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView
-  Wait Until Page Contains  تسجيل الدخول إلى حسابك
+  Wait Until Element Is Visible  xpath=//*[contains(@text,'PROFILE')]
+  Click Element  xpath=//*[contains(@text,'PROFILE')]
+  Wait Until Page Contains  Login To your account 
 
 I navigate to register page
   Click Element  id=com.kuwait.showroomz.refac:id/sign_up
-  Wait Until Page Contains  سجل حسابك الجديد
+  Wait Until Page Contains  Register your new account
 
 I type register information
   [Arguments]  ${name}  ${email}  ${password}  ${phone} 
@@ -90,7 +90,7 @@ I navigate to forget password page
 I type Email in email field
   [Arguments]  ${email}
   Input Text  id=com.kuwait.showroomz.refac:id/emailTextInputEditText  ${email}
-  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.Button
+  Click Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.Button
 
 I should see popup
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/design_bottom_sheet

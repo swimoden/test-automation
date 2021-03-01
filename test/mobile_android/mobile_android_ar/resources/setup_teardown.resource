@@ -11,54 +11,45 @@ Library  String
 
 # ${APPIUM_SERVER}  http://localhost:4730/wd/hub
 # ${APP}  d:app.apk
-# ${DEVICE}  Galaxy A51
-# ${OS_VERSION}  9.0 
+# ${DEVICE}  Samsung Galaxy A51
+# ${OS_VERSION}  10.0 
 # ${platformName}  android
+
+
 
 ${USER_NAME}  marwenouni1
 ${ACESS_KEY}  wA5ePxcK1p4v8u2DZ3MD
 ${APPIUM_SERVER}  http://${USER_NAME}:${ACESS_KEY}@hub.browserstack.com/wd/hub
-${APP}  bs://860a96962ee7510e9068dd1a936ed656a5019233
-${DEVICE}  Samsung Galaxy A51
-${OS_VERSION}  10.0
+${APP}  bs://b95e4325980ebdc88eebc06155c31ca79d44bafc
+${DEVICE}  Samsung Galaxy S10
+${OS_VERSION}  9.0
 ${BUILD}  local build
 ${platformName}  android
 
+
 *** Keywords ***
+Get device
+  [Return]  ${DEVICE}
+
 Open the application
   ${DEVICE} =  Replace String  ${DEVICE}  _  ${SPACE}
-  Open Application  ${APPIUM_SERVER}  app=${APP}  platformName=${platformName}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  name=${SUITE NAME.rsplit('.')[0]}
-  Set Appium Timeout  30 seconds
-  Select Arabic language
-  #Wait and close Pub
+  Open Application  ${APPIUM_SERVER}  app=${APP}  platformName=${platformName}  device=${DEVICE}  automationName=UiAutomator2  appPackage=com.kuwait.showroomz.refac  os_version=${OS_VERSION}  project=Showroomz  autoAcceptAlerts=true  name=${SUITE NAME.rsplit('.')[0]}
+  Set Appium Timeout  60 seconds
+  Select English language
 
 
-Select Arabic language
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabicBtn  
-  Click Element  id=com.kuwait.showroomz.refac:id/arabicBtn
-Check Arabic language button
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabicBtn  
-  Click Element  id=com.kuwait.showroomz.refac:id/arabicBtn
+
+Select English language
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/english_btn  
+  Click Element  id=com.kuwait.showroomz.refac:id/english_btn
+
+Check English language button
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/english_btn  
+
 
 Allow Applications Location Service
   Wait Until Element Is Visible  name=Allow While Using App
   Click Element  name=Allow While Using App
-
-Wait and close Pub
-  Wait Until Element Is Visible  accessibility_id=close icon  timeout=200  
-  Click Element  accessibility_id=close icon
-
-Clean up the test suite
-  Close All Applications
-
-Relod Application and Login
-  Close All Applications
-  Open the application
-  As User I login in app
-
-Relod Application
-  Close All Applications
-  Open the application
 
 I go back to menu from test drive request screen
   Click Element  id=com.kuwait.showroomz.refac:id/back_bnt
@@ -71,28 +62,8 @@ I go back to menu from test drive request screen
   sleep  1s
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
   Run Keyword If  ${present}  Close pub
-  Wait Until Page Contains Element  xpath=//*[contains(@text,'سيارات')]
+  Wait Until Page Contains Element  xpath=//*[contains(@text,'Car')]
 
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
-  Click Element  id=com.kuwait.showroomz.refac:id/back
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
-
-I go back to menu from model detail
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back_button
-  Click Element  id=com.kuwait.showroomz.refac:id/back_button
-  sleep  1s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  Close pub
-
-  Click Element  id=com.kuwait.showroomz.refac:id/back
-  sleep  1s
-  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
-  Run Keyword If  ${present}  Close pub
-  Wait Until Page Contains Element  xpath=//*[contains(@text,'سيارات')]
 
   # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
   # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
@@ -101,6 +72,7 @@ I go back to menu from model detail
   # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
   Click Element  id=com.kuwait.showroomz.refac:id/back
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
 
 I go back to menu from test drive request - add address
   Click Element  id=com.kuwait.showroomz.refac:id/back_btn
@@ -115,10 +87,23 @@ I go back to menu from test drive request - add address
   Run Keyword If  ${present}  Close pub
   Wait Until Page Contains Element  xpath=//*[contains(@text,'سيارات')]
 
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
-  Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]
+  # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]
   Click Element  id=com.kuwait.showroomz.refac:id/back
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
+
+Clean up the test suite
+  Close All Applications
+
+Relod Application and Login
+  Close All Applications
+  Open the application
+  As User I login in app
+
+Relod Application
+  Close All Applications
+  Open the application
+
