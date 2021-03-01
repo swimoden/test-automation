@@ -1,26 +1,25 @@
 ** Settings ***
-Documentation  Request callback from brand
+Documentation  search brand and model using text
 Library  FakerLibrary
 Library  Collections
 Resource  ../resources/setup_teardown.resource
 Resource  ../resources/keywords.resource
 Suite Setup  Open the application
 Suite Teardown  Clean up the test suite
-Test Teardown  Run Keyword If Test Failed  Relod Application and Login
-Force Tags  Android  Android_en  Android_search_En  Android_search
+Test Teardown  Run Keyword If Test Failed  Relod Application
+Force Tags  Android  Android_en  Android_search_offline_En  Android_search
 
 *** Variables ***
 
 *** Test Cases ***
 I Succeed to search a brand from marine category
-  [Tags]  Android_En_search_marine
-  As User I login in app
+  [Tags]  Android_En_search_marine_offline
   I can navigate to List Brand of Marine
-  I search a brand using text  JetsUrf
+  I search a brand using text  t
   I back to menu from search brand screen
 
 I Succeed to search a model from bike category
-  [Tags]  Android_En_search_bike
+  [Tags]  Android_En_search_bike_offline
   I can navigate to List Brand of Bike
   I can navigate to List of models  KAWASAKI - MOTORCYCLES
   I search a model using text  j
@@ -182,7 +181,7 @@ I search a model using text
   FOR  ${i}  IN RANGE  4
   Wait Until Keyword Succeeds  3x  1s  Wait Until Element Is Visible  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView[1]
   ${name}  Get Text  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView[1]
-  # qsde /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView
+
   ${name}=  Convert To Lowercase  ${name}
   ${brand_name}=  Convert To Lowercase  ${brand_name}
   Should Be True  '${brand_name}' in '${name}'
@@ -196,6 +195,25 @@ Navigate to search screen
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/filter_by_budget_edit_text
 
 
+I back to menu from search brand screen
+  Click Element  id=com.kuwait.showroomz.refac:id/close_button
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
+I back to menu from search model screen
+  Click Element  id=com.kuwait.showroomz.refac:id/close_button
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  sleep  1s
+  ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
+  Run Keyword If  ${present}  Close pub
+  Click Element  id=com.kuwait.showroomz.refac:id/back
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/menu_button
 
 

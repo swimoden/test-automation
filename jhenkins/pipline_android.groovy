@@ -4,7 +4,7 @@ pipeline {
     agent any
     parameters {
             string(defaultValue: 'Samsung Galaxy A51', description: 'Device name', name: 'DevicesName', trim: true)
-            string(defaultValue: 'bs://860a96962ee7510e9068dd1a936ed656a5019233', description: 'URL Application', name: 'AppUrl', trim: true)
+            string(defaultValue: '"bs://b95e4325980ebdc88eebc06155c31ca79d44bafc', description: 'URL Application', name: 'AppUrl', trim: true)
             string(defaultValue: '10.0', description: 'Operating System version', name: 'os_version', trim: true)
             string(defaultValue: 'Android_en_callback_brand', description: 'Test Execution', name: 'tags', trim: true)
     }
