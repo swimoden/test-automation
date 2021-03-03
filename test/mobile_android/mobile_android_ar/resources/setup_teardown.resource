@@ -35,16 +35,16 @@ Open the application
   ${DEVICE} =  Replace String  ${DEVICE}  _  ${SPACE}
   Open Application  ${APPIUM_SERVER}  app=${APP}  platformName=${platformName}  device=${DEVICE}  automationName=UiAutomator2  appPackage=com.kuwait.showroomz.refac  os_version=${OS_VERSION}  project=Showroomz  autoAcceptAlerts=true  name=${SUITE NAME.rsplit('.')[0]}
   Set Appium Timeout  60 seconds
-  Select English language
+  Select Arabic language
 
 
 
-Select English language
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/english_btn  
-  Click Element  id=com.kuwait.showroomz.refac:id/english_btn
+Select Arabic language
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabic_btn  
+  Click Element  id=com.kuwait.showroomz.refac:id/arabic_btn
 
 Check English language button
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/english_btn  
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabic_btn  
 
 
 Allow Applications Location Service
