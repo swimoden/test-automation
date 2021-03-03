@@ -40,12 +40,12 @@ Open the application
 
 
 Select Arabic language
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabic_btn  
-  Click Element  id=com.kuwait.showroomz.refac:id/arabic_btn
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabicBtn  
+  Click Element  id=com.kuwait.showroomz.refac:id/arabicBtn
 
 
 Check Arabic language button
-  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabic_btn  
+  Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabicBtn  
 
 
 Allow Applications Location Service
@@ -63,7 +63,7 @@ I go back to menu from test drive request screen
   sleep  1s
   ${present}=  Run Keyword And Return Status  Page should contain element  id=com.kuwait.showroomz.refac:id/circle_progress
   Run Keyword If  ${present}  Close pub
-  Wait Until Page Contains Element  xpath=//*[contains(@text,'Car')]
+  Wait Until Page Contains Element  xpath=//*[contains(@text,'سيارات')]
 
 
   # Page Should Contain Element  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout[1]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]
