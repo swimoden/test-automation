@@ -19,7 +19,8 @@ ${BUILD}  local build
 
 *** Keywords ***
 Open the application
-  Open Application  ${APPIUM_SERVER}  app=${APP}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  build=${BUILD}  name=${BUILD}  language=en  locale=kw_CA  autoAcceptAlerts=true  
+  ${DEVICE} =  Replace String  ${DEVICE}  _  ${SPACE}
+  Open Application  ${APPIUM_SERVER}  app=${APP}  device=${DEVICE}  os_version=${OS_VERSION}  project=Showroomz  build=${BUILD}  name=${SUITE NAME.rsplit('.')[0]}  language=en  locale=kw_CA  autoAcceptAlerts=true  
   Set Appium Timeout  30 seconds
   Run Keyword And Ignore Error  Allow Applications Location Service
   Choose language  عربي  

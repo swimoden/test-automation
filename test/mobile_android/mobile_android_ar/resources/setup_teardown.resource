@@ -43,7 +43,8 @@ Select Arabic language
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabic_btn  
   Click Element  id=com.kuwait.showroomz.refac:id/arabic_btn
 
-Check English language button
+
+Check Arabic language button
   Wait Until Element Is Visible  id=com.kuwait.showroomz.refac:id/arabic_btn  
 
 
