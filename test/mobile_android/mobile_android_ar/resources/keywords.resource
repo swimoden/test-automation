@@ -51,8 +51,7 @@ I can Open Menu
 
 I select Profile Item
   Wait Until Element Is Visible  xpath=//*[contains(@text,'حسابي')]
-  Click Element  xpath=//*[contains(@text, 'حسابي')]]
-@text=
+  Click Element  xpath=//*[contains(@text, 'حسابي')]
   Wait Until Page Contains  تسجيل الدخول إلى حسابك 
 
 As User I login in app
